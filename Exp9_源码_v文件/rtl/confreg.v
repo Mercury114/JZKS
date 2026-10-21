@@ -71,12 +71,21 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 `define OPEN_TRACE_ADDR   16'hff30  //32'hbfaf_ff30
 `define NUM_MONITOR_ADDR  16'hff40  //32'hbfaf_ff40
 
+// 创新扩展：UART，位时间按实际连接的外设时钟设置。
+`define UART_TXDATA_ADDR 16'hf100
+`define UART_RXDATA_ADDR 16'hf104
+`define UART_STATUS_ADDR 16'hf108
+
 module confreg
-#(parameter SIMULATION=1'b0)
+#(parameter SIMULATION=1'b0,
+  parameter integer UART_CLKS_PER_BIT=326)
 (
     input  wire        clk,
     input  wire        timer_clk,
     input  wire        resetn,
+    // 创新扩展：UART，直连串口输入和输出。
+    input  wire        uart_rx,
+    output wire        uart_tx,
     // read and write from cpu
     input  wire        conf_en,
     input  wire [3 :0] conf_we,
@@ -121,6 +130,28 @@ module confreg
     reg         num_monitor;
 
 
+    // 创新扩展：UART，复用 confreg 的同步读时序和单周期总线访问。
+    wire [7:0] uart_rx_data;
+    wire uart_rx_valid;
+    wire uart_tx_busy;
+    wire uart_rx_overrun;
+    wire uart_rx_frame_error;
+    wire [4:0] uart_rx_count;
+    wire uart_tx_write = conf_en && conf_we[0] &&
+                         (conf_addr[15:0] == `UART_TXDATA_ADDR);
+    wire uart_rx_read = conf_en && !(|conf_we) &&
+                        (conf_addr[15:0] == `UART_RXDATA_ADDR);
+    uart_mmio #(.CLKS_PER_BIT(UART_CLKS_PER_BIT)) u_uart (
+        .clk(clk), .resetn(resetn),
+        .uart_rx(uart_rx), .uart_tx(uart_tx),
+        .tx_write(uart_tx_write), .tx_wdata(conf_wdata[7:0]),
+        .rx_read(uart_rx_read),
+        .rx_data(uart_rx_data), .rx_valid(uart_rx_valid),
+        .tx_busy(uart_tx_busy),
+        .rx_overrun(uart_rx_overrun), .rx_frame_error(uart_rx_frame_error),
+        .rx_count(uart_rx_count)
+    );
+
     // read data has one cycle delay
     reg [31:0] conf_rdata_reg;
     assign conf_rdata = conf_rdata_reg;
@@ -155,6 +186,10 @@ module confreg
                 `VIRTUAL_UART_ADDR : conf_rdata_reg <= {24'd0,virtual_uart_data} ;
                 `OPEN_TRACE_ADDR : conf_rdata_reg <= {31'd0,open_trace} ;
                 `NUM_MONITOR_ADDR: conf_rdata_reg <= {31'd0,num_monitor} ;
+                // 创新扩展：UART，读RXDATA弹出FIFO；STATUS[8:4]计数，[3:2]错误，[1:0]忙/有效。
+                `UART_TXDATA_ADDR: conf_rdata_reg <= 32'b0;
+                `UART_RXDATA_ADDR: conf_rdata_reg <= {24'b0, uart_rx_data};
+                `UART_STATUS_ADDR: conf_rdata_reg <= {23'b0, uart_rx_count, uart_rx_frame_error, uart_rx_overrun, uart_tx_busy, uart_rx_valid};
                 default        : conf_rdata_reg <= 32'd0;
             endcase
         end

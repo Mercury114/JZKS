@@ -64,10 +64,17 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //   at this time, cpu_clk/timer_clk frequency are both 100MHz, same as clk.
 `define SIMU_USE_PLL 0 //set 0 to speed up simulation
 
-module soc_lite_top #(parameter SIMULATION=1'b0)
+// 创新扩展：UART，保留仓库原有 CPU 和 /16 分频，按各模式时钟计算位时间。
+// 硬件：50 MHz / 16 = 3.125 MHz，326 拍/位；快速仿真：50 MHz，5208 拍/位。
+module soc_lite_top #(parameter SIMULATION=1'b0,
+                     parameter integer UART_CLKS_PER_BIT=(SIMULATION ? 5208 : 326))
 (
     input  wire        resetn, 
     input  wire        clk,
+
+    // 创新扩展：UART，向 confreg 传递板级串口。
+    input  wire        uart_rx,
+    output wire        uart_tx,
 
     //------gpio-------
     output wire [15:0] led,
@@ -217,8 +224,11 @@ data_ram data_ram
 );
 
 //confreg
-confreg #(.SIMULATION(SIMULATION)) u_confreg
+confreg #(.SIMULATION(SIMULATION), .UART_CLKS_PER_BIT(UART_CLKS_PER_BIT)) u_confreg
 (
+    // 创新扩展：UART，串口使用与 CPU 相同的实际时钟。
+    .uart_rx     ( uart_rx    ),
+    .uart_tx     ( uart_tx    ),
     .clk         ( cpu_clk    ),  // i, 1   
     .timer_clk   ( timer_clk  ),  // i, 1   
     .resetn      ( cpu_resetn ),  // i, 1    

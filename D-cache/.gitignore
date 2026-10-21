@@ -1,0 +1,11 @@
+.Xil/
+xsim.dir/
+*.jou
+*.pb
+*.backup.log
+*.backup.jou
+build/dcache_project/.Xil/
+build/dcache_project/dcache_extension.cache/
+build/dcache_project/dcache_extension.hw/
+build/dcache_project/dcache_extension.ip_user_files/
+build/dcache_project/dcache_extension.sim/sim_1/behav/xsim/xsim.dir/

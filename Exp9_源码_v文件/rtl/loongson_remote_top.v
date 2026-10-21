@@ -1,63 +1,63 @@
 `default_nettype none
 
 module looongson_remote_top(
-    input wire clk_50M,           //50MHz Ê±ÖÓÊäÈë
-    input wire clk_11M0592,       //11.0592MHz Ê±ÖÓÊäÈë£¨±¸ÓÃ£¬¿É²»ÓÃ£©
+    input wire clk_50M,           //50MHz æ—¶é’Ÿè¾“å…¥
+    input wire clk_11M0592,       //11.0592MHz æ—¶é’Ÿè¾“å…¥ï¼ˆå¤‡ç”¨ï¼Œå¯ä¸ç”¨ï¼‰
 
-    input wire clock_btn,         //BTN5ÊÖ¶¯Ê±ÖÓ°´Å¥¿ª¹Ø£¬´øÏû¶¶µçÂ·£¬°´ÏÂÊ±Îª1
-    input wire reset_btn,         //BTN6ÊÖ¶¯¸´Î»°´Å¥¿ª¹Ø£¬´øÏû¶¶µçÂ·£¬°´ÏÂÊ±Îª1
+    input wire clock_btn,         //BTN5æ‰‹åŠ¨æ—¶é’ŸæŒ‰é’®å¼€å…³ï¼Œå¸¦æ¶ˆæŠ–ç”µè·¯ï¼ŒæŒ‰ä¸‹æ—¶ä¸º1
+    input wire reset_btn,         //BTN6æ‰‹åŠ¨å¤ä½æŒ‰é’®å¼€å…³ï¼Œå¸¦æ¶ˆæŠ–ç”µè·¯ï¼ŒæŒ‰ä¸‹æ—¶ä¸º1
 
-    input  wire[3:0]  touch_btn,  //BTN1~BTN4£¬°´Å¥¿ª¹Ø£¬°´ÏÂÊ±Îª1
-    input  wire[31:0] dip_sw,     //32Î»²¦Âë¿ª¹Ø£¬²¦µ½¡°ON¡±Ê±Îª1
-    output wire[15:0] leds,       //16Î»LED£¬Êä³öÊ±1µãÁÁ
-    output wire[7:0]  dpy0,       //ÊıÂë¹ÜµÍÎ»ĞÅºÅ£¬°üÀ¨Ğ¡Êıµã£¬Êä³ö1µãÁÁ
-    output wire[7:0]  dpy1,       //ÊıÂë¹Ü¸ßÎ»ĞÅºÅ£¬°üÀ¨Ğ¡Êıµã£¬Êä³ö1µãÁÁ
+    input  wire[3:0]  touch_btn,  //BTN1~BTN4ï¼ŒæŒ‰é’®å¼€å…³ï¼ŒæŒ‰ä¸‹æ—¶ä¸º1
+    input  wire[31:0] dip_sw,     //32ä½æ‹¨ç å¼€å…³ï¼Œæ‹¨åˆ°â€œONâ€æ—¶ä¸º1
+    output wire[15:0] leds,       //16ä½LEDï¼Œè¾“å‡ºæ—¶1ç‚¹äº®
+    output wire[7:0]  dpy0,       //æ•°ç ç®¡ä½ä½ä¿¡å·ï¼ŒåŒ…æ‹¬å°æ•°ç‚¹ï¼Œè¾“å‡º1ç‚¹äº®
+    output wire[7:0]  dpy1,       //æ•°ç ç®¡é«˜ä½ä¿¡å·ï¼ŒåŒ…æ‹¬å°æ•°ç‚¹ï¼Œè¾“å‡º1ç‚¹äº®
     
-    //CPLD´®¿Ú¿ØÖÆÆ÷ĞÅºÅ
-    output wire uart_rdn,         //¶Á´®¿ÚĞÅºÅ£¬µÍÓĞĞ§
-    output wire uart_wrn,         //Ğ´´®¿ÚĞÅºÅ£¬µÍÓĞĞ§
-    input  wire uart_dataready,    //´®¿ÚÊı¾İ×¼±¸ºÃ
-    input  wire uart_tbre,         //·¢ËÍÊı¾İ±êÖ¾
-    input  wire uart_tsre,         //Êı¾İ·¢ËÍÍê±Ï±êÖ¾
+    //CPLDä¸²å£æ§åˆ¶å™¨ä¿¡å·
+    output wire uart_rdn,         //è¯»ä¸²å£ä¿¡å·ï¼Œä½æœ‰æ•ˆ
+    output wire uart_wrn,         //å†™ä¸²å£ä¿¡å·ï¼Œä½æœ‰æ•ˆ
+    input  wire uart_dataready,    //ä¸²å£æ•°æ®å‡†å¤‡å¥½
+    input  wire uart_tbre,         //å‘é€æ•°æ®æ ‡å¿—
+    input  wire uart_tsre,         //æ•°æ®å‘é€å®Œæ¯•æ ‡å¿—
 
-    //BaseRAMĞÅºÅ
-    inout wire [31:0] base_ram_data,  //BaseRAMÊı¾İ£¬µÍ8Î»ÓëCPLD´®¿Ú¿ØÖÆÆ÷¹²Ïí
-    output wire[19:0] base_ram_addr, //BaseRAMµØÖ·
-    output wire[ 3:0] base_ram_be_n,  //BaseRAM×Ö½ÚÊ¹ÄÜ£¬µÍÓĞĞ§¡£Èç¹û²»Ê¹ÓÃ×Ö½ÚÊ¹ÄÜ£¬Çë±£³ÖÎª0
-    output wire base_ram_ce_n,       //BaseRAMÆ¬Ñ¡£¬µÍÓĞĞ§
-    output wire base_ram_oe_n,       //BaseRAM¶ÁÊ¹ÄÜ£¬µÍÓĞĞ§
-    output wire base_ram_we_n,       //BaseRAMĞ´Ê¹ÄÜ£¬µÍÓĞĞ§
+    //BaseRAMä¿¡å·
+    inout wire [31:0] base_ram_data,  //BaseRAMæ•°æ®ï¼Œä½8ä½ä¸CPLDä¸²å£æ§åˆ¶å™¨å…±äº«
+    output wire[19:0] base_ram_addr, //BaseRAMåœ°å€
+    output wire[ 3:0] base_ram_be_n,  //BaseRAMå­—èŠ‚ä½¿èƒ½ï¼Œä½æœ‰æ•ˆã€‚å¦‚æœä¸ä½¿ç”¨å­—èŠ‚ä½¿èƒ½ï¼Œè¯·ä¿æŒä¸º0
+    output wire base_ram_ce_n,       //BaseRAMç‰‡é€‰ï¼Œä½æœ‰æ•ˆ
+    output wire base_ram_oe_n,       //BaseRAMè¯»ä½¿èƒ½ï¼Œä½æœ‰æ•ˆ
+    output wire base_ram_we_n,       //BaseRAMå†™ä½¿èƒ½ï¼Œä½æœ‰æ•ˆ
 
-    //ExtRAMĞÅºÅ
-    inout  wire[31:0] ext_ram_data,  //ExtRAMÊı¾İ
-    output wire[19:0] ext_ram_addr, //ExtRAMµØÖ·
-    output wire[ 3:0] ext_ram_be_n,  //ExtRAM×Ö½ÚÊ¹ÄÜ£¬µÍÓĞĞ§¡£Èç¹û²»Ê¹ÓÃ×Ö½ÚÊ¹ÄÜ£¬Çë±£³ÖÎª0
-    output wire ext_ram_ce_n,       //ExtRAMÆ¬Ñ¡£¬µÍÓĞĞ§
-    output wire ext_ram_oe_n,       //ExtRAM¶ÁÊ¹ÄÜ£¬µÍÓĞĞ§
-    output wire ext_ram_we_n,       //ExtRAMĞ´Ê¹ÄÜ£¬µÍÓĞĞ§
+    //ExtRAMä¿¡å·
+    inout  wire[31:0] ext_ram_data,  //ExtRAMæ•°æ®
+    output wire[19:0] ext_ram_addr, //ExtRAMåœ°å€
+    output wire[ 3:0] ext_ram_be_n,  //ExtRAMå­—èŠ‚ä½¿èƒ½ï¼Œä½æœ‰æ•ˆã€‚å¦‚æœä¸ä½¿ç”¨å­—èŠ‚ä½¿èƒ½ï¼Œè¯·ä¿æŒä¸º0
+    output wire ext_ram_ce_n,       //ExtRAMç‰‡é€‰ï¼Œä½æœ‰æ•ˆ
+    output wire ext_ram_oe_n,       //ExtRAMè¯»ä½¿èƒ½ï¼Œä½æœ‰æ•ˆ
+    output wire ext_ram_we_n,       //ExtRAMå†™ä½¿èƒ½ï¼Œä½æœ‰æ•ˆ
 
-    //Ö±Á¬´®¿ÚĞÅºÅ
-    output wire txd,  //Ö±Á¬´®¿Ú·¢ËÍ¶Ë
-    input  wire rxd,  //Ö±Á¬´®¿Ú½ÓÊÕ¶Ë
+    //ç›´è¿ä¸²å£ä¿¡å·
+    output wire txd,  //ç›´è¿ä¸²å£å‘é€ç«¯
+    input  wire rxd,  //ç›´è¿ä¸²å£æ¥æ”¶ç«¯
 
-    //Flash´æ´¢Æ÷ĞÅºÅ£¬²Î¿¼ JS28F640 Ğ¾Æ¬ÊÖ²á
-    output wire [22:0]flash_a,      //FlashµØÖ·£¬a0½öÔÚ8bitÄ£Ê½ÓĞĞ§£¬16bitÄ£Ê½ÎŞÒâÒå
-    inout  wire [15:0]flash_d,      //FlashÊı¾İ
-    output wire flash_rp_n,         //Flash¸´Î»ĞÅºÅ£¬µÍÓĞĞ§
-    output wire flash_vpen,         //FlashĞ´±£»¤ĞÅºÅ£¬µÍµçÆ½Ê±²»ÄÜ²Á³ı¡¢ÉÕĞ´
-    output wire flash_ce_n,         //FlashÆ¬Ñ¡ĞÅºÅ£¬µÍÓĞĞ§
-    output wire flash_oe_n,         //Flash¶ÁÊ¹ÄÜĞÅºÅ£¬µÍÓĞĞ§
-    output wire flash_we_n,         //FlashĞ´Ê¹ÄÜĞÅºÅ£¬µÍÓĞĞ§
-    output wire flash_byte_n,       //Flash 8bitÄ£Ê½Ñ¡Ôñ£¬µÍÓĞĞ§¡£ÔÚÊ¹ÓÃflashµÄ16Î»Ä£Ê½Ê±ÇëÉèÎª1
+    //Flashå­˜å‚¨å™¨ä¿¡å·ï¼Œå‚è€ƒ JS28F640 èŠ¯ç‰‡æ‰‹å†Œ
+    output wire [22:0]flash_a,      //Flashåœ°å€ï¼Œa0ä»…åœ¨8bitæ¨¡å¼æœ‰æ•ˆï¼Œ16bitæ¨¡å¼æ— æ„ä¹‰
+    inout  wire [15:0]flash_d,      //Flashæ•°æ®
+    output wire flash_rp_n,         //Flashå¤ä½ä¿¡å·ï¼Œä½æœ‰æ•ˆ
+    output wire flash_vpen,         //Flashå†™ä¿æŠ¤ä¿¡å·ï¼Œä½ç”µå¹³æ—¶ä¸èƒ½æ“¦é™¤ã€çƒ§å†™
+    output wire flash_ce_n,         //Flashç‰‡é€‰ä¿¡å·ï¼Œä½æœ‰æ•ˆ
+    output wire flash_oe_n,         //Flashè¯»ä½¿èƒ½ä¿¡å·ï¼Œä½æœ‰æ•ˆ
+    output wire flash_we_n,         //Flashå†™ä½¿èƒ½ä¿¡å·ï¼Œä½æœ‰æ•ˆ
+    output wire flash_byte_n,       //Flash 8bitæ¨¡å¼é€‰æ‹©ï¼Œä½æœ‰æ•ˆã€‚åœ¨ä½¿ç”¨flashçš„16ä½æ¨¡å¼æ—¶è¯·è®¾ä¸º1
 
-    //Í¼ÏñÊä³öĞÅºÅ
-    output wire[2:0] video_red,    //ºìÉ«ÏñËØ£¬3Î»
-    output wire[2:0] video_green,  //ÂÌÉ«ÏñËØ£¬3Î»
-    output wire[1:0] video_blue,   //À¶É«ÏñËØ£¬2Î»
-    output wire video_hsync,       //ĞĞÍ¬²½£¨Ë®Æ½Í¬²½£©ĞÅºÅ
-    output wire video_vsync,       //³¡Í¬²½£¨´¹Ö±Í¬²½£©ĞÅºÅ
-    output wire video_clk,         //ÏñËØÊ±ÖÓÊä³ö
-    output wire video_de           //ĞĞÊı¾İÓĞĞ§ĞÅºÅ£¬ÓÃÓÚÇø·ÖÏûÒşÇø
+    //å›¾åƒè¾“å‡ºä¿¡å·
+    output wire[2:0] video_red,    //çº¢è‰²åƒç´ ï¼Œ3ä½
+    output wire[2:0] video_green,  //ç»¿è‰²åƒç´ ï¼Œ3ä½
+    output wire[1:0] video_blue,   //è“è‰²åƒç´ ï¼Œ2ä½
+    output wire video_hsync,       //è¡ŒåŒæ­¥ï¼ˆæ°´å¹³åŒæ­¥ï¼‰ä¿¡å·
+    output wire video_vsync,       //åœºåŒæ­¥ï¼ˆå‚ç›´åŒæ­¥ï¼‰ä¿¡å·
+    output wire video_clk,         //åƒç´ æ—¶é’Ÿè¾“å‡º
+    output wire video_de           //è¡Œæ•°æ®æœ‰æ•ˆä¿¡å·ï¼Œç”¨äºåŒºåˆ†æ¶ˆéšåŒº
 );
 
 wire [ 7:0] local_switch;
@@ -80,6 +80,9 @@ remote2local remote2local
 );
 soc_lite_top  soc_lite
 (
+       // åˆ›æ–°æ‰©å±•ï¼šUARTï¼Œç½‘é¡µç›´è¿ rxd/txd æ¥å…¥åŸæœ‰ SoCã€‚
+       .uart_rx     (rxd),
+       .uart_tx     (txd),
        .resetn      (local_resetn), 
        .clk         (clk_50M     ),
     

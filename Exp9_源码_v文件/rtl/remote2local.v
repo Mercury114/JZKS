@@ -27,7 +27,7 @@ input   wire[3:0]   iDIG;
 output  wire[7:0]   oSEG1;
 reg     [6:0]   oSEG;
 
-// oSEG´Ó×óµ½ÓÒ¸÷Î»¶ÔÓ¦ m lt t rt lb b rb
+// oSEGä»å·¦åˆ°å³å„ä½å¯¹åº” m lt t rt lb b rb
 always @(iDIG)
 begin
         case(iDIG)
@@ -50,7 +50,7 @@ begin
         endcase
 end
 
-// 1´ú±íÊıÂë¹ÜÁÁ£¬0´ú±í°µ£¬Òò´Ë×îºóÒªÈ¡·´
+// 1ä»£è¡¨æ•°ç ç®¡äº®ï¼Œ0ä»£è¡¨æš—ï¼Œå› æ­¤æœ€åè¦å–å
 assign oSEG1 = {~oSEG,1'b0};
 
 endmodule

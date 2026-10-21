@@ -1,0 +1,5 @@
+*.sh text eol=lf
+*.tcl text eol=lf
+*.py text eol=lf
+*.S text eol=lf
+*.lds text eol=lf
