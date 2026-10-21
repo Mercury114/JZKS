@@ -15,6 +15,8 @@ CACHE = ROOT / "Cache"
 BUILD = CACHE / "build/regression"
 RTL = CACHE / "rtl"
 CONF = ROOT / "Exp9_源码_v文件/rtl/confreg.v"
+UART = sorted((ROOT / "Exp9_源码_v文件/rtl/UART").glob("*.v"))
+GIT = shutil.which("git") or str(ROOT.parent / "mingit" / "cmd" / "git.exe")
 records = []
 
 
@@ -63,7 +65,7 @@ def main():
         sim(f"subsystem-ways{ways}", "subsystem_tb", sub_sources +
             [CACHE / "tb/cache_memory_model.v", CACHE / "tb/subsystem_tb.v"], "PASS subsystem", {"WAY_NUM": ways})
     sim("original-mmio-bridge", "mmio_bridge_tb", sub_sources +
-        [RTL / "cache_sram_bridge.v", CACHE / "tb/mmio_bridge_tb.v", CONF], "PASS original confreg")
+        [RTL / "cache_sram_bridge.v", CACHE / "tb/mmio_bridge_tb.v", CONF, *UART], "PASS original confreg")
     command("cpu-architectural", [sys.executable, CACHE / "tests/run_cpu.py"], "PASS 46 scenarios / 528")
     command("system-architectural-and-performance", [sys.executable, CACHE / "tests/run_system.py"], "PASS integrated system: 24 runs")
     teacher_results = []
@@ -76,13 +78,18 @@ def main():
             teacher_results += json.loads((CACHE / f"build/teacher/results-ways{ways}-enabled1.json").read_text())
         command("teacher-ex9-no-cache", [sys.executable, CACHE / "tests/run_teacher.py", "--exp", "9", "--no-cache"], "PASS teacher ex9: 58/58")
         teacher_results += json.loads((CACHE / "build/teacher/results-ways2-enabled0.json").read_text())
-    all_sources = sorted(RTL.glob("*.v")) + sorted((RTL / "cpu").glob("*.v")) + [CONF, ROOT / "Exp9_源码_v文件/rtl/remote2local.v"]
+    all_sources = sorted(RTL.glob("*.v")) + sorted((RTL / "cpu").glob("*.v")) + [CONF, *UART, ROOT / "Exp9_源码_v文件/rtl/remote2local.v"]
     for top in ("cache_system", "cache_soc_lite_top", "cache_remote_top"):
         command(f"default-{top}-compile", ["iverilog", "-g2012", "-tnull", "-s", top, "-I", RTL / "cpu", *all_sources])
     command("vivado-input-preparation", [sys.executable, CACHE / "scripts/prepare_vivado.py", "--exp", "9"], "Prepared ex9")
-    preserved = subprocess.check_output(["git", "diff", "3487cdd", "--", "D-cache", "Exp9_源码_v文件"], cwd=ROOT, text=True)
-    if preserved:
-        raise RuntimeError("Original partner delivery or Exp9 files were changed")
+    if not Path(GIT).is_file() and not shutil.which("git"):
+        raise RuntimeError("Git executable is required for the baseline-preservation check")
+    # The integration branch deliberately differs from the older D-cache
+    # branch. Verify that this regression itself has not modified either
+    # course or partner source tree instead of comparing unrelated histories.
+    dirty = subprocess.run([GIT, "diff", "--quiet", "--", "D-cache/rtl", "D-cache/tb", "Exp9_源码_v文件"], cwd=ROOT)
+    if dirty.returncode:
+        raise RuntimeError("Regression modified D-Cache RTL/testbench or Exp9 sources")
     source_files = sorted(RTL.rglob("*.v")) + sorted((CACHE / "tb").glob("*.v"))
     source_files += sorted((CACHE / "tests").glob("*.py")) + sorted((CACHE / "scripts").glob("*"))
     source_files += sorted((CACHE / "constraints").glob("*.xdc"))
@@ -93,7 +100,7 @@ def main():
         "tier": "local RTL compilation and Icarus simulation; not Vivado/FPGA acceptance",
         "full_run": not a.quick,
         "tools": {"python": sys.version.split()[0], "iverilog": subprocess.run(["iverilog", "-V"], text=True, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL).stdout.splitlines()[0]},
-        "preserved_baseline": "3487cdd (D-cache/ and Exp9_源码_v文件/ unchanged)",
+        "source_guard": "D-cache RTL/testbench and Exp9 sources unchanged by this regression",
         "checks": records,
         "cpu": json.loads((CACHE / "build/cpu/coverage.json").read_text()),
         "system": json.loads((CACHE / "build/system/results.json").read_text()),

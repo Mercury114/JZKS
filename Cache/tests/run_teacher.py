@@ -28,6 +28,7 @@ def run(exp, ways=2, enabled=1):
     (build / "program.hex").write_text("".join(f"{w:08x}\n" for w in values + [0] * (262144 - len(values))))
     binary = build / "simulation"
     sources = [CACHE / "tb/teacher_cache_tb.v", ROOT / "Exp9_源码_v文件/rtl/confreg.v"]
+    sources += sorted((ROOT / "Exp9_源码_v文件/rtl/UART").glob("*.v"))
     sources += sorted((CACHE / "rtl").glob("*.v")) + sorted((CACHE / "rtl/cpu").glob("*.v"))
     command = ["iverilog", "-g2012", "-s", "teacher_cache_tb", "-I", str(CACHE / "rtl/cpu"),
                "-P", f"teacher_cache_tb.WAY_NUM={ways}", "-P", f"teacher_cache_tb.ENABLE_CACHE={enabled}",

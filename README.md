@@ -16,8 +16,10 @@ extension assets in separate, reviewable trees. No branch is overwritten.
 
 ## Verification status
 
-Checked-in historical logs are reference material only. The current branch is
-validated only by commands executed after integration; see the cache test
-harness under `Cache/tests/` and the course/UART test records added with their
-respective runs. A feature is not considered complete merely because an old
-artifact or an earlier branch reports PASS.
+Checked-in historical logs are reference material only. The current cache
+integration has a fresh full Icarus regression record in
+`Cache/docs/verification-results.json`: it covers the D-Cache and I-Cache
+units, cache subsystem, MMIO bridge, CPU exception/interrupt coverage,
+system-level trace equivalence, teacher Ex4--Ex9, and Exp9 under 1/2/4-way
+and no-cache configurations. UART is retained as an extension asset but is
+not marked end-to-end verified until its console regression passes.

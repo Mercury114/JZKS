@@ -34,6 +34,7 @@ module mmio_bridge_tb;
     confreg #(.SIMULATION(1)) original_confreg(
         .clk(clk), .timer_clk(clk), .resetn(resetn), .conf_en(bus_en), .conf_we(bus_we),
         .conf_addr(bus_addr), .conf_wdata(bus_wdata), .conf_rdata(bus_rdata),
+        .uart_rx(1'b1), .uart_tx(),
         .led(), .led_rg0(), .led_rg1(), .num_csn(), .num_a_g(), .num_data(),
         .switch(8'hff), .btn_key_col(), .btn_key_row(4'b0), .btn_step(2'b11)
     );
