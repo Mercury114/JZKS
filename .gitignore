@@ -45,3 +45,10 @@ Cache/build/
 __pycache__/
 *.pyc
 .DS_Store
+
+# UART reproducible pipeline regression outputs.
+/innovation_uart/build/
+
+/vivado/console_build_uart/
+
+/vivado/console_build_uart_board/

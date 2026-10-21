@@ -155,15 +155,16 @@ module tb_uart_irq #(parameter HARDWARE_CLOCK=1'b0);
                 last_expiry=timer_cycles;
             end
             if(!dut.cpu.csr_tcfg[0]) last_expiry=0;
-            if(dut.cpu.state==4'd2 && dut.cpu.has_int) begin
+            if(dut.cpu.interrupt_redirect) begin
                 check(!in_handler,"interrupt is not nested while global IE is cleared");
                 check(dut.cpu.csr_estat[11] && dut.cpu.csr_ecfg[11],"timer pending and timer interrupt mask enabled");
                 in_handler=1;
                 entries=entries+1;
-                interrupted_pc=dut.cpu.pc;
+                check(dut.cpu.id_valid && !dut.cpu.pipeline_busy,"IRQ is accepted at a precise drained ID boundary");
+                interrupted_pc=dut.cpu.id_pc;
                 interrupted_crmd=dut.cpu.csr_crmd;
                 for(register_index=0;register_index<32;register_index=register_index+1)
-                    saved_rf[register_index]=dut.cpu.rf[register_index];
+                    saved_rf[register_index]=dut.cpu.u_id_stage.u_regfile.rf[register_index];
             end
             if(in_handler && dut.cpu_data_en && dut.cpu_data_we==4'hf && dut.cpu_data_addr==32'hbfaff100)
                 check(1'b0,"ISR must not perform blocking UART output");
@@ -186,7 +187,7 @@ module tb_uart_irq #(parameter HARDWARE_CLOCK=1'b0);
                 check(!dut.cpu.csr_estat[11],"TICLR clears pending before ERTN");
                 check(dut.cpu.csr_prmd[2:0]===interrupted_crmd[2:0],"PRMD preserves previous privilege and IE");
                 for(register_index=1;register_index<32;register_index=register_index+1)
-                    check(dut.cpu.rf[register_index]===saved_rf[register_index],"all general registers including SP restored before ERTN");
+                    check(dut.cpu.u_id_stage.u_regfile.rf[register_index]===saved_rf[register_index],"all general registers including SP restored before ERTN");
                 returns=returns+1;
                 in_handler=0;
                 #1;
@@ -231,7 +232,7 @@ module tb_uart_irq #(parameter HARDWARE_CLOCK=1'b0);
 
         send_text("IRQ ON\n"); expect_text("OK\015\n");
         check(dut.cpu.csr_tcfg==(HARDWARE_CLOCK ? 32'd1562503 : 32'd25003),"real hardware and accelerated simulation timer configuration");
-        check(dut.cpu.csr_crmd[2] && dut.cpu.rf[25]==0,"IRQ ON enables IE and exits MIRROR");
+        check(dut.cpu.csr_crmd[2] && dut.cpu.u_id_stage.u_regfile.rf[25]==0,"IRQ ON enables IE and exits MIRROR");
         if(HARDWARE_CLOCK) begin
             @(negedge dut.cpu_clk);
             saved_count=dut.cpu.timer_cnt;
@@ -266,7 +267,7 @@ module tb_uart_irq #(parameter HARDWARE_CLOCK=1'b0);
             while(value!=10) take_byte(value);
         end
         send_text("STOP\n"); expect_text("OK\015\n");
-        check(dut.cpu.rf[29]==0 && dut.cpu.csr_tcfg[0],"stopwatch STOP does not disable independent IRQ timer");
+        check(dut.cpu.u_id_stage.u_regfile.rf[29]==0 && dut.cpu.csr_tcfg[0],"stopwatch STOP does not disable independent IRQ timer");
         send_text("RESET\n"); expect_text("OK\015\n");
         send_text("TIME\n"); expect_text("TIME=0.000 s\015\n");
         check(dut.cpu.csr_tcfg[0],"stopwatch RESET does not stop IRQ");
@@ -296,7 +297,7 @@ module tb_uart_irq #(parameter HARDWARE_CLOCK=1'b0);
         repeat(300) @(negedge dut.cpu_clk);
         check(web_led==16'h003c && num_data==32'h3c && !dut.cpu.csr_tcfg[0],"MIRROR stops IRQ and follows switches");
         send_text("IRQ ON\n"); expect_text("OK\015\n");
-        check(dut.cpu.rf[25]==0 && dut.cpu.csr_tcfg[0],"IRQ ON takes ownership back from MIRROR");
+        check(dut.cpu.u_id_stage.u_regfile.rf[25]==0 && dut.cpu.csr_tcfg[0],"IRQ ON takes ownership back from MIRROR");
         accepted_case("MIRROR and IRQ ownership and invalid command behavior");
 
         send_text("IRQ OFF\n"); expect_text("OK\015\n");

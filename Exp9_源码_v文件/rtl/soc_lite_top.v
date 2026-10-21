@@ -97,7 +97,8 @@ wire [31:0] debug_wb_rf_wdata;
 //clk and resetn
 wire cpu_clk;
 wire timer_clk;
-reg cpu_resetn;
+// UART IRQ fix: deterministic power-on assertion when divided clock starts low.
+reg cpu_resetn = 1'b0;
 always @(posedge cpu_clk or negedge resetn)
 begin
     if (!resetn)

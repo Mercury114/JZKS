@@ -25,6 +25,9 @@ module ID_stage(
     input  wire [31:0] rdcnt_high,
     input  wire [31:0] csr_tid_value,
     input  wire        redirect_flush,
+    // UART IRQ fix: precise ID-side control waits for all older work to retire.
+    input  wire        pipeline_busy,
+    input  wire        interrupt_pending,
     output wire        id_csr_we,
     output wire [13:0] id_csr_num,
     output wire [31:0] id_csr_mask,
@@ -249,7 +252,9 @@ assign mem_op = inst_ld_b  ? 3'b001 :
                 inst_st_b  ? 3'b101 :
                 inst_st_h  ? 3'b110 : 3'b000;
 
-assign imm = src2_is_4 ? 32'h4 :
+// UART IRQ fix: CSR/counter results are values, not base+encoded-immediate.
+assign imm = (inst_csr | inst_rdcntid | inst_rdcntvl | inst_rdcntvh) ? 32'b0 :
+             src2_is_4 ? 32'h4 :
              need_si20 ? {i20[19:0], 12'b0} :
              need_ui5  ? {27'b0, rk} :
              (inst_andi | inst_ori | inst_xori) ? {20'b0, i12} :
@@ -292,9 +297,8 @@ wire ms_rj_forward = ms_forward_valid && ms_hazard_gr_we &&
 wire ms_rkd_forward = ms_forward_valid && ms_hazard_gr_we &&
                       (ms_hazard_dest != 5'd0) && (rf_raddr2 == ms_hazard_dest);
 
-assign rj_value  = inst_csr ? ((inst_csrxchg) ?
-                   (es_rj_forward ? es_hazard_alu_result :
-                    ms_rj_forward ? ms_forward_data : rf_rdata1) : csr_rdata) :
+// CSR exchange returns the old CSR, while its GPR mask uses id_csr_mask.
+assign rj_value  = inst_csr ? csr_rdata :
                    inst_rdcntid ? csr_tid_value :
                    (inst_rdcntvh ? rdcnt_high :
                     (inst_rdcntvl ? rdcnt_low :
@@ -314,7 +318,7 @@ assign ds_uses_rkd = inst_beq | inst_bne | inst_blt | inst_bge |
                      inst_nor | inst_and | inst_or | inst_xor |
                      inst_mul_w | inst_mulh_w | inst_mulh_wu | inst_div_w |
                      inst_mod_w | inst_div_wu | inst_mod_wu |
-                     inst_sll_w | inst_srl_w | inst_sra_w | inst_csrxchg;
+                     inst_sll_w | inst_srl_w | inst_sra_w | inst_csrwr | inst_csrxchg;
 wire es_load_hazard = es_to_ms_valid && es_hazard_gr_we &&
                       es_hazard_res_from_mem && (es_hazard_dest != 5'd0) &&
                       ((ds_uses_rj && (rj == es_hazard_dest)) ||
@@ -334,17 +338,17 @@ wire local_exception = inst_syscall | inst_break | !inst_known | addr_error;
 // back into these decode outputs creates a zero-delay control loop exactly
 // when an exception is decoded.  The stage-valid register is flushed on the
 // next clock edge, so no combinational suppression is required here.
-assign id_exception = ds_valid && ds_ready_go && local_exception;
+assign id_exception = ds_fire && local_exception;
 assign id_ecode = inst_syscall ? 6'h0b : inst_break ? 6'h0c :
                   !inst_known ? 6'h0d : addr_error ? 6'h09 : 6'h00;
 assign id_esubcode = 9'b0;
 assign id_save_badv = (!inst_known) ? 1'b0 : addr_error;
 assign id_badv = addr_error ? effective_addr : ds_pc;
-assign id_ertn = ds_valid && ds_ready_go && inst_ertn;
-assign id_cache_valid = ds_valid && ds_ready_go && inst_cacop;
+assign id_ertn = ds_fire && inst_ertn;
+assign id_cache_valid = ds_fire && inst_cacop;
 assign id_cache_op = ds_inst[4:3];
 assign id_cache_addr = rj_value + imm;
-assign id_csr_we = ds_valid && ds_ready_go && inst_csr && !inst_csrrd;
+assign id_csr_we = ds_fire && inst_csr && !inst_csrrd;
 assign id_csr_num = csr_num;
 assign id_csr_mask = inst_csrxchg ?
                      (es_rj_forward ? es_hazard_alu_result :
@@ -366,7 +370,7 @@ assign br_taken = (inst_beq && rj_eq_rd || inst_bne && !rj_eq_rd ||
                    inst_blt && rj_lt_rd_signed || inst_bge && !rj_lt_rd_signed ||
                    inst_bltu && rj_lt_rd_unsigned || inst_bgeu && !rj_lt_rd_unsigned ||
                    inst_jirl || inst_bl || inst_b) &&
-                  ds_valid && ds_ready_go;
+                  ds_fire;
 assign br_target = (inst_beq || inst_bne || inst_blt || inst_bge ||
                     inst_bltu || inst_bgeu || inst_bl || inst_b) ?
                    (ds_pc + br_offs) : (rj_value + jirl_offs);
@@ -387,7 +391,13 @@ assign ds_to_es_bus = {
     mem_op
 };
 
-assign ds_ready_go    = ~ds_raw_hazard;
+// CSR side effects, ERTN and synchronous exceptions commit only after older
+// EX/MEM instructions (including register restores and stores) have completed.
+// A pending asynchronous interrupt holds the next ID instruction unexecuted.
+wire serializing = inst_csr | inst_ertn | inst_cacop | local_exception;
+wire ds_fire = ds_valid && ds_ready_go && es_allowin;
+assign ds_ready_go = ~ds_raw_hazard && !interrupt_pending &&
+                     !(serializing && pipeline_busy);
 assign ds_allowin     = !ds_valid || ds_ready_go && es_allowin;
 assign ds_to_es_valid = ds_valid && ds_ready_go && !local_exception && !inst_ertn && !inst_cacop;
 

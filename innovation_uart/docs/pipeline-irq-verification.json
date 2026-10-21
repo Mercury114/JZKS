@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-21",
+  "base_main": "a6223e5",
+  "reviewed_wip": "4a8d6ba",
+  "target": "course five-stage CPU SoC; original UART firmware",
+  "tests": [
+    {
+      "mode": "console",
+      "hardware_clock": 0,
+      "cases": 17,
+      "checks": 962,
+      "seconds": 17.18,
+      "pass_line": "UART_CONSOLE_PASS: hardware_clock=0 cases=17 checks=962"
+    },
+    {
+      "mode": "console_hw",
+      "hardware_clock": 1,
+      "cases": 8,
+      "checks": 230,
+      "seconds": 23.37,
+      "pass_line": "UART_CONSOLE_PASS: hardware_clock=1 cases=8 checks=230"
+    },
+    {
+      "mode": "stopwatch",
+      "hardware_clock": 0,
+      "cases": 11,
+      "checks": 1099,
+      "seconds": 127.5,
+      "pass_line": "UART_STOPWATCH_PASS: hardware_clock=0 cases=11 checks=1099"
+    },
+    {
+      "mode": "stopwatch_hw",
+      "hardware_clock": 1,
+      "cases": 11,
+      "checks": 1099,
+      "seconds": 108.17,
+      "pass_line": "UART_STOPWATCH_PASS: hardware_clock=1 cases=11 checks=1099"
+    },
+    {
+      "mode": "irq",
+      "hardware_clock": 0,
+      "cases": 10,
+      "checks": 1246,
+      "entries": 11,
+      "returns": 11,
+      "seconds": 32.31,
+      "pass_line": "UART_IRQ_PASS: hardware_clock=0 cases=10 checks=1246 entries=11 returns=11"
+    },
+    {
+      "mode": "irq_hw",
+      "hardware_clock": 1,
+      "cases": 10,
+      "checks": 29608,
+      "entries": 703,
+      "returns": 703,
+      "seconds": 87.51,
+      "pass_line": "UART_IRQ_PASS: hardware_clock=1 cases=10 checks=29608 entries=703 returns=703"
+    },
+    {
+      "mode": "fifo",
+      "checks": 118,
+      "seconds": 0.02,
+      "pass_line": "UART_FIFO_PASS: checks=118"
+    }
+  ],
+  "control": [
+    {
+      "case": 0,
+      "output": "PIPELINE_CONTROL_PASS: case=csr checks=6\n/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_pipeline_control.v:96: $finish called at 1091000 (1ps)\n"
+    },
+    {
+      "case": 1,
+      "output": "PIPELINE_CONTROL_PASS: case=irq checks=3514 entries=32 returns=32 iterations=1164\n/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_pipeline_control.v:102: $finish called at 259130000 (1ps)\n"
+    }
+  ],
+  "baseline_negative": [
+    {
+      "case": 0,
+      "expected_failure": "PIPELINE_CONTROL_FAIL: case=0 CSRWR returns old value with no encoded immediate added idpc=1c000074 era=00000000 entries=0 returns=0"
+    },
+    {
+      "case": 1,
+      "expected_failure": "PIPELINE_CONTROL_FAIL: case=1 all older pipeline side effects committed before IRQ entry idpc=1c000158 era=00000000 entries=0 returns=0"
+    }
+  ],
+  "xsim": "Vivado 2018.3 IRQ: 10 cases / 1246 checks / 11 entries and returns",
+  "cache_cpu": "46 scenarios / 528 randomized-backpressure runs PASS",
+  "cache_system": "24 exact GPR-trace and committed-memory comparisons PASS",
+  "preserved": [
+    "Cache",
+    "D-cache",
+    "Exp9_源码_v文件/ip_ascii",
+    "innovation_uart/sw/uart_echo.S",
+    "innovation_uart/sw/obj/inst_ram.coe",
+    "innovation_uart/sw/obj/data_ram.coe",
+    "Exp9_源码_v文件/rtl/UART",
+    "Exp9_源码_v文件/rtl/confreg.v"
+  ],
+  "sha256": {
+    "Exp9_源码_v文件/rtl/ID_stage.v": "1d15b20a409fe90f1cf96776f0e4735170d4a9909f830f56c2f442b15e27da3d",
+    "Exp9_源码_v文件/rtl/mycpu_top.v": "8e2a935f2936e05e505ea05eb24f0b6d3c4c31560651dafe6f153bf707db1dc5",
+    "Exp9_源码_v文件/rtl/soc_lite_top.v": "becf1e47d75d2a58b7ed6714714a1900a0345382b458e6f57fafb42ad97b057c",
+    "innovation_uart/sw/obj/inst_ram.coe": "2d3fae3280e06b000ed7df07335e170dc1d6d4a2c0ef415db2d09a124d5b2d28",
+    "innovation_uart/sw/obj/data_ram.coe": "993f88af0047763f6c8e4eb7da19fc6782ab25692eafcb3eff3a055a71f5c71d"
+  },
+  "pending": [
+    "FPGA/platform verification"
+  ],
+  "board_build_verification": "board-build-verification.json"
+}
