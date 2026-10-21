@@ -1,0 +1,5 @@
+# 新增集成版本的本地仿真、综合产物；同伴已经跟踪的 D-cache/build 不改动。
+Cache/build/
+__pycache__/
+*.pyc
+.DS_Store
