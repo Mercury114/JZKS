@@ -19,13 +19,19 @@ module uart_mmio #(
     reg [7:0] fifo [0:15];
     reg [3:0] read_ptr;
     reg [3:0] write_ptr;
+    reg       rx_read_active;
+    reg       empty_read_pending;
     wire [7:0] received_data;
     wire rx_done;
     wire frame_error;
     wire tx_start = tx_write && !tx_busy;
     assign rx_valid = (rx_count != 0);
     assign rx_data = rx_valid ? fifo[read_ptr] : 8'b0;
-    wire pop = rx_read && rx_valid;
+    // The course SRAM/MMIO path holds a read request for two clocks while a
+    // synchronous response is produced. Consume at most one FIFO byte for
+    // that request. A held read against an empty FIFO remains pending so the
+    // FIFO retains its useful streaming-read behaviour when a byte arrives.
+    wire pop = rx_read && rx_valid && (!rx_read_active || empty_read_pending);
     // 创新扩展：FIFO满且同周期读出时，仍允许写入新字节。
     wire push = rx_done && ((rx_count < 16) || pop);
 
@@ -46,7 +52,19 @@ module uart_mmio #(
             rx_count <= 0;
             rx_overrun <= 1'b0;
             rx_frame_error <= 1'b0;
+            rx_read_active <= 1'b0;
+            empty_read_pending <= 1'b0;
         end else begin
+            if (!rx_read) begin
+                rx_read_active <= 1'b0;
+                empty_read_pending <= 1'b0;
+            end else begin
+                rx_read_active <= 1'b1;
+                if (pop)
+                    empty_read_pending <= 1'b0;
+                else if (!rx_valid)
+                    empty_read_pending <= 1'b1;
+            end
             if (frame_error) rx_frame_error <= 1'b1;
             if (rx_done && !push) rx_overrun <= 1'b1;
             if (push) begin
