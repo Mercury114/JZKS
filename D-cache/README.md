@@ -1,21 +1,19 @@
-# D-Cache Extension
+# D-Cache and Write-Policy Extension
 
-This directory contains the four-way write-back/write-allocate D-Cache, its
-line-protocol adapter, an independent Vivado regression, and the design note.
+This directory preserves the original standalone D-Cache contribution from the
+team split. It is intentionally retained alongside the newer `../Cache/`
+subsystem, rather than being overwritten by it.
 
 ## Contents
 
-- `rtl/dcache.v`: cache core with dirty/LRU, byte strobes, refill and writeback.
-- `rtl/dcache_sram_adapter.v`: single-word SRAM request to four-beat line adapter.
+- `rtl/dcache.v`: four-way set-associative write-back/write-allocate cache,
+  including dirty tracking, LRU replacement and byte write strobes.
+- `rtl/dcache_sram_adapter.v`: optional conversion from the school SRAM port to
+  four-word cache-line traffic.
 - `tb/dcache_tb.v`: standalone regression testbench.
-- `build/dcache_extension.xpr`: Vivado 2023.2 project.
-- `docs/DCache_写入机制技术文档.md`: design and verification details.
+- `build/`: Vivado project, wave configuration/data and archived logs.
+- `DCache_写入机制技术文档.md`: design and verification note.
 
-The standalone regression reports:
-
-```text
-PASS D-Cache writeback/write-allocate/byte-enable/LRU/control regression
-```
-
-The adapter is kept as an optional integration block so the original school
-SRAM timing remains unchanged until a board-level BRAM/AXI backend is selected.
+For the combined I-Cache/D-Cache/arbiter/CPU integration and its system-level
+tests, use `../Cache/`. The two trees are kept separate because they have
+different interfaces and verification harnesses.

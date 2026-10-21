@@ -1,0 +1,48 @@
+{
+  "source_repository_commit": "6de28bfaf3fa0b7d55f7011616e244f2b30d98a1",
+  "format": "Original teacher COE bytes, gzip losslessly compressed; no generated expected results",
+  "programs": [
+    {
+      "experiment": 4,
+      "file": "ex4_inst_ram.coe.gz",
+      "uncompressed_sha256": "305c8db250d935c461524f596edaa9ddced867e30b2c3364f1934a51228706e5",
+      "uncompressed_bytes": 860906,
+      "source": "la-course-design/course/fixtures/ex4_obj/inst_ram.coe"
+    },
+    {
+      "experiment": 5,
+      "file": "ex5_inst_ram.coe.gz",
+      "uncompressed_sha256": "72ea0a77a4d1e9c20228b6a6543314adc057f53d76813512d846c8fa21c2ddaf",
+      "uncompressed_bytes": 1007264,
+      "source": "la-course-design/course/fixtures/ex5_obj/inst_ram.coe"
+    },
+    {
+      "experiment": 6,
+      "file": "ex6_inst_ram.coe.gz",
+      "uncompressed_sha256": "3b1a8c62ed17d2afdf633e492d2e99d04084d1e9088c3b5a8b8f728f4ada96b2",
+      "uncompressed_bytes": 1107974,
+      "source": "la-course-design/course/fixtures/ex6_obj/inst_ram.coe"
+    },
+    {
+      "experiment": 7,
+      "file": "ex7_inst_ram.coe.gz",
+      "uncompressed_sha256": "496a19f493b1aeba769a35761d71bd7ccb439c3f532f7f3a24be253c2ff1381a",
+      "uncompressed_bytes": 1180730,
+      "source": "la-course-design/course/fixtures/ex7_obj/inst_ram.coe"
+    },
+    {
+      "experiment": 8,
+      "file": "ex8_inst_ram.coe.gz",
+      "uncompressed_sha256": "e6a1f8aa036755fb53b4a2ec9847c9d850a2d104e2a9e5feea7d2d9324d25a05",
+      "uncompressed_bytes": 1181540,
+      "source": "la-course-design/course/fixtures/ex8_obj/inst_ram.coe"
+    },
+    {
+      "experiment": 9,
+      "file": "ex9_inst_ram.coe.gz",
+      "uncompressed_sha256": "bea7a2c05524b198d77f79b8f85f84c4693b0b416bd7560fe2891be646525221",
+      "uncompressed_bytes": 1199306,
+      "source": "la-course-design/course/fixtures/ex9_obj/inst_ram.coe"
+    }
+  ]
+}

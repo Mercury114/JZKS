@@ -33,13 +33,15 @@
 !/innovation_uart/sw/obj/data_ram.coe
 /innovation_uart/sim/uart_soc_test.log
 
-# Superseded locked-IP references and one-off probes are not part of the
-# self-contained Vivado 2023.2 project.
+# Superseded locked-IP references and one-off probes are not project sources.
 /vivado/probe_uart.tcl
 /Exp9_源码_v文件/ip_ascii/clk_pll/clk_pll.xci
 /Exp9_源码_v文件/ip_ascii/data_ram/data_ram.xci
 /Exp9_源码_v文件/ip_ascii/inst_ram/inst_ram.xci
 /Exp9_源码_v文件/ip_ascii/inst_ram/inst_ram_ex7.coe
 
-# Existing ASCII IP simulation models are reference material, not design inputs.
-# No general *.v, *.xci, *.xdc or *.coe rule: these are source/configuration files.
+# Cache regressions and platform metadata.
+Cache/build/
+__pycache__/
+*.pyc
+.DS_Store
