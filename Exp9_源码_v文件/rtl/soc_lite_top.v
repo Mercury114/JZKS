@@ -97,7 +97,10 @@ wire [31:0] debug_wb_rf_wdata;
 //clk and resetn
 wire cpu_clk;
 wire timer_clk;
-reg cpu_resetn;
+// The divided hardware clock stays low while an initial low reset is held in
+// simulation.  Initialize the synchronizer asserted so release is deterministic
+// even when reset begins at time zero (matching FPGA power-up initialization).
+reg cpu_resetn = 1'b0;
 always @(posedge cpu_clk or negedge resetn)
 begin
     if (!resetn)

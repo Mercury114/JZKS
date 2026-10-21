@@ -303,7 +303,9 @@ always @(posedge clk) begin
             csr_crmd[2] <= 1'b0;
             csr_estat[21:16] <= ECODE_INT;
             csr_estat[30:22] <= 9'b0;
-            csr_era <= inst_sram_addr - 32'd4;
+            // IF has not retired a younger instruction at the ID bubble, so
+            // the current fetch PC is the instruction ERTN must resume.
+            csr_era <= inst_sram_addr;
         end else if (id_ertn) begin
             csr_crmd[1:0] <= csr_prmd[1:0];
             csr_crmd[2] <= csr_prmd[2];

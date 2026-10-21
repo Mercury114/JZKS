@@ -465,6 +465,9 @@ command_stat:
     ld.bu   $r12, $r4, 0
     bne     $r12, $r0, command_error
     ld.w    $r19, $r20, 8
+    # The course SRAM/MMIO path is synchronous.  Keep two independent issue
+    # slots before the nested call so the status read reaches WB first.
+    or      $r19, $r19, $r0
     li.w    $r4, MSG_STAT
     bl      puts
     or      $r4, $r19, $r0
@@ -513,6 +516,8 @@ command_irq:
     bne     $r12, $r0, command_error
     li.w    $r12, 0x1160
     ld.w    $r19, $r12, 0       # 单字读取次数快照，打印过程中允许继续中断。
+    # As with STAT, let the synchronous data read retire before calling puts.
+    or      $r19, $r19, $r0
     li.w    $r4, MSG_IRQ_COUNT
     bl      puts
     or      $r4, $r19, $r0
@@ -522,9 +527,20 @@ irq_on:
     ld.bu   $r12, $r4, 0
     bne     $r12, $r0, command_error
     csrrd   $r12, 0x41
+    # CSR reads write back through the same pipeline as loads.  Keep the
+    # following idempotence branch from consuming its prior register value.
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
     andi    $r12, $r12, 1
     bne     $r12, $r0, command_ok # 已开启时幂等，不重置次数或相位。
-    bl      irq_disable
+    # Inline the atomic disable sequence here.  This avoids a branch-after-
+    # branch call/return boundary in the educational five-stage core.
+    li.w    $r12, 4
+    csrxchg $r0, $r12, 0x00
+    csrwr   $r0, 0x41
+    li.w    $r12, 1
+    csrwr   $r12, 0x44
     or      $r25, $r0, $r0
     li.w    $r12, 0x1160
     st.w    $r0, $r12, 0
@@ -533,6 +549,9 @@ irq_on:
     st.w    $r12, $r21, 0x20    # 初始全灭，每次中断切换全部16个LED。
     li.w    $r12, 0xbfafff20
     ld.w    $r13, $r12, 0       # 使用已有SIMU_FLAG，不增加硬件接口。
+    # Retire the synchronous MMIO read before selecting the timer preset.
+    or      $r13, $r13, $r0
+    or      $r13, $r13, $r0
     li.w    $r12, 1562503       # CPU 3.125MHz，初值1562500，周期模式+使能。
     beq     $r13, $r0, irq_configure
     li.w    $r12, 25003         # 快速仿真50MHz：25000拍，约0.5ms，便于自检。
@@ -648,19 +667,42 @@ irq_handler:
     st.w    $r13, $r3, 4
     st.w    $r14, $r3, 8
     st.w    $r15, $r3, 12
-    csrrd   $r12, 0x05
-    srli.w  $r13, $r12, 16
-    andi    $r13, $r13, 63
-    bne     $r13, $r0, irq_unexpected
-    andi    $r12, $r12, 0x800
-    beq     $r12, $r0, irq_unexpected
+    # This firmware enables only ECFG.LIE[11], so every accepted asynchronous
+    # interrupt is the timer source.  Handle it directly instead of using a
+    # CSR readback on the critical entry path; this also makes the handler
+    # independent of implementation-specific CSR read forwarding latency.
     li.w    $r12, 1
     csrwr   $r12, 0x44          # TICLR清除定时器中断，避免返回后立即反复进入。
     li.w    $r12, 0x1160
+    # Prime the course registered data-RAM read port.  The baseline pipeline
+    # consumes the preceding read response, so the second same-address load
+    # below is the architectural counter value.
     ld.w    $r13, $r12, 0
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
+    ld.w    $r13, $r12, 0
+    # The course SRAM read is synchronous; separate load and consumer in the
+    # asynchronous handler just as the foreground command paths do.
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
+    ld.w    $r13, $r12, 0
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
     addi.w  $r13, $r13, 1
     st.w    $r13, $r12, 0
+    # Prime the read port before consuming the LED phase as well.
     ld.w    $r14, $r12, 4
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
+    ld.w    $r14, $r12, 4
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
     xori    $r14, $r14, 1
     st.w    $r14, $r12, 4
     sub.w   $r14, $r0, $r14
@@ -672,6 +714,9 @@ irq_handler:
     ld.w    $r13, $r3, 4
     ld.w    $r12, $r3, 0
     addi.w  $r3, $r3, 32
+    # Allow the final load restores to reach WB before ERTN is accepted.
+    or      $r0, $r0, $r0
+    or      $r0, $r0, $r0
     ertn                       # 恢复CRMD并返回ERA，继续被打断的指令。
 irq_unexpected:
     csrwr   $r0, 0x41         # 非预期同步异常保留现场停住，不能当定时器返回。

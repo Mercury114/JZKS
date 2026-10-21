@@ -140,7 +140,7 @@ module tb_uart_stopwatch #(parameter HARDWARE_CLOCK=1'b0);
     always @(posedge dut.cpu_clk) begin
         if(!resetn) begin model_running=0; model_last_tick=0; model_ticks=0; end
         else begin
-            model_running=(dut.cpu.rf[29]!=0);
+            model_running=(dut.cpu.u_id_stage.u_regfile.rf[29]!=0);
             if(dut.cpu_data_en && dut.cpu_data_we==4'hf) begin
                 if(dut.cpu_data_addr==32'h1100) begin
                     if(model_running) begin
@@ -200,7 +200,7 @@ module tb_uart_stopwatch #(parameter HARDWARE_CLOCK=1'b0);
         check(parsed_ms==0,"STOP before START is harmless");
         accepted_case("STOP is idempotent before START");
         send_text("START\n"); expect_text("OK\015\n");
-        check(dut.cpu.rf[29]==1,"START enables stopwatch");
+        check(dut.cpu.u_id_stage.u_regfile.rf[29]==1,"START enables stopwatch");
         #5000000;
         query_time;
         check(parsed_ms>=5,"running stopwatch counts real peripheral ticks");
@@ -225,7 +225,7 @@ module tb_uart_stopwatch #(parameter HARDWARE_CLOCK=1'b0);
         accepted_case("64-bit accumulation and decimal conversion");
 
         send_text("STOP\n"); expect_text("OK\015\n");
-        check(dut.cpu.rf[29]==0,"STOP disables accumulation");
+        check(dut.cpu.u_id_stage.u_regfile.rf[29]==0,"STOP disables accumulation");
         saved_ticks=model_ticks;
         query_time; saved_ms=parsed_ms;
         #2000000;
@@ -238,7 +238,7 @@ module tb_uart_stopwatch #(parameter HARDWARE_CLOCK=1'b0);
         accepted_case("STOP freezes repeated TIME queries");
 
         send_text("START\n"); expect_text("OK\015\n");
-        check(dut.cpu.rf[29]==1,"START resumes stopped stopwatch");
+        check(dut.cpu.u_id_stage.u_regfile.rf[29]==1,"START resumes stopped stopwatch");
         #2000000;
         query_time;
         check(parsed_ms>saved_ms,"resumed time preserves saved elapsed value");
@@ -246,7 +246,7 @@ module tb_uart_stopwatch #(parameter HARDWARE_CLOCK=1'b0);
         accepted_case("START resumes elapsed time and excludes paused interval");
 
         send_text("RESET\n"); expect_text("OK\015\n"); model_ticks=0;
-        check(dut.cpu.rf[29]==0,"RESET leaves stopwatch stopped");
+        check(dut.cpu.u_id_stage.u_regfile.rf[29]==0,"RESET leaves stopwatch stopped");
         query_time;
         check(parsed_ms==0 && snapshot_ticks==0,"RESET clears elapsed time");
         #1000000;
@@ -266,7 +266,7 @@ module tb_uart_stopwatch #(parameter HARDWARE_CLOCK=1'b0);
         send_text("STOP X\n"); expect_text("ERR\015\n");
         send_text("RESET X\n"); expect_text("ERR\015\n");
         send_text("TIME X\n"); expect_text("ERR\015\n");
-        check(dut.cpu.rf[29]==1,"invalid stopwatch commands cannot change running state");
+        check(dut.cpu.u_id_stage.u_regfile.rf[29]==1,"invalid stopwatch commands cannot change running state");
         accepted_case("arguments rejected without state changes");
         send_text("RESET\n"); expect_text("OK\015\n"); model_ticks=0;
         query_time; check(parsed_ms==0,"RESET also clears an actively running stopwatch");

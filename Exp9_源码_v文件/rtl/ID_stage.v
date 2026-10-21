@@ -249,7 +249,11 @@ assign mem_op = inst_ld_b  ? 3'b001 :
                 inst_st_b  ? 3'b101 :
                 inst_st_h  ? 3'b110 : 3'b000;
 
-assign imm = src2_is_4 ? 32'h4 :
+// CSR instructions write their read value back through the ALU path.  The
+// instruction's CSR number overlaps the ordinary immediate field, so it must
+// not become an addend here.
+assign imm = inst_csr ? 32'b0 :
+             src2_is_4 ? 32'h4 :
              need_si20 ? {i20[19:0], 12'b0} :
              need_ui5  ? {27'b0, rk} :
              (inst_andi | inst_ori | inst_xori) ? {20'b0, i12} :
