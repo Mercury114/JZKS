@@ -22,6 +22,8 @@
 
 ```text
 rtl/cache_system.v          五级CPU＋缓存系统，通用逐字主存接口
+rtl/mycpu_top_axi.v         五级CPU＋缓存系统的AXI4主设备顶层
+rtl/cache_axi_bridge.v      逐字请求到AXI4五通道的适配器
 rtl/cache_subsystem.v       I/D连接、外设旁路、CACOP管理路由
 rtl/cache_icache.v          1/2/4路只读缓存与命中流水化
 rtl/cache_dcache.v          从同伴实现扩展的写回/写分配缓存
@@ -38,6 +40,8 @@ scripts/                   Vivado输入准备、工程、仿真和综合脚本
 constraints/               有来源记录的CDP远程板引脚/时钟约束
 docs/                      贡献说明、团队报告、验证结果
 ```
+
+AXI 接口的参数、使用边界和仿真命令见 [AXI接口](docs/AXI接口.md)。
 
 不要把本目录CPU与旧 `Exp9_源码_v文件/rtl/mycpu_top.v` 或个人项目的另一份CPU混编。
 `tests/` 和Vivado脚本已经提供明确文件集，不依赖个人项目目录。
