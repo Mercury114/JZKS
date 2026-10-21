@@ -1,6 +1,9 @@
 # Vivado project/IP/simulation outputs are recreated by vivado/run.ps1.
 /vivado/build/
 /vivado/console_build/
+/vivado/console_build_disabled_sources/
+/vivado/console_build_locked_ip/
+/vivado/console_build_previous/
 /vivado/.Xil/
 /vivado/*.log
 /vivado/*.jou
@@ -12,11 +15,31 @@
 *.backup.log
 *.backup.jou
 
+# Local Vivado command-line simulation products.
+/xsim.dir/
+/xsim.log
+/xsim.jou
+/xelab.log
+/xvlog.log
+/data_ram.mif
+/inst_ram.mif
+/sim_clean/
+/sim_official/
+/sim_source/
+
 # Keep the firmware COE as a project input; rebuild the other toolchain outputs.
 /innovation_uart/sw/obj/*
 !/innovation_uart/sw/obj/inst_ram.coe
 !/innovation_uart/sw/obj/data_ram.coe
 /innovation_uart/sim/uart_soc_test.log
+
+# Superseded locked-IP references and one-off probes are not part of the
+# self-contained Vivado 2023.2 project.
+/vivado/probe_uart.tcl
+/Exp9_源码_v文件/ip_ascii/clk_pll/clk_pll.xci
+/Exp9_源码_v文件/ip_ascii/data_ram/data_ram.xci
+/Exp9_源码_v文件/ip_ascii/inst_ram/inst_ram.xci
+/Exp9_源码_v文件/ip_ascii/inst_ram/inst_ram_ex7.coe
 
 # Existing ASCII IP simulation models are reference material, not design inputs.
 # No general *.v, *.xci, *.xdc or *.coe rule: these are source/configuration files.
