@@ -1,50 +1,14 @@
-# Exp9 Verilog 源码清单
+# 当前硬件源码
 
-来源工程：`Exp9_第五章_完整工程`
+CPU仍使用仓库原版 `rtl/mycpu_top.v`，内容与Git HEAD一致，没有引入外部流水级文件。
+本扩展为UART接收FIFO、汇编命令终端及现有外设交互。
 
-本目录收集该 Exp9 工程中的全部 13 个 `.v` 文件，共约 423 KiB。目录层级与原工程保持一致，因此两个 IP 目录中的同名 `blk_mem_gen_v8_4.v` 不会互相覆盖。
+- `rtl/UART/`：TX、RX和16字节接收FIFO。
+- `rtl/confreg.v`：UART寄存器及FIFO状态映射。
+- `rtl/soc_lite_top.v`：UART连接和时钟参数，保留原有CPU /16硬件时钟。
+- `rtl/loongson_remote_top.v`、`remote2local.v`：板级串口、LED和数码管适配。
+- `ip/inst_ram`、`ip/data_ram`：分别加载指令程序和字符串数据COE。
+- `constraints/loongson_remote.xdc`：远程开发板引脚及时钟约束。
 
-## 课程 RTL
-
-```text
-rtl/mycpu_top.v
-rtl/soc_lite_top.v
-rtl/bridge_1x2.v
-rtl/confreg.v
-rtl/remote2local.v
-rtl/loongson_remote_top.v
-```
-
-其中 `mycpu_top.v` 是 CPU 核心；`soc_lite_top.v` 是 SoC 连接和硬件/仿真时钟选择；`bridge_1x2.v` 连接 CPU 数据端口与数据 RAM/配置寄存器；`confreg.v` 实现 LED、数码管、按键和计时器；`loongson_remote_top.v` 是板级顶层。
-
-## 测试平台
-
-```text
-tb_top.v
-```
-
-该文件实例化 `soc_lite_top`，产生时钟和复位，并检查数码管功能点。Exp9 应看到功能点 1 至 58 全部通过。
-
-## Vivado IP Verilog 文件
-
-```text
-ip_ascii/clk_pll/clk_pll.v
-ip_ascii/clk_pll/clk_pll_clk_wiz.v
-ip_ascii/data_ram/sim/data_ram.v
-ip_ascii/data_ram/simulation/blk_mem_gen_v8_4.v
-ip_ascii/inst_ram/sim/inst_ram.v
-ip_ascii/inst_ram/simulation/blk_mem_gen_v8_4.v
-```
-
-`sim` 目录中的 `data_ram.v` 和 `inst_ram.v` 是对应 RAM IP 的仿真封装；`simulation/blk_mem_gen_v8_4.v` 是 Block Memory Generator 的仿真模型。两个 RAM 目录各自保留一份同名模型，编译时应只加入对应 IP 的模型，不能把两个同名文件同时重复加入同一编译单元。
-
-## 建议阅读顺序
-
-1. `tb_top.v`：先了解功能点检查方式。
-2. `rtl/loongson_remote_top.v`：查看板级顶层。
-3. `rtl/soc_lite_top.v`：查看 CPU、RAM、桥和外设连接。
-4. `rtl/mycpu_top.v`：阅读指令译码、乘除法、访存和写回。
-5. `rtl/bridge_1x2.v`、`rtl/confreg.v`：阅读总线分发和外设。
-6. `ip_ascii`：最后查看 Vivado 自动生成的 IP 封装和 RAM 仿真模型。
-
-该目录只收集 `.v` 文件；`.xci`、`.xdc`、`.mif`、`.coe` 等工程配置和初始化文件仍在完整工程目录中。
+当前工程由仓库根目录 `vivado/run.ps1` 生成，路径为 `vivado/console_build/uart_console.xpr`。
+完整命令及演示步骤见仓库根目录README。

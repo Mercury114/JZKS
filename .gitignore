@@ -1,0 +1,22 @@
+# Vivado project/IP/simulation outputs are recreated by vivado/run.ps1.
+/vivado/build/
+/vivado/console_build/
+/vivado/.Xil/
+/vivado/*.log
+/vivado/*.jou
+/vivado/*.str
+/vivado/*.zip
+/vivado/*.html
+*.wdb
+*.pb
+*.backup.log
+*.backup.jou
+
+# Keep the firmware COE as a project input; rebuild the other toolchain outputs.
+/innovation_uart/sw/obj/*
+!/innovation_uart/sw/obj/inst_ram.coe
+!/innovation_uart/sw/obj/data_ram.coe
+/innovation_uart/sim/uart_soc_test.log
+
+# Existing ASCII IP simulation models are reference material, not design inputs.
+# No general *.v, *.xci, *.xdc or *.coe rule: these are source/configuration files.
