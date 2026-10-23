@@ -1,0 +1,27 @@
+#-----------------------------------------------------------
+# xsim v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Oct 20 21:05:34 2026
+# Process ID: 27004
+# Current directory: D:/lasttime/Cache_完整拓展
+# Command line: xsim.exe -mode tcl -source {xsim.dir/dcache_sim_wave/xsim_script.tcl}
+# Log file: D:/lasttime/Cache_完整拓展/xsim.log
+# Journal file: D:/lasttime/Cache_完整拓展\xsim.jou
+# Running On: LAPTOP-TGOU4H4R, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 33846 MB
+#-----------------------------------------------------------
+source xsim.dir/dcache_sim_wave/xsim_script.tcl
+# xsim {dcache_sim_wave} -wdb {build/dcache_tb_wave.wdb} -autoloadwcfg -tclbatch {tb/dcache_wave.tcl}
+Time resolution is 1 ps
+source tb/dcache_wave.tcl
+## log_wave -r /
+## run all
+PASS D-Cache writeback/write-allocate/byte-enable/LRU/control regression
+$finish called at time : 587 ns : File "D:/lasttime/Cache_完整拓展/tb/dcache_tb.v" Line 46
+## write_wave_config build/dcache_tb.wcfg
+invalid command name "write_wave_config"
+    while executing
+"write_wave_config build/dcache_tb.wcfg"
+    (file "tb/dcache_wave.tcl" line 3)
+xsim% INFO: [Common 17-206] Exiting xsim at Tue Oct 20 21:05:36 2026...

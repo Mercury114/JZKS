@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Sep 17 12:30:58 2026
+# Process ID: 34696
+# Current directory: D:/something_not_funny/final/计组课设la版/计组课设la版
+# Command line: vivado.exe -mode batch -source Y:\setup_reference_ex7.tcl -log Y:\local_gettrace_ex7\run_reference_ex7.log -journal Y:\local_gettrace_ex7\run_reference_ex7.jou
+# Log file: Y:/local_gettrace_ex7/run_reference_ex7.log
+# Journal file: Y:\local_gettrace_ex7\run_reference_ex7.jou
+#-----------------------------------------------------------
+source {Y:\setup_reference_ex7.tcl}
+source tb_top.tcl

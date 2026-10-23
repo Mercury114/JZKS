@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# xsim v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Oct 20 21:17:13 2026
+# Process ID: 40752
+# Current directory: D:/lasttime/Cache_完整拓展
+# Command line: xsim.exe -mode tcl -source {xsim.dir/cache_subsystem_sim/xsim_script.tcl}
+# Log file: D:/lasttime/Cache_完整拓展/xsim.log
+# Journal file: D:/lasttime/Cache_完整拓展\xsim.jou
+# Running On: LAPTOP-TGOU4H4R, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 33846 MB
+#-----------------------------------------------------------
+source xsim.dir/cache_subsystem_sim/xsim_script.tcl
+# xsim {cache_subsystem_sim} -wdb {build/cache_subsystem_tb.wdb} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+PASS cache subsystem: I hit=1 miss=1 I grants=1 D grants=5 writebacks=2
+$finish called at time : 786 ns : File "D:/lasttime/Cache_完整拓展/tb/cache_subsystem_tb.v" Line 91
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Oct 20 21:17:15 2026...

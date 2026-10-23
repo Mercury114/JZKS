@@ -1,0 +1,102 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Sep 17 10:55:06 2026
+# Process ID: 11872
+# Current directory: D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project
+# Command line: vivado.exe -mode batch -source D:\something_not_funny\final\¼Æ×é¿ÎÉèla°æ\¼Æ×é¿ÎÉèla°æ\chapter6_ex6_project\setup_reference_ex6.tcl -log D:\something_not_funny\final\¼Æ×é¿ÎÉèla°æ\¼Æ×é¿ÎÉèla°æ\chapter6_ex6_project\local_gettrace_ex6\run_reference_ex6.log -journal D:\something_not_funny\final\¼Æ×é¿ÎÉèla°æ\¼Æ×é¿ÎÉèla°æ\chapter6_ex6_project\local_gettrace_ex6\run_reference_ex6.jou
+# Log file: D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/run_reference_ex6.log
+# Journal file: D:\something_not_funny\final\¼Æ×é¿ÎÉèla°æ\¼Æ×é¿ÎÉèla°æ\chapter6_ex6_project\local_gettrace_ex6\run_reference_ex6.jou
+#-----------------------------------------------------------
+source {D:\something_not_funny\final\¼Æ×é¿ÎÉèla°æ\¼Æ×é¿ÎÉèla°æ\chapter6_ex6_project\setup_reference_ex6.tcl}
+# set project_root [file normalize [file dirname [info script]]]
+# set build_dir [file join $project_root local_gettrace_ex6 build]
+# file mkdir $build_dir
+# create_project ex6_reference $build_dir -part xc7a200tfbg676-1 -force
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/build'
+# add_files -norecurse [list \
+#     [file join $project_root local_gettrace_ex6 SimpleLACoreWrapRAM.v] \
+#     [file join $project_root local_gettrace_ex6 reference_soc_lite_top.v] \
+#     [file join $project_root external reference_bridge_1x2.v] \
+#     [file join $project_root external confreg.v]]
+# add_files -fileset sim_1 -norecurse [file join $project_root local_gettrace_ex6 reference_tb_top.v]
+# set_property top tb_top [get_filesets sim_1]
+# update_compile_order -fileset sim_1
+# launch_simulation -simset sim_1 -mode behavioral
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_top' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_top_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/SimpleLACoreWrapRAM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SimpleLACore
+INFO: [VRFC 10-311] analyzing module SimpleLACoreWrapRAM
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/external/confreg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module confreg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/external/reference_bridge_1x2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bridge_1x2
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/reference_soc_lite_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module soc_lite_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/reference_tb_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 2ab6f7df9d214657b001cbe1f1a79e93 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/reference_soc_lite_top.v" Line 60. Module soc_lite_top(SIMULATION=1'b1) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/SimpleLACoreWrapRAM.v" Line 6725. Module SimpleLACoreWrapRAM doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/SimpleLACoreWrapRAM.v" Line 1. Module SimpleLACore doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/external/reference_bridge_1x2.v" Line 50. Module bridge_1x2 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/external/confreg.v" Line 74. Module confreg(SIMULATION=1'b1) doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.SimpleLACore
+Compiling module xil_defaultlib.SimpleLACoreWrapRAM
+Compiling module xil_defaultlib.bridge_1x2
+Compiling module xil_defaultlib.confreg(SIMULATION=1'b1)
+Compiling module xil_defaultlib.soc_lite_top(SIMULATION=1'b1)
+Compiling module xil_defaultlib.tb_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_top_behav
+
+****** Webtalk v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim/xsim.dir/tb_top_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Sep 17 10:55:35 2026...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:17 . Memory (MB): peak = 261.453 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '18' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_top_behav -key {Behavioral:sim_1:Functional:tb_top} -tclbatch {tb_top.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source tb_top.tcl
+## current_wave_config
+WARNING: File D:/something_not_funny/final/è®¡ç»„è¯¾è®¾laç‰ˆ/è®¡ç»„è¯¾è®¾laç‰ˆ/chapter6_ex6_project/for_test_obj/ex6_obj/inst_ram.mif referenced on D:/something_not_funny/final/¼Æ×é¿ÎÉèla°æ/¼Æ×é¿ÎÉèla°æ/chapter6_ex6_project/local_gettrace_ex6/reference_soc_lite_top.v at line 189 cannot be opened for reading. Please ensure that this file is available in the current working directory.
+WARNING: file D:/something_not_funny/final/è®¡ç»„è¯¾è®¾laç‰ˆ/è®¡ç»„è¯¾è®¾laç‰ˆ/chapter6_ex6_project/local_gettrace_ex6/golden_trace_ex6.txt could not be opened
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:24 . Memory (MB): peak = 266.094 ; gain = 4.641
+# close_sim
+INFO: [Simtcl 6-16] Simulation closed
+# close_project
+# exit
+INFO: [Common 17-206] Exiting Vivado at Thu Sep 17 10:55:41 2026...

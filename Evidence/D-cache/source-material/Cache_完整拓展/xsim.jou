@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# xsim v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Oct 20 22:27:29 2026
+# Process ID: 50700
+# Current directory: D:/lasttime/Cache_完整拓展
+# Command line: xsim.exe -mode tcl -source {xsim.dir/dcache_final_sim/xsim_script.tcl}
+# Log file: D:/lasttime/Cache_完整拓展/xsim.log
+# Journal file: D:/lasttime/Cache_完整拓展\xsim.jou
+# Running On: LAPTOP-TGOU4H4R, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 33846 MB
+#-----------------------------------------------------------
+source xsim.dir/dcache_final_sim/xsim_script.tcl
+run -all

@@ -1,0 +1,380 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Sep 17 12:30:58 2026
+# Process ID: 34696
+# Current directory: D:/something_not_funny/final/计组课设la版/计组课设la版
+# Command line: vivado.exe -mode batch -source Y:\setup_reference_ex7.tcl -log Y:\local_gettrace_ex7\run_reference_ex7.log -journal Y:\local_gettrace_ex7\run_reference_ex7.jou
+# Log file: Y:/local_gettrace_ex7/run_reference_ex7.log
+# Journal file: Y:\local_gettrace_ex7\run_reference_ex7.jou
+#-----------------------------------------------------------
+source {Y:\setup_reference_ex7.tcl}
+# set project_root [file normalize [file dirname [info script]]]
+# set build_dir [file join $project_root local_gettrace_ex7 build]
+# file mkdir $build_dir
+# create_project ex7_reference $build_dir -part xc7a200tfbg676-1 -force
+# add_files -norecurse [list \
+#     [file join $project_root local_gettrace_ex7 SimpleLACoreWrapRAM.v] \
+#     [file join $project_root local_gettrace_ex7 reference_soc_lite_top.v] \
+#     [file join $project_root external reference_bridge_1x2.v] \
+#     [file join $project_root external confreg.v]]
+# add_files -fileset sim_1 -norecurse [file join $project_root local_gettrace_ex7 reference_tb_top.v]
+# set_property top tb_top [get_filesets sim_1]
+# set_property xsim.simulate.runtime all [get_filesets sim_1]
+# update_compile_order -fileset sim_1
+# launch_simulation -simset sim_1 -mode behavioral
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'Y:/local_gettrace_ex7/build/ex7_reference.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_top' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'Y:/local_gettrace_ex7/build/ex7_reference.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_top_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "Y:/local_gettrace_ex7/SimpleLACoreWrapRAM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SimpleLACore
+INFO: [VRFC 10-311] analyzing module SimpleLACoreWrapRAM
+INFO: [VRFC 10-2263] Analyzing Verilog file "Y:/external/confreg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module confreg
+INFO: [VRFC 10-2263] Analyzing Verilog file "Y:/external/reference_bridge_1x2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bridge_1x2
+INFO: [VRFC 10-2263] Analyzing Verilog file "Y:/local_gettrace_ex7/reference_soc_lite_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module soc_lite_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "Y:/local_gettrace_ex7/reference_tb_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "Y:/local_gettrace_ex7/build/ex7_reference.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'Y:/local_gettrace_ex7/build/ex7_reference.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 88b1cec350b94c9ea52daa1612fefe0b --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "Y:/local_gettrace_ex7/reference_soc_lite_top.v" Line 60. Module soc_lite_top(SIMULATION=1'b1) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "Y:/local_gettrace_ex7/SimpleLACoreWrapRAM.v" Line 6725. Module SimpleLACoreWrapRAM doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "Y:/local_gettrace_ex7/SimpleLACoreWrapRAM.v" Line 1. Module SimpleLACore doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "Y:/external/reference_bridge_1x2.v" Line 50. Module bridge_1x2 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "Y:/external/confreg.v" Line 74. Module confreg(SIMULATION=1'b1) doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.SimpleLACore
+Compiling module xil_defaultlib.SimpleLACoreWrapRAM
+Compiling module xil_defaultlib.bridge_1x2
+Compiling module xil_defaultlib.confreg(SIMULATION=1'b1)
+Compiling module xil_defaultlib.soc_lite_top(SIMULATION=1'b1)
+Compiling module xil_defaultlib.tb_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_top_behav
+
+****** Webtalk v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source Y:/local_gettrace_ex7/build/ex7_reference.sim/sim_1/behav/xsim/xsim.dir/tb_top_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Sep 17 12:31:23 2026...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:13 . Memory (MB): peak = 259.609 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '13' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'Y:/local_gettrace_ex7/build/ex7_reference.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_top_behav -key {Behavioral:sim_1:Functional:tb_top} -tclbatch {tb_top.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source tb_top.tcl
+## current_wave_config
+WARNING: File ../../../../../..//for_test_obj/ex7_obj/inst_ram.mif referenced on Y:/local_gettrace_ex7/reference_soc_lite_top.v at line 189 cannot be opened for reading. Please ensure that this file is available in the current working directory.
+==============================================================
+Test begin!
+        [  22000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [  32000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [  42000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [  52000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [  62000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [  72000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [  82000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [  92000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 102000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 112000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 122000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 132000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 142000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 152000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 162000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 172000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 182000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 192000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 202000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 212000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 222000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 232000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 242000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 252000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 262000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 272000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 282000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 292000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 302000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 312000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 322000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 332000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 342000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 352000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 362000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 372000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 382000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 392000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 402000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 412000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 422000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 432000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 442000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 452000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 462000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 472000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 482000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 492000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 502000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 512000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 522000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 532000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 542000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 552000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 562000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 572000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 582000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 592000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 602000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 612000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 622000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 632000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 642000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 652000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 662000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 672000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 682000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 692000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 702000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 712000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 722000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 732000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 742000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 752000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 762000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 772000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 782000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 792000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 802000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 812000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 822000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 832000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 842000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 852000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 862000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 872000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 882000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 892000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 902000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 912000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 922000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 932000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 942000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 952000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 962000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 972000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 982000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [ 992000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1002000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1012000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1022000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1032000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1042000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1052000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1062000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1072000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1082000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1092000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1102000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1112000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1122000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1132000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1142000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1152000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1162000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1172000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1182000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1192000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1202000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1212000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1222000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1232000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1242000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1252000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1262000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1272000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1282000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1292000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1302000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1312000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1322000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1332000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1342000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1352000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1362000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1372000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1382000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1392000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1402000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1412000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1422000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1432000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1442000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1452000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1462000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1472000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1482000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1492000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1502000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1512000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1522000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1532000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1542000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1552000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1562000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1572000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1582000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1592000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1602000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1612000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1622000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1632000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1642000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1652000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1662000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1672000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1682000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1692000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1702000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1712000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1722000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1732000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1742000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1752000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1762000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1772000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1782000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1792000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1802000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1812000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1822000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1832000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1842000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1852000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1862000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1872000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1882000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1892000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1902000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1912000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1922000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1932000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1942000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1952000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1962000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1972000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1982000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [1992000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2002000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2012000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2022000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2032000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2042000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2052000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2062000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2072000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2082000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2092000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2102000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2112000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2122000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2132000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2142000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2152000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2162000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2172000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2182000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2192000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2202000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2212000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2222000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2232000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2242000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2252000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2262000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2272000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2282000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2292000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2302000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2312000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2322000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2332000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2342000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2352000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2362000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2372000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2382000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2392000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2402000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2412000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2422000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2432000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2442000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2452000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2462000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2472000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2482000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2492000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2502000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2512000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2522000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2532000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2542000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2552000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2562000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2572000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2582000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2592000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2602000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2612000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2622000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2632000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2642000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2652000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2662000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2672000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2682000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2692000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2702000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2712000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2722000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2732000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2742000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2752000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2762000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2772000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2782000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2792000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2802000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2812000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2822000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2832000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2842000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2852000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2862000 ns] Test is running, debug_wb_pc = 0x1c000000
+        [2872000 ns] Test is running, debug_wb_pc = 0x1c000000

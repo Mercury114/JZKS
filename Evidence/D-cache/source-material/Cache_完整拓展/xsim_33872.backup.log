@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# xsim v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Oct 20 21:04:28 2026
+# Process ID: 33872
+# Current directory: D:/lasttime/Cache_完整拓展
+# Command line: xsim.exe -mode tcl -source {xsim.dir/dcache_sim/xsim_script.tcl}
+# Log file: D:/lasttime/Cache_完整拓展/xsim.log
+# Journal file: D:/lasttime/Cache_完整拓展\xsim.jou
+# Running On: LAPTOP-TGOU4H4R, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 33846 MB
+#-----------------------------------------------------------
+source xsim.dir/dcache_sim/xsim_script.tcl
+# xsim {dcache_sim} -wdb {build/dcache_tb_wave.wdb} -autoloadwcfg -tclbatch {tb/dcache_wave.tcl}
+Time resolution is 1 ps
+source tb/dcache_wave.tcl
+## log_wave -r /
+ERROR: [Simulator 45-10] The current simulation was compiled without trace information.  To perform the requested operation, please recompile the design with -debug all or typical.
+xsim% INFO: [Common 17-206] Exiting xsim at Tue Oct 20 21:04:30 2026...
