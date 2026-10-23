@@ -1,0 +1,1 @@
+PASS subsystem ways=4 I=123 D=201 controls=58 mmio_writes=40 cycles=4770

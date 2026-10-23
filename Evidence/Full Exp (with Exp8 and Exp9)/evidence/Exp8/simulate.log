@@ -1,0 +1,160 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Oct 13 12:05:53 2026
+# Process ID: 30640
+# Current directory: D:/lasttime
+# Command line: vivado.exe -mode batch -source D:\lasttime\run_report_sim.tcl -log D:\lasttime\report_evidence\ex8\simulate.log -nojournal -tclargs ex8 D:\lasttime\report_evidence\ex8
+# Log file: D:/lasttime/report_evidence/ex8/simulate.log
+# Journal file: 
+# Running On: LAPTOP-TGOU4H4R, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 33846 MB
+#-----------------------------------------------------------
+source {D:\lasttime\run_report_sim.tcl}
+# if {$argc != 2} { error "Usage: vivado -mode batch -source run_report_sim.tcl -tclargs ex8|ex9 output_dir" }
+# set image [lindex $argv 0]
+# set out_dir [file normalize [lindex $argv 1]]
+# if {$image ni {ex8 ex9}} { error "image must be ex8 or ex9" }
+# set root {D:/exp89_build}
+# file mkdir $out_dir
+# file copy -force [file join $root tests $image inst_ram.coe] [file join $root ip_ascii inst_ram inst_ram.coe]
+# file copy -force [file join $root tests $image inst_ram.mif] [file join $root ip_ascii inst_ram inst_ram.mif]
+# file copy -force [file join $root tests $image data_ram.coe] [file join $root ip_ascii data_ram data_ram.coe]
+# file copy -force [file join $root tests $image data_ram.mif] [file join $root ip_ascii data_ram data_ram.mif]
+# open_project [file join $root vivado_ex9 loongson_ex9.xpr]
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Vivado2023/Vivado/2023.2/data/ip'.
+open_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 468.801 ; gain = 190.090
+# set_property -dict [list CONFIG.Coe_File inst_ram.coe CONFIG.Load_Init_File true] [get_ips inst_ram]
+# set_property -dict [list CONFIG.Coe_File data_ram.coe CONFIG.Load_Init_File true] [get_ips data_ram]
+# generate_target all [get_ips]
+# update_compile_order -fileset sim_1
+# launch_simulation -simset sim_1 -mode behavioral
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_top'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/exp89_build/vivado_ex9/loongson_ex9.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-13660] Precompiled IP simulation library mode is enabled (default). The design IP libraries will be referenced from the compiled library path. Please note that if the precompiled version of the library is not found from the path or the IP is in locked state, then the library source files for these IPs will be compiled locally as part of the compile order.
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Vivado2023/Vivado/2023.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Vivado2023/Vivado/2023.2/data/xsim/xsim.ini' copied to run dir:'D:/exp89_build/vivado_ex9/loongson_ex9.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_top' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'D:/exp89_build/vivado_ex9/loongson_ex9.sim/sim_1/behav/xsim/data_ram.mif'
+INFO: [SIM-utils-43] Exported 'D:/exp89_build/vivado_ex9/loongson_ex9.sim/sim_1/behav/xsim/data_ram.coe'
+INFO: [SIM-utils-43] Exported 'D:/exp89_build/vivado_ex9/loongson_ex9.sim/sim_1/behav/xsim/inst_ram.mif'
+INFO: [SIM-utils-43] Exported 'D:/exp89_build/vivado_ex9/loongson_ex9.sim/sim_1/behav/xsim/inst_ram.coe'
+INFO: [SIM-utils-43] Exported 'D:/exp89_build/vivado_ex9/loongson_ex9.sim/sim_1/behav/xsim/inst_ram_ex7.coe'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/exp89_build/vivado_ex9/loongson_ex9.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_top_vlog.prj"
+ECHO is off.
+ECHO is off.
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/exp89_build/vivado_ex9/loongson_ex9.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_7 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log"
+ECHO is off.
+ECHO is off.
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Vivado2023/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_7 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/exp89_build/vivado_ex9/loongson_ex9.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_top_behav -key {Behavioral:sim_1:Functional:tb_top} -tclbatch {tb_top.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_top.tcl
+## current_wave_config
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module tb_top.soc_lite.inst_ram.inst.\native_mem_module.blk_mem_gen_v8_4_7_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module tb_top.soc_lite.data_ram.inst.\native_mem_module.blk_mem_gen_v8_4_7_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+FUNCTIONAL_POINT_PASS 1
+FUNCTIONAL_POINT_PASS 2
+FUNCTIONAL_POINT_PASS 3
+FUNCTIONAL_POINT_PASS 4
+FUNCTIONAL_POINT_PASS 5
+FUNCTIONAL_POINT_PASS 6
+FUNCTIONAL_POINT_PASS 7
+FUNCTIONAL_POINT_PASS 8
+FUNCTIONAL_POINT_PASS 9
+FUNCTIONAL_POINT_PASS 10
+FUNCTIONAL_POINT_PASS 11
+FUNCTIONAL_POINT_PASS 12
+FUNCTIONAL_POINT_PASS 13
+FUNCTIONAL_POINT_PASS 14
+FUNCTIONAL_POINT_PASS 15
+FUNCTIONAL_POINT_PASS 16
+FUNCTIONAL_POINT_PASS 17
+FUNCTIONAL_POINT_PASS 18
+FUNCTIONAL_POINT_PASS 19
+FUNCTIONAL_POINT_PASS 20
+FUNCTIONAL_POINT_PASS 21
+FUNCTIONAL_POINT_PASS 22
+FUNCTIONAL_POINT_PASS 23
+FUNCTIONAL_POINT_PASS 24
+FUNCTIONAL_POINT_PASS 25
+FUNCTIONAL_POINT_PASS 26
+FUNCTIONAL_POINT_PASS 27
+FUNCTIONAL_POINT_PASS 28
+FUNCTIONAL_POINT_PASS 29
+FUNCTIONAL_POINT_PASS 30
+FUNCTIONAL_POINT_PASS 31
+FUNCTIONAL_POINT_PASS 32
+FUNCTIONAL_POINT_PASS 33
+FUNCTIONAL_POINT_PASS 34
+FUNCTIONAL_POINT_PASS 35
+FUNCTIONAL_POINT_PASS 36
+FUNCTIONAL_POINT_PASS 37
+FUNCTIONAL_POINT_PASS 38
+FUNCTIONAL_POINT_PASS 39
+FUNCTIONAL_POINT_PASS 40
+FUNCTIONAL_POINT_PASS 41
+FUNCTIONAL_POINT_PASS 42
+FUNCTIONAL_POINT_PASS 43
+FUNCTIONAL_POINT_PASS 44
+FUNCTIONAL_POINT_PASS 45
+FUNCTIONAL_POINT_PASS 46
+FUNCTIONAL_POINT_PASS 47
+----PASS!!!
+$finish called at time : 4233935 ns : File "D:/exp89_build/tb_top.v" Line 55
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for all
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 495.461 ; gain = 20.820
+# add_wave /tb_top/clk
+# add_wave /tb_top/resetn
+# add_wave /tb_top/soc_clk
+# add_wave /tb_top/debug_wb_pc
+# add_wave /tb_top/num_monitor
+# add_wave /tb_top/num_data
+# add_wave /tb_top/led
+# save_wave_config [file join $out_dir tb_top_behav.wcfg]
+# run all
+----FAIL: simulation timeout
+$finish called at time : 200 ms : File "D:/exp89_build/tb_top.v" Line 63
+run: Time (s): cpu = 00:00:24 ; elapsed = 00:01:33 . Memory (MB): peak = 495.461 ; gain = 0.000
+# close_sim
+INFO: xsimkernel Simulation Memory Usage: 27108 KB (Peak: 27108 KB), Simulation CPU Usage: 93984 ms
+INFO: [Simtcl 6-16] Simulation closed
+# close_project
+# exit
+INFO: [Common 17-206] Exiting Vivado at Tue Oct 13 12:07:58 2026...

@@ -1,0 +1,2 @@
+ICACHE PASS WAY_NUM=1 accepted=230 returned=230 hits=87 misses=143 memory_reads=143 controls=10 blocked=160 gaps=609 cycles=1831
+ICACHE RESET PASS WAY_NUM=1 accepted=1 returned=1 misses=1

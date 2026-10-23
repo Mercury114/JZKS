@@ -1,0 +1,2 @@
+METRICS cycles=265 wb=13 ia=0 ih=0 im=0 da=0 dh=0 dm=0 uc=24 reads=21 writes=2 mmio=0
+PASS integrated CPU/cache architectural trace and final memory

@@ -1,0 +1,276 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Oct 13 12:44:23 2026
+# Process ID: 9220
+# Current directory: D:/lasttime
+# Command line: vivado.exe -mode batch -source D:\lasttime\run_reference_trace.tcl -log D:\lasttime\trace_ex8_build\run_reference_ex8.log -nojournal -tclargs ex8 D:\lasttime\trace_ex8_build
+# Log file: D:/lasttime/trace_ex8_build/run_reference_ex8.log
+# Journal file: 
+# Running On: LAPTOP-TGOU4H4R, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 33846 MB
+#-----------------------------------------------------------
+source {D:\lasttime\run_reference_trace.tcl}
+# if {$argc != 2} { error "Usage: vivado -mode batch -source run_reference_trace.tcl -tclargs ex8|ex9 staging_dir" }
+# set image [lindex $argv 0]
+# set root [file normalize [lindex $argv 1]]
+# if {$image ni {ex8 ex9}} { error "image must be ex8 or ex9" }
+# set src [file join $root src]
+# set build [file join $root build]
+# file mkdir $build
+# create_project reference_$image $build -part xc7a200tfbg676-1 -force
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 464.344 ; gain = 184.574
+# add_files -norecurse [list \
+#     [file join $src SimpleLACoreWrapRAM.v] \
+#     [file join $src reference_soc_lite_top.v] \
+#     [file join $src bridge_1x2.v] \
+#     [file join $src confreg.v]]
+# add_files -fileset sim_1 -norecurse [file join $src reference_tb_top.v]
+# set_property top tb_top [get_filesets sim_1]
+# set_property xsim.simulate.runtime all [get_filesets sim_1]
+# update_compile_order -fileset sim_1
+# launch_simulation -simset sim_1 -mode behavioral
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_top'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/lasttime/trace_ex8_build/build/reference_ex8.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Vivado2023/Vivado/2023.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_top' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/lasttime/trace_ex8_build/build/reference_ex8.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_top_vlog.prj"
+ECHO is off.
+ECHO is off.
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/lasttime/trace_ex8_build/src/SimpleLACoreWrapRAM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SimpleLACore
+INFO: [VRFC 10-311] analyzing module SimpleLACoreWrapRAM
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/lasttime/trace_ex8_build/src/bridge_1x2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bridge_1x2
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/lasttime/trace_ex8_build/src/confreg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module confreg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/lasttime/trace_ex8_build/src/reference_soc_lite_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module soc_lite_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/lasttime/trace_ex8_build/src/reference_tb_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/lasttime/trace_ex8_build/build/reference_ex8.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/lasttime/trace_ex8_build/build/reference_ex8.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log"
+ECHO is off.
+ECHO is off.
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Vivado2023/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "D:/lasttime/trace_ex8_build/src/reference_soc_lite_top.v" Line 60. Module soc_lite_top(SIMULATION=1'b1) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/lasttime/trace_ex8_build/src/SimpleLACoreWrapRAM.v" Line 6725. Module SimpleLACoreWrapRAM doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/lasttime/trace_ex8_build/src/SimpleLACoreWrapRAM.v" Line 1. Module SimpleLACore doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/lasttime/trace_ex8_build/src/bridge_1x2.v" Line 50. Module bridge_1x2 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/lasttime/trace_ex8_build/src/confreg.v" Line 74. Module confreg(SIMULATION=1'b1) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/lasttime/trace_ex8_build/src/reference_soc_lite_top.v" Line 60. Module soc_lite_top(SIMULATION=1'b1) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/lasttime/trace_ex8_build/src/SimpleLACoreWrapRAM.v" Line 6725. Module SimpleLACoreWrapRAM doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/lasttime/trace_ex8_build/src/SimpleLACoreWrapRAM.v" Line 1. Module SimpleLACore doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/lasttime/trace_ex8_build/src/bridge_1x2.v" Line 50. Module bridge_1x2 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/lasttime/trace_ex8_build/src/confreg.v" Line 74. Module confreg(SIMULATION=1'b1) doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.SimpleLACore
+Compiling module xil_defaultlib.SimpleLACoreWrapRAM
+Compiling module xil_defaultlib.bridge_1x2
+Compiling module xil_defaultlib.confreg(SIMULATION=1'b1)
+Compiling module xil_defaultlib.soc_lite_top(SIMULATION=1'b1)
+Compiling module xil_defaultlib.tb_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_top_behav
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:20 . Memory (MB): peak = 467.355 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '20' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/lasttime/trace_ex8_build/build/reference_ex8.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_top_behav -key {Behavioral:sim_1:Functional:tb_top} -tclbatch {tb_top.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_top.tcl
+## current_wave_config
+==============================================================
+Test begin!
+----[  12055 ns] Number 8'd01 Functional Test Point PASS!!!
+        [  22000 ns] Test is running, debug_wb_pc = 0x1c04c1b4
+        [  32000 ns] Test is running, debug_wb_pc = 0x1c04d154
+----[  36405 ns] Number 8'd02 Functional Test Point PASS!!!
+        [  42000 ns] Test is running, debug_wb_pc = 0x1c061ca8
+        [  52000 ns] Test is running, debug_wb_pc = 0x1c062c48
+----[  54735 ns] Number 8'd03 Functional Test Point PASS!!!
+        [  62000 ns] Test is running, debug_wb_pc = 0x1c072bb4
+        [  72000 ns] Test is running, debug_wb_pc = 0x1c073b54
+----[  79085 ns] Number 8'd04 Functional Test Point PASS!!!
+        [  82000 ns] Test is running, debug_wb_pc = 0x1c074aa8
+        [  92000 ns] Test is running, debug_wb_pc = 0x1c075a48
+        [ 102000 ns] Test is running, debug_wb_pc = 0x1c0769e8
+----[ 103435 ns] Number 8'd05 Functional Test Point PASS!!!
+        [ 112000 ns] Test is running, debug_wb_pc = 0x1c07793c
+        [ 122000 ns] Test is running, debug_wb_pc = 0x1c0788dc
+----[ 127785 ns] Number 8'd06 Functional Test Point PASS!!!
+        [ 132000 ns] Test is running, debug_wb_pc = 0x1c079830
+        [ 142000 ns] Test is running, debug_wb_pc = 0x1c07a7d0
+        [ 152000 ns] Test is running, debug_wb_pc = 0x1c07b770
+----[ 152135 ns] Number 8'd07 Functional Test Point PASS!!!
+        [ 162000 ns] Test is running, debug_wb_pc = 0x1c07c6c4
+        [ 172000 ns] Test is running, debug_wb_pc = 0x1c07d664
+----[ 176485 ns] Number 8'd08 Functional Test Point PASS!!!
+        [ 182000 ns] Test is running, debug_wb_pc = 0x1c07e5b8
+        [ 192000 ns] Test is running, debug_wb_pc = 0x1c07f558
+----[ 200835 ns] Number 8'd09 Functional Test Point PASS!!!
+        [ 202000 ns] Test is running, debug_wb_pc = 0x1c0108bc
+        [ 212000 ns] Test is running, debug_wb_pc = 0x1c01185c
+        [ 222000 ns] Test is running, debug_wb_pc = 0x1c0127fc
+----[ 225185 ns] Number 8'd10 Functional Test Point PASS!!!
+        [ 232000 ns] Test is running, debug_wb_pc = 0x1c013750
+        [ 242000 ns] Test is running, debug_wb_pc = 0x1c0146f0
+----[ 243515 ns] Number 8'd11 Functional Test Point PASS!!!
+        [ 252000 ns] Test is running, debug_wb_pc = 0x1c015644
+----[ 261845 ns] Number 8'd12 Functional Test Point PASS!!!
+        [ 262000 ns] Test is running, debug_wb_pc = 0x1c01026c
+        [ 272000 ns] Test is running, debug_wb_pc = 0x1c017538
+----[ 280175 ns] Number 8'd13 Functional Test Point PASS!!!
+        [ 282000 ns] Test is running, debug_wb_pc = 0x1c01848c
+----[ 290685 ns] Number 8'd14 Functional Test Point PASS!!!
+        [ 292000 ns] Test is running, debug_wb_pc = 0x1c0193e0
+----[ 301995 ns] Number 8'd15 Functional Test Point PASS!!!
+        [ 302000 ns] Test is running, debug_wb_pc = 0x1c0100c4
+        [ 312000 ns] Test is running, debug_wb_pc = 0x1c01b7ac
+        [ 322000 ns] Test is running, debug_wb_pc = 0x1c01cbfc
+        [ 332000 ns] Test is running, debug_wb_pc = 0x1c01dcec
+        [ 342000 ns] Test is running, debug_wb_pc = 0x1c01edf4
+        [ 352000 ns] Test is running, debug_wb_pc = 0x1c0201ac
+        [ 362000 ns] Test is running, debug_wb_pc = 0x1c02163c
+----[ 363495 ns] Number 8'd16 Functional Test Point PASS!!!
+        [ 372000 ns] Test is running, debug_wb_pc = 0x1c022754
+        [ 382000 ns] Test is running, debug_wb_pc = 0x1c023838
+        [ 392000 ns] Test is running, debug_wb_pc = 0x1c024b34
+        [ 402000 ns] Test is running, debug_wb_pc = 0x1c025fc4
+        [ 412000 ns] Test is running, debug_wb_pc = 0x1c02721c
+        [ 422000 ns] Test is running, debug_wb_pc = 0x1c02830c
+----[ 428955 ns] Number 8'd17 Functional Test Point PASS!!!
+        [ 432000 ns] Test is running, debug_wb_pc = 0x1c0293bc
+        [ 442000 ns] Test is running, debug_wb_pc = 0x1c02a4a0
+        [ 452000 ns] Test is running, debug_wb_pc = 0x1c02b564
+        [ 462000 ns] Test is running, debug_wb_pc = 0x1c02c634
+        [ 472000 ns] Test is running, debug_wb_pc = 0x1c02d70c
+----[ 481225 ns] Number 8'd18 Functional Test Point PASS!!!
+        [ 482000 ns] Test is running, debug_wb_pc = 0x1c02e788
+        [ 492000 ns] Test is running, debug_wb_pc = 0x1c02f878
+        [ 502000 ns] Test is running, debug_wb_pc = 0x1c030968
+        [ 512000 ns] Test is running, debug_wb_pc = 0x1c031a50
+        [ 522000 ns] Test is running, debug_wb_pc = 0x1c032b40
+----[ 529495 ns] Number 8'd19 Functional Test Point PASS!!!
+        [ 532000 ns] Test is running, debug_wb_pc = 0x1c034b44
+        [ 542000 ns] Test is running, debug_wb_pc = 0x1c035c8c
+        [ 552000 ns] Test is running, debug_wb_pc = 0x1c036dcc
+        [ 562000 ns] Test is running, debug_wb_pc = 0x1c037f14
+----[ 567765 ns] Number 8'd20 Functional Test Point PASS!!!
+        [ 572000 ns] Test is running, debug_wb_pc = 0x1c038f50
+        [ 582000 ns] Test is running, debug_wb_pc = 0x1c039ef8
+        [ 592000 ns] Test is running, debug_wb_pc = 0x1c03ae98
+----[ 595125 ns] Number 8'd21 Functional Test Point PASS!!!
+        [ 602000 ns] Test is running, debug_wb_pc = 0x1c03bdf0
+        [ 612000 ns] Test is running, debug_wb_pc = 0x1c03cd90
+----[ 613455 ns] Number 8'd22 Functional Test Point PASS!!!
+        [ 622000 ns] Test is running, debug_wb_pc = 0x1c03dce4
+----[ 631785 ns] Number 8'd23 Functional Test Point PASS!!!
+        [ 632000 ns] Test is running, debug_wb_pc = 0x1c03ec38
+        [ 642000 ns] Test is running, debug_wb_pc = 0x1c03fbd8
+----[ 650115 ns] Number 8'd24 Functional Test Point PASS!!!
+        [ 652000 ns] Test is running, debug_wb_pc = 0x1c040b2c
+        [ 662000 ns] Test is running, debug_wb_pc = 0x1c041acc
+----[ 668445 ns] Number 8'd25 Functional Test Point PASS!!!
+        [ 672000 ns] Test is running, debug_wb_pc = 0x1c042a20
+        [ 682000 ns] Test is running, debug_wb_pc = 0x1c0439c0
+----[ 686775 ns] Number 8'd26 Functional Test Point PASS!!!
+        [ 692000 ns] Test is running, debug_wb_pc = 0x1c044914
+        [ 702000 ns] Test is running, debug_wb_pc = 0x1c0458b4
+----[ 711125 ns] Number 8'd27 Functional Test Point PASS!!!
+        [ 712000 ns] Test is running, debug_wb_pc = 0x1c046808
+        [ 722000 ns] Test is running, debug_wb_pc = 0x1c0477a8
+        [ 732000 ns] Test is running, debug_wb_pc = 0x1c048748
+----[ 735475 ns] Number 8'd28 Functional Test Point PASS!!!
+        [ 742000 ns] Test is running, debug_wb_pc = 0x1c04969c
+        [ 752000 ns] Test is running, debug_wb_pc = 0x1c04a63c
+----[ 759825 ns] Number 8'd29 Functional Test Point PASS!!!
+        [ 762000 ns] Test is running, debug_wb_pc = 0x1c04db50
+----[ 768595 ns] Number 8'd30 Functional Test Point PASS!!!
+        [ 772000 ns] Test is running, debug_wb_pc = 0x1c04eaa4
+----[ 781235 ns] Number 8'd31 Functional Test Point PASS!!!
+        [ 782000 ns] Test is running, debug_wb_pc = 0x1c04f9fc
+        [ 792000 ns] Test is running, debug_wb_pc = 0x1c05099c
+----[ 793625 ns] Number 8'd32 Functional Test Point PASS!!!
+        [ 802000 ns] Test is running, debug_wb_pc = 0x1c0518f0
+----[ 806155 ns] Number 8'd33 Functional Test Point PASS!!!
+        [ 812000 ns] Test is running, debug_wb_pc = 0x1c052844
+----[ 817525 ns] Number 8'd34 Functional Test Point PASS!!!
+        [ 822000 ns] Test is running, debug_wb_pc = 0x1c053798
+----[ 827485 ns] Number 8'd35 Functional Test Point PASS!!!
+        [ 832000 ns] Test is running, debug_wb_pc = 0x1c0546f0
+----[ 841825 ns] Number 8'd36 Functional Test Point PASS!!!
+        [ 842000 ns] Test is running, debug_wb_pc = 0x1c010274
+        [ 852000 ns] Test is running, debug_wb_pc = 0x1c0569d8
+        [ 862000 ns] Test is running, debug_wb_pc = 0x1c057d88
+        [ 872000 ns] Test is running, debug_wb_pc = 0x1c059140
+----[ 873975 ns] Number 8'd37 Functional Test Point PASS!!!
+        [ 882000 ns] Test is running, debug_wb_pc = 0x1c05a4dc
+        [ 892000 ns] Test is running, debug_wb_pc = 0x1c05b8bc
+        [ 902000 ns] Test is running, debug_wb_pc = 0x1c05cc1c
+----[ 906715 ns] Number 8'd38 Functional Test Point PASS!!!
+        [ 912000 ns] Test is running, debug_wb_pc = 0x1c05df0c
+        [ 922000 ns] Test is running, debug_wb_pc = 0x1c05f2cc
+        [ 932000 ns] Test is running, debug_wb_pc = 0x1c0605dc
+----[ 939415 ns] Number 8'd39 Functional Test Point PASS!!!
+        [ 942000 ns] Test is running, debug_wb_pc = 0x1c063544
+        [ 952000 ns] Test is running, debug_wb_pc = 0x1c0648a4
+        [ 962000 ns] Test is running, debug_wb_pc = 0x1c065c6c
+        [ 972000 ns] Test is running, debug_wb_pc = 0x1c06704c
+----[ 972215 ns] Number 8'd40 Functional Test Point PASS!!!
+        [ 982000 ns] Test is running, debug_wb_pc = 0x1c067f9c
+----[ 991205 ns] Number 8'd41 Functional Test Point PASS!!!
+        [ 992000 ns] Test is running, debug_wb_pc = 0x1c068ef0
+        [1002000 ns] Test is running, debug_wb_pc = 0x1c069e90
+----[1005235 ns] Number 8'd42 Functional Test Point PASS!!!
+        [1012000 ns] Test is running, debug_wb_pc = 0x1c06ade4
+        [1022000 ns] Test is running, debug_wb_pc = 0x1c06bd84
+----[1025665 ns] Number 8'd43 Functional Test Point PASS!!!
+        [1032000 ns] Test is running, debug_wb_pc = 0x1c06ccd8
+        [1042000 ns] Test is running, debug_wb_pc = 0x1c06dc78
+----[1043535 ns] Number 8'd44 Functional Test Point PASS!!!
+        [1052000 ns] Test is running, debug_wb_pc = 0x1c06ebcc
+        [1062000 ns] Test is running, debug_wb_pc = 0x1c06fb6c
+----[1065275 ns] Number 8'd45 Functional Test Point PASS!!!
+        [1072000 ns] Test is running, debug_wb_pc = 0x1c070ac4
+        [1082000 ns] Test is running, debug_wb_pc = 0x1c071a64
+----[1085115 ns] Number 8'd46 Functional Test Point PASS!!!
+----[1088795 ns] Number 8'd47 Functional Test Point PASS!!!
+==============================================================
+gettrace end!
+----Succeed in generating trace file!
+$finish called at time : 1089125 ns : File "D:/lasttime/trace_ex8_build/src/reference_tb_top.v" Line 224
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:00:23 . Memory (MB): peak = 483.098 ; gain = 0.000
+xsim: Time (s): cpu = 00:00:01 ; elapsed = 00:00:24 . Memory (MB): peak = 483.098 ; gain = 15.742
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for all
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:49 . Memory (MB): peak = 483.098 ; gain = 18.754
+# close_sim
+INFO: xsimkernel Simulation Memory Usage: 25232 KB (Peak: 25232 KB), Simulation CPU Usage: 21984 ms
+INFO: [Simtcl 6-16] Simulation closed
+# close_project
+# exit
+INFO: [Common 17-206] Exiting Vivado at Tue Oct 13 12:45:26 2026...

@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/lasttime/Cache_完整拓展/rtl/dcache.v" into library work_final
+INFO: [VRFC 10-311] analyzing module dcache
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/lasttime/Cache_完整拓展/tb/dcache_tb.v" into library work_final
+INFO: [VRFC 10-311] analyzing module dcache_tb

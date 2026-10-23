@@ -1,0 +1,4 @@
+PASS cache_dcache WAYS=1: strobes/writeallocate/4word WB/true-LRU/control/stalls/gaps/first-beat/reset
+PASS cache_dcache WAYS=2: strobes/writeallocate/4word WB/true-LRU/control/stalls/gaps/first-beat/reset
+PASS cache_dcache WAYS=4: strobes/writeallocate/4word WB/true-LRU/control/stalls/gaps/first-beat/reset
+PASS all dcache extended cases

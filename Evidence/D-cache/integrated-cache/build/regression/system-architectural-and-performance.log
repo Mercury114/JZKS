@@ -1,0 +1,25 @@
+PASS hot-loop-none-l8-j0: 13121 cycles, 459 exact architectural writes
+PASS hot-loop-direct-l8-j0: 3196 cycles, 459 exact architectural writes
+PASS hot-loop-two-way-l8-j0: 3196 cycles, 459 exact architectural writes
+PASS hot-loop-four-way-l8-j0: 3196 cycles, 459 exact architectural writes
+PASS conflict-loop-none-l8-j0: 13121 cycles, 459 exact architectural writes
+PASS conflict-loop-direct-l8-j0: 14499 cycles, 459 exact architectural writes
+PASS conflict-loop-two-way-l8-j0: 3285 cycles, 459 exact architectural writes
+PASS conflict-loop-four-way-l8-j0: 3285 cycles, 459 exact architectural writes
+PASS functional-smc-trap-none-l8-j0: 1297 cycles, 40 exact architectural writes
+PASS functional-smc-trap-direct-l8-j0: 1399 cycles, 40 exact architectural writes
+PASS functional-smc-trap-two-way-l8-j0: 1399 cycles, 40 exact architectural writes
+PASS functional-smc-trap-four-way-l8-j0: 1399 cycles, 40 exact architectural writes
+PASS functional-smc-trap-none-l0-j1: 876 cycles, 40 exact architectural writes
+PASS functional-smc-trap-direct-l0-j1: 975 cycles, 40 exact architectural writes
+PASS functional-smc-trap-two-way-l0-j1: 975 cycles, 40 exact architectural writes
+PASS functional-smc-trap-four-way-l0-j1: 975 cycles, 40 exact architectural writes
+PASS functional-smc-trap-none-l3-j1: 1211 cycles, 40 exact architectural writes
+PASS functional-smc-trap-direct-l3-j1: 1256 cycles, 40 exact architectural writes
+PASS functional-smc-trap-two-way-l3-j1: 1256 cycles, 40 exact architectural writes
+PASS functional-smc-trap-four-way-l3-j1: 1256 cycles, 40 exact architectural writes
+PASS board-physical-alias-none-l2-j1: 265 cycles, 13 exact architectural writes
+PASS board-physical-alias-direct-l2-j1: 317 cycles, 13 exact architectural writes
+PASS board-physical-alias-two-way-l2-j1: 317 cycles, 13 exact architectural writes
+PASS board-physical-alias-four-way-l2-j1: 317 cycles, 13 exact architectural writes
+PASS integrated system: 24 runs; golden GPR traces and committed memory matched

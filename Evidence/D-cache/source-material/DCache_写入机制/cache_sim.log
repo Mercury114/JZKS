@@ -1,0 +1,359 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Oct 20 19:33:45 2026
+# Process ID: 39184
+# Current directory: D:/lasttime/DCache_写入机制
+# Command line: vivado.exe -mode batch -source D:\lasttime\DCache_写入机制\run_cache_sim.tcl -log D:\lasttime\DCache_写入机制\cache_sim.log -nojournal
+# Log file: D:/lasttime/DCache_写入机制/cache_sim.log
+# Journal file: 
+# Running On: LAPTOP-TGOU4H4R, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 33846 MB
+#-----------------------------------------------------------
+source {D:\lasttime\DCache_写入机制\run_cache_sim.tcl}
+# set root [file normalize [file dirname [info script]]]
+# set out  [file join $root build]
+# file mkdir $out
+# create_project -force dcache_verify $out -part xc7a200tfbg676-1
+create_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 466.012 ; gain = 186.234
+# set_property target_language Verilog [current_project]
+# add_files -norecurse [file join $root rtl cache.v]
+# add_files -fileset sim_1 -norecurse [file join $root tb cache_top.v]
+# add_files -fileset sim_1 -norecurse [file join $root tb testbench.v]
+# add_files -fileset sim_1 -norecurse [file join $root tb clk_pll_stub.v]
+# set_property top tb_top [get_filesets sim_1]
+# set_property xsim.simulate.runtime all [get_filesets sim_1]
+# update_compile_order -fileset sim_1
+# launch_simulation -simset sim_1 -mode behavioral
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_top'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/lasttime/DCache_写入机制/build/dcache_verify.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Vivado2023/Vivado/2023.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_top' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/lasttime/DCache_写入机制/build/dcache_verify.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_top_vlog.prj"
+ECHO is off.
+ECHO is off.
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/lasttime/DCache_写入机制/rtl/cache.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/lasttime/DCache_写入机制/tb/cache_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/lasttime/DCache_写入机制/tb/clk_pll_stub.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_pll
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/lasttime/DCache_写入机制/tb/testbench.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/lasttime/DCache_写入机制/build/dcache_verify.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '4' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/lasttime/DCache_写入机制/build/dcache_verify.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log"
+ECHO is off.
+ECHO is off.
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Vivado2023/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clk_pll
+Compiling module xil_defaultlib.cache
+Compiling module xil_defaultlib.cache_top(SIMULATION=1'b1)
+Compiling module xil_defaultlib.tb_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_top_behav
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:12 . Memory (MB): peak = 469.957 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '12' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/lasttime/DCache_写入机制/build/dcache_verify.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_top_behav -key {Behavioral:sim_1:Functional:tb_top} -tclbatch {tb_top.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_top.tcl
+## current_wave_config
+index 00 finished
+index 01 finished
+index 02 finished
+index 03 finished
+index 04 finished
+index 05 finished
+index 06 finished
+index 07 finished
+index 08 finished
+index 09 finished
+index 0a finished
+index 0b finished
+index 0c finished
+index 0d finished
+index 0e finished
+index 0f finished
+index 10 finished
+index 11 finished
+index 12 finished
+index 13 finished
+index 14 finished
+index 15 finished
+index 16 finished
+index 17 finished
+index 18 finished
+index 19 finished
+index 1a finished
+index 1b finished
+index 1c finished
+index 1d finished
+index 1e finished
+index 1f finished
+index 20 finished
+index 21 finished
+index 22 finished
+index 23 finished
+index 24 finished
+index 25 finished
+index 26 finished
+index 27 finished
+index 28 finished
+index 29 finished
+index 2a finished
+index 2b finished
+index 2c finished
+index 2d finished
+index 2e finished
+index 2f finished
+index 30 finished
+index 31 finished
+index 32 finished
+index 33 finished
+index 34 finished
+index 35 finished
+index 36 finished
+index 37 finished
+index 38 finished
+index 39 finished
+index 3a finished
+index 3b finished
+index 3c finished
+index 3d finished
+index 3e finished
+index 3f finished
+index 40 finished
+index 41 finished
+index 42 finished
+index 43 finished
+index 44 finished
+index 45 finished
+index 46 finished
+index 47 finished
+index 48 finished
+index 49 finished
+index 4a finished
+index 4b finished
+index 4c finished
+index 4d finished
+index 4e finished
+index 4f finished
+index 50 finished
+index 51 finished
+index 52 finished
+index 53 finished
+index 54 finished
+index 55 finished
+index 56 finished
+index 57 finished
+index 58 finished
+index 59 finished
+index 5a finished
+index 5b finished
+index 5c finished
+index 5d finished
+index 5e finished
+index 5f finished
+index 60 finished
+index 61 finished
+index 62 finished
+index 63 finished
+index 64 finished
+index 65 finished
+index 66 finished
+index 67 finished
+index 68 finished
+index 69 finished
+index 6a finished
+index 6b finished
+index 6c finished
+index 6d finished
+index 6e finished
+index 6f finished
+index 70 finished
+index 71 finished
+index 72 finished
+index 73 finished
+index 74 finished
+index 75 finished
+index 76 finished
+index 77 finished
+index 78 finished
+index 79 finished
+index 7a finished
+index 7b finished
+index 7c finished
+index 7d finished
+index 7e finished
+index 7f finished
+index 80 finished
+index 81 finished
+index 82 finished
+index 83 finished
+index 84 finished
+index 85 finished
+index 86 finished
+index 87 finished
+index 88 finished
+index 89 finished
+index 8a finished
+index 8b finished
+index 8c finished
+index 8d finished
+index 8e finished
+index 8f finished
+index 90 finished
+index 91 finished
+index 92 finished
+index 93 finished
+index 94 finished
+index 95 finished
+index 96 finished
+index 97 finished
+index 98 finished
+index 99 finished
+index 9a finished
+index 9b finished
+index 9c finished
+index 9d finished
+index 9e finished
+index 9f finished
+index a0 finished
+index a1 finished
+index a2 finished
+index a3 finished
+index a4 finished
+index a5 finished
+index a6 finished
+index a7 finished
+index a8 finished
+index a9 finished
+index aa finished
+index ab finished
+index ac finished
+index ad finished
+index ae finished
+index af finished
+index b0 finished
+index b1 finished
+index b2 finished
+index b3 finished
+index b4 finished
+index b5 finished
+index b6 finished
+index b7 finished
+index b8 finished
+index b9 finished
+index ba finished
+index bb finished
+index bc finished
+index bd finished
+index be finished
+index bf finished
+index c0 finished
+index c1 finished
+index c2 finished
+index c3 finished
+index c4 finished
+index c5 finished
+index c6 finished
+index c7 finished
+index c8 finished
+index c9 finished
+index ca finished
+index cb finished
+index cc finished
+index cd finished
+index ce finished
+index cf finished
+index d0 finished
+index d1 finished
+index d2 finished
+index d3 finished
+index d4 finished
+index d5 finished
+index d6 finished
+index d7 finished
+index d8 finished
+index d9 finished
+index da finished
+index db finished
+index dc finished
+index dd finished
+index de finished
+index df finished
+index e0 finished
+index e1 finished
+index e2 finished
+index e3 finished
+index e4 finished
+index e5 finished
+index e6 finished
+index e7 finished
+index e8 finished
+index e9 finished
+index ea finished
+index eb finished
+index ec finished
+index ed finished
+index ee finished
+index ef finished
+index f0 finished
+index f1 finished
+index f2 finished
+index f3 finished
+index f4 finished
+index f5 finished
+index f6 finished
+index f7 finished
+index f8 finished
+index f9 finished
+index fa finished
+index fb finished
+index fc finished
+index fd finished
+index fe finished
+index ff finished
+=========================================================
+Test end!
+----PASS!!!
+$finish called at time : 232395 ns : File "D:/lasttime/DCache_写入机制/tb/testbench.v" Line 35
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for all
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:20 . Memory (MB): peak = 485.977 ; gain = 19.965
+# run all
+index ff finished
+=========================================================
+Test end!
+----PASS!!!
+$finish called at time : 232485 ns : File "D:/lasttime/DCache_写入机制/tb/testbench.v" Line 35
+# close_sim
+INFO: [Simtcl 6-16] Simulation closed
+# close_project
+# exit
+INFO: [Common 17-206] Exiting Vivado at Tue Oct 20 19:34:40 2026...

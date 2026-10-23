@@ -1,0 +1,247 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Sep 17 10:58:35 2026
+# Process ID: 14524
+# Current directory: D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project
+# Command line: vivado.exe -mode batch -source D:\something_not_funny\final\计组课设la版\计组课设la版\chapter6_ex6_project\setup_reference_ex6.tcl -log D:\something_not_funny\final\计组课设la版\计组课设la版\chapter6_ex6_project\local_gettrace_ex6\run_reference_ex6.log -journal D:\something_not_funny\final\计组课设la版\计组课设la版\chapter6_ex6_project\local_gettrace_ex6\run_reference_ex6.jou
+# Log file: D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/run_reference_ex6.log
+# Journal file: D:\something_not_funny\final\计组课设la版\计组课设la版\chapter6_ex6_project\local_gettrace_ex6\run_reference_ex6.jou
+#-----------------------------------------------------------
+source {D:\something_not_funny\final\计组课设la版\计组课设la版\chapter6_ex6_project\setup_reference_ex6.tcl}
+# set project_root [file normalize [file dirname [info script]]]
+# set build_dir [file join $project_root local_gettrace_ex6 build]
+# file mkdir $build_dir
+# create_project ex6_reference $build_dir -part xc7a200tfbg676-1 -force
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/build'
+# add_files -norecurse [list \
+#     [file join $project_root local_gettrace_ex6 SimpleLACoreWrapRAM.v] \
+#     [file join $project_root local_gettrace_ex6 reference_soc_lite_top.v] \
+#     [file join $project_root external reference_bridge_1x2.v] \
+#     [file join $project_root external confreg.v]]
+# add_files -fileset sim_1 -norecurse [file join $project_root local_gettrace_ex6 reference_tb_top.v]
+# set_property top tb_top [get_filesets sim_1]
+# set_property xsim.simulate.runtime all [get_filesets sim_1]
+# update_compile_order -fileset sim_1
+# launch_simulation -simset sim_1 -mode behavioral
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_top' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_top_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/SimpleLACoreWrapRAM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SimpleLACore
+INFO: [VRFC 10-311] analyzing module SimpleLACoreWrapRAM
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/external/confreg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module confreg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/external/reference_bridge_1x2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bridge_1x2
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/reference_soc_lite_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module soc_lite_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/reference_tb_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto f0db5818854846b6a087398f0a524a67 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/reference_soc_lite_top.v" Line 60. Module soc_lite_top(SIMULATION=1'b1) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/SimpleLACoreWrapRAM.v" Line 6725. Module SimpleLACoreWrapRAM doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/SimpleLACoreWrapRAM.v" Line 1. Module SimpleLACore doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/external/reference_bridge_1x2.v" Line 50. Module bridge_1x2 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/external/confreg.v" Line 74. Module confreg(SIMULATION=1'b1) doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.SimpleLACore
+Compiling module xil_defaultlib.SimpleLACoreWrapRAM
+Compiling module xil_defaultlib.bridge_1x2
+Compiling module xil_defaultlib.confreg(SIMULATION=1'b1)
+Compiling module xil_defaultlib.soc_lite_top(SIMULATION=1'b1)
+Compiling module xil_defaultlib.tb_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_top_behav
+
+****** Webtalk v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim/xsim.dir/tb_top_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Sep 17 10:58:55 2026...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:10 . Memory (MB): peak = 259.410 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '10' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/build/ex6_reference.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_top_behav -key {Behavioral:sim_1:Functional:tb_top} -tclbatch {tb_top.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source tb_top.tcl
+## current_wave_config
+==============================================================
+Test begin!
+----[  12055 ns] Number 8'd01 Functional Test Point PASS!!!
+        [  22000 ns] Test is running, debug_wb_pc = 0x1c04c174
+        [  32000 ns] Test is running, debug_wb_pc = 0x1c04d114
+----[  36405 ns] Number 8'd02 Functional Test Point PASS!!!
+        [  42000 ns] Test is running, debug_wb_pc = 0x1c059e50
+        [  52000 ns] Test is running, debug_wb_pc = 0x1c05adf0
+----[  54735 ns] Number 8'd03 Functional Test Point PASS!!!
+        [  62000 ns] Test is running, debug_wb_pc = 0x1c06abfc
+        [  72000 ns] Test is running, debug_wb_pc = 0x1c06bb9c
+----[  79085 ns] Number 8'd04 Functional Test Point PASS!!!
+        [  82000 ns] Test is running, debug_wb_pc = 0x1c06caf0
+        [  92000 ns] Test is running, debug_wb_pc = 0x1c06da90
+        [ 102000 ns] Test is running, debug_wb_pc = 0x1c06ea30
+----[ 103435 ns] Number 8'd05 Functional Test Point PASS!!!
+        [ 112000 ns] Test is running, debug_wb_pc = 0x1c06f984
+        [ 122000 ns] Test is running, debug_wb_pc = 0x1c070924
+----[ 127785 ns] Number 8'd06 Functional Test Point PASS!!!
+        [ 132000 ns] Test is running, debug_wb_pc = 0x1c071878
+        [ 142000 ns] Test is running, debug_wb_pc = 0x1c072818
+        [ 152000 ns] Test is running, debug_wb_pc = 0x1c0737b8
+----[ 152135 ns] Number 8'd07 Functional Test Point PASS!!!
+        [ 162000 ns] Test is running, debug_wb_pc = 0x1c07470c
+        [ 172000 ns] Test is running, debug_wb_pc = 0x1c0756ac
+----[ 176485 ns] Number 8'd08 Functional Test Point PASS!!!
+        [ 182000 ns] Test is running, debug_wb_pc = 0x1c076600
+        [ 192000 ns] Test is running, debug_wb_pc = 0x1c0775a0
+----[ 200835 ns] Number 8'd09 Functional Test Point PASS!!!
+        [ 202000 ns] Test is running, debug_wb_pc = 0x1c01087c
+        [ 212000 ns] Test is running, debug_wb_pc = 0x1c01181c
+        [ 222000 ns] Test is running, debug_wb_pc = 0x1c0127bc
+----[ 225185 ns] Number 8'd10 Functional Test Point PASS!!!
+        [ 232000 ns] Test is running, debug_wb_pc = 0x1c013710
+        [ 242000 ns] Test is running, debug_wb_pc = 0x1c0146b0
+----[ 243515 ns] Number 8'd11 Functional Test Point PASS!!!
+        [ 252000 ns] Test is running, debug_wb_pc = 0x1c015604
+----[ 261845 ns] Number 8'd12 Functional Test Point PASS!!!
+        [ 262000 ns] Test is running, debug_wb_pc = 0x1c010228
+        [ 272000 ns] Test is running, debug_wb_pc = 0x1c0174f8
+----[ 280175 ns] Number 8'd13 Functional Test Point PASS!!!
+        [ 282000 ns] Test is running, debug_wb_pc = 0x1c01844c
+----[ 290685 ns] Number 8'd14 Functional Test Point PASS!!!
+        [ 292000 ns] Test is running, debug_wb_pc = 0x1c0193a0
+----[ 301995 ns] Number 8'd15 Functional Test Point PASS!!!
+        [ 302000 ns] Test is running, debug_wb_pc = 0x1c0100c4
+        [ 312000 ns] Test is running, debug_wb_pc = 0x1c01b76c
+        [ 322000 ns] Test is running, debug_wb_pc = 0x1c01cbbc
+        [ 332000 ns] Test is running, debug_wb_pc = 0x1c01dcac
+        [ 342000 ns] Test is running, debug_wb_pc = 0x1c01edb4
+        [ 352000 ns] Test is running, debug_wb_pc = 0x1c02016c
+        [ 362000 ns] Test is running, debug_wb_pc = 0x1c0215fc
+----[ 363495 ns] Number 8'd16 Functional Test Point PASS!!!
+        [ 372000 ns] Test is running, debug_wb_pc = 0x1c022714
+        [ 382000 ns] Test is running, debug_wb_pc = 0x1c0237f8
+        [ 392000 ns] Test is running, debug_wb_pc = 0x1c024af4
+        [ 402000 ns] Test is running, debug_wb_pc = 0x1c025f84
+        [ 412000 ns] Test is running, debug_wb_pc = 0x1c0271dc
+        [ 422000 ns] Test is running, debug_wb_pc = 0x1c0282cc
+----[ 428955 ns] Number 8'd17 Functional Test Point PASS!!!
+        [ 432000 ns] Test is running, debug_wb_pc = 0x1c02937c
+        [ 442000 ns] Test is running, debug_wb_pc = 0x1c02a460
+        [ 452000 ns] Test is running, debug_wb_pc = 0x1c02b524
+        [ 462000 ns] Test is running, debug_wb_pc = 0x1c02c5f4
+        [ 472000 ns] Test is running, debug_wb_pc = 0x1c02d6cc
+----[ 481225 ns] Number 8'd18 Functional Test Point PASS!!!
+        [ 482000 ns] Test is running, debug_wb_pc = 0x1c02e748
+        [ 492000 ns] Test is running, debug_wb_pc = 0x1c02f838
+        [ 502000 ns] Test is running, debug_wb_pc = 0x1c030928
+        [ 512000 ns] Test is running, debug_wb_pc = 0x1c031a10
+        [ 522000 ns] Test is running, debug_wb_pc = 0x1c032b00
+----[ 529495 ns] Number 8'd19 Functional Test Point PASS!!!
+        [ 532000 ns] Test is running, debug_wb_pc = 0x1c034b04
+        [ 542000 ns] Test is running, debug_wb_pc = 0x1c035c4c
+        [ 552000 ns] Test is running, debug_wb_pc = 0x1c036d8c
+        [ 562000 ns] Test is running, debug_wb_pc = 0x1c037ed4
+----[ 567765 ns] Number 8'd20 Functional Test Point PASS!!!
+        [ 572000 ns] Test is running, debug_wb_pc = 0x1c038f10
+        [ 582000 ns] Test is running, debug_wb_pc = 0x1c039eb8
+        [ 592000 ns] Test is running, debug_wb_pc = 0x1c03ae58
+----[ 595125 ns] Number 8'd21 Functional Test Point PASS!!!
+        [ 602000 ns] Test is running, debug_wb_pc = 0x1c03bdb0
+        [ 612000 ns] Test is running, debug_wb_pc = 0x1c03cd50
+----[ 613455 ns] Number 8'd22 Functional Test Point PASS!!!
+        [ 622000 ns] Test is running, debug_wb_pc = 0x1c03dca4
+----[ 631785 ns] Number 8'd23 Functional Test Point PASS!!!
+        [ 632000 ns] Test is running, debug_wb_pc = 0x1c03ebf8
+        [ 642000 ns] Test is running, debug_wb_pc = 0x1c03fb98
+----[ 650115 ns] Number 8'd24 Functional Test Point PASS!!!
+        [ 652000 ns] Test is running, debug_wb_pc = 0x1c040aec
+        [ 662000 ns] Test is running, debug_wb_pc = 0x1c041a8c
+----[ 668445 ns] Number 8'd25 Functional Test Point PASS!!!
+        [ 672000 ns] Test is running, debug_wb_pc = 0x1c0429e0
+        [ 682000 ns] Test is running, debug_wb_pc = 0x1c043980
+----[ 686775 ns] Number 8'd26 Functional Test Point PASS!!!
+        [ 692000 ns] Test is running, debug_wb_pc = 0x1c0448d4
+        [ 702000 ns] Test is running, debug_wb_pc = 0x1c045874
+----[ 711125 ns] Number 8'd27 Functional Test Point PASS!!!
+        [ 712000 ns] Test is running, debug_wb_pc = 0x1c0467c8
+        [ 722000 ns] Test is running, debug_wb_pc = 0x1c047768
+        [ 732000 ns] Test is running, debug_wb_pc = 0x1c048708
+----[ 735475 ns] Number 8'd28 Functional Test Point PASS!!!
+        [ 742000 ns] Test is running, debug_wb_pc = 0x1c04965c
+        [ 752000 ns] Test is running, debug_wb_pc = 0x1c04a5fc
+----[ 759825 ns] Number 8'd29 Functional Test Point PASS!!!
+        [ 762000 ns] Test is running, debug_wb_pc = 0x1c04dbcc
+        [ 772000 ns] Test is running, debug_wb_pc = 0x1c04ef88
+        [ 782000 ns] Test is running, debug_wb_pc = 0x1c050330
+----[ 791975 ns] Number 8'd30 Functional Test Point PASS!!!
+        [ 792000 ns] Test is running, debug_wb_pc = 0x1c0101f4
+        [ 802000 ns] Test is running, debug_wb_pc = 0x1c052a54
+        [ 812000 ns] Test is running, debug_wb_pc = 0x1c053e1c
+        [ 822000 ns] Test is running, debug_wb_pc = 0x1c055168
+----[ 824715 ns] Number 8'd31 Functional Test Point PASS!!!
+        [ 832000 ns] Test is running, debug_wb_pc = 0x1c0564ac
+        [ 842000 ns] Test is running, debug_wb_pc = 0x1c057854
+        [ 852000 ns] Test is running, debug_wb_pc = 0x1c058b8c
+----[ 857415 ns] Number 8'd32 Functional Test Point PASS!!!
+        [ 862000 ns] Test is running, debug_wb_pc = 0x1c05babc
+        [ 872000 ns] Test is running, debug_wb_pc = 0x1c05ce74
+        [ 882000 ns] Test is running, debug_wb_pc = 0x1c05e21c
+----[ 890215 ns] Number 8'd33 Functional Test Point PASS!!!
+        [ 892000 ns] Test is running, debug_wb_pc = 0x1c05f4c4
+        [ 902000 ns] Test is running, debug_wb_pc = 0x1c060464
+----[ 909205 ns] Number 8'd34 Functional Test Point PASS!!!
+        [ 912000 ns] Test is running, debug_wb_pc = 0x1c0613b8
+        [ 922000 ns] Test is running, debug_wb_pc = 0x1c062358
+----[ 923235 ns] Number 8'd35 Functional Test Point PASS!!!
+        [ 932000 ns] Test is running, debug_wb_pc = 0x1c0632ac
+        [ 942000 ns] Test is running, debug_wb_pc = 0x1c06424c
+----[ 943665 ns] Number 8'd36 Functional Test Point PASS!!!
+        [ 952000 ns] Test is running, debug_wb_pc = 0x1c0651a0
+----[ 961535 ns] Number 8'd37 Functional Test Point PASS!!!
+        [ 962000 ns] Test is running, debug_wb_pc = 0x1c0660f4
+        [ 972000 ns] Test is running, debug_wb_pc = 0x1c067094
+        [ 982000 ns] Test is running, debug_wb_pc = 0x1c068034
+----[ 983275 ns] Number 8'd38 Functional Test Point PASS!!!
+        [ 992000 ns] Test is running, debug_wb_pc = 0x1c068f8c
+        [1002000 ns] Test is running, debug_wb_pc = 0x1c069f2c
+----[1003115 ns] Number 8'd39 Functional Test Point PASS!!!
+==============================================================
+gettrace end!
+----Succeed in generating trace file!
+$finish called at time : 1003485 ns : File "D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/reference_tb_top.v" Line 224
+run: Time (s): cpu = 00:00:02 ; elapsed = 00:01:03 . Memory (MB): peak = 266.098 ; gain = 0.059
+xsim: Time (s): cpu = 00:00:02 ; elapsed = 00:01:05 . Memory (MB): peak = 266.098 ; gain = 6.688
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for all
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:01:18 . Memory (MB): peak = 266.098 ; gain = 12.070
+# close_sim
+INFO: [Simtcl 6-16] Simulation closed
+# close_project
+# exit
+INFO: [Common 17-206] Exiting Vivado at Thu Sep 17 11:00:05 2026...

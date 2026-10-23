@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Sep 17 10:58:35 2026
+# Process ID: 14524
+# Current directory: D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project
+# Command line: vivado.exe -mode batch -source D:\something_not_funny\final\计组课设la版\计组课设la版\chapter6_ex6_project\setup_reference_ex6.tcl -log D:\something_not_funny\final\计组课设la版\计组课设la版\chapter6_ex6_project\local_gettrace_ex6\run_reference_ex6.log -journal D:\something_not_funny\final\计组课设la版\计组课设la版\chapter6_ex6_project\local_gettrace_ex6\run_reference_ex6.jou
+# Log file: D:/something_not_funny/final/计组课设la版/计组课设la版/chapter6_ex6_project/local_gettrace_ex6/run_reference_ex6.log
+# Journal file: D:\something_not_funny\final\计组课设la版\计组课设la版\chapter6_ex6_project\local_gettrace_ex6\run_reference_ex6.jou
+#-----------------------------------------------------------
+source {D:\something_not_funny\final\计组课设la版\计组课设la版\chapter6_ex6_project\setup_reference_ex6.tcl}
+source tb_top.tcl

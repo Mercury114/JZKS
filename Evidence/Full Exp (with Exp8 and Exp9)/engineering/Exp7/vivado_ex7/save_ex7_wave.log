@@ -1,0 +1,249 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Sep 17 13:25:31 2026
+# Process ID: 10932
+# Current directory: D:/something_not_funny/final/计组课设la版/计组课设la版
+# Command line: vivado.exe -mode batch -source Y:\save_ex7_wave.tcl -log Y:\vivado_ex7\save_ex7_wave.log -journal Y:\vivado_ex7\save_ex7_wave.jou
+# Log file: Y:/vivado_ex7/save_ex7_wave.log
+# Journal file: Y:\vivado_ex7\save_ex7_wave.jou
+#-----------------------------------------------------------
+source {Y:\save_ex7_wave.tcl}
+# set project_root [file normalize [file dirname [info script]]]
+# set project_file [file join $project_root vivado_ex7 loongson_ex7.xpr]
+# set wave_file [file join $project_root vivado_ex7 loongson_ex7.sim sim_1 behav xsim tb_top_behav.wcfg]
+# open_project $project_file
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Vivado/2018.3/data/ip'.
+# launch_simulation -simset sim_1 -mode behavioral
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'Y:/vivado_ex7/loongson_ex7.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Vivado/2018.3/data/xsim/xsim.ini' copied to run dir:'Y:/vivado_ex7/loongson_ex7.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_top' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'Y:/vivado_ex7/loongson_ex7.sim/sim_1/behav/xsim/inst_ram.mif'
+INFO: [SIM-utils-43] Exported 'Y:/vivado_ex7/loongson_ex7.sim/sim_1/behav/xsim/inst_ram_ex7.coe'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'Y:/vivado_ex7/loongson_ex7.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_top_vlog.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'Y:/vivado_ex7/loongson_ex7.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto efc3ff47df6a41fd8333fac4e5d272f1 --incr --debug typical --relax --mt 2 -L blk_mem_gen_v8_4_2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'Y:/vivado_ex7/loongson_ex7.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_top_behav -key {Behavioral:sim_1:Functional:tb_top} -tclbatch {tb_top.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source tb_top.tcl
+## current_wave_config
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module tb_top.soc_lite.inst_ram.inst.native_mem_module.blk_mem_gen_v8_4_2_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module tb_top.soc_lite.data_ram.inst.native_mem_module.blk_mem_gen_v8_4_2_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+==============================================================
+Test begin!
+----[  12135 ns] Number 8'd01 Functional Test Point PASS!!!
+        [  22000 ns] Test is running, debug_wb_pc = 0x1c04c15c
+        [  32000 ns] Test is running, debug_wb_pc = 0x1c04d0fc
+----[  36605 ns] Number 8'd02 Functional Test Point PASS!!!
+        [  42000 ns] Test is running, debug_wb_pc = 0x1c061c20
+        [  52000 ns] Test is running, debug_wb_pc = 0x1c062bc0
+----[  55055 ns] Number 8'd03 Functional Test Point PASS!!!
+        [  62000 ns] Test is running, debug_wb_pc = 0x1c07299c
+        [  72000 ns] Test is running, debug_wb_pc = 0x1c07393c
+----[  79525 ns] Number 8'd04 Functional Test Point PASS!!!
+        [  82000 ns] Test is running, debug_wb_pc = 0x1c074860
+        [  92000 ns] Test is running, debug_wb_pc = 0x1c075800
+        [ 102000 ns] Test is running, debug_wb_pc = 0x1c0767a0
+----[ 103995 ns] Number 8'd05 Functional Test Point PASS!!!
+        [ 112000 ns] Test is running, debug_wb_pc = 0x1c0776c4
+        [ 122000 ns] Test is running, debug_wb_pc = 0x1c078664
+----[ 128465 ns] Number 8'd06 Functional Test Point PASS!!!
+        [ 132000 ns] Test is running, debug_wb_pc = 0x1c079588
+        [ 142000 ns] Test is running, debug_wb_pc = 0x1c07a528
+        [ 152000 ns] Test is running, debug_wb_pc = 0x1c07b4c8
+----[ 152935 ns] Number 8'd07 Functional Test Point PASS!!!
+        [ 162000 ns] Test is running, debug_wb_pc = 0x1c07c3ec
+        [ 172000 ns] Test is running, debug_wb_pc = 0x1c07d38c
+----[ 177405 ns] Number 8'd08 Functional Test Point PASS!!!
+        [ 182000 ns] Test is running, debug_wb_pc = 0x1c07e2b0
+        [ 192000 ns] Test is running, debug_wb_pc = 0x1c07f250
+----[ 201875 ns] Number 8'd09 Functional Test Point PASS!!!
+        [ 202000 ns] Test is running, debug_wb_pc = 0x1c01023c
+        [ 212000 ns] Test is running, debug_wb_pc = 0x1c011684
+        [ 222000 ns] Test is running, debug_wb_pc = 0x1c012624
+----[ 226345 ns] Number 8'd10 Functional Test Point PASS!!!
+        [ 232000 ns] Test is running, debug_wb_pc = 0x1c013548
+        [ 242000 ns] Test is running, debug_wb_pc = 0x1c0144e8
+----[ 244795 ns] Number 8'd11 Functional Test Point PASS!!!
+        [ 252000 ns] Test is running, debug_wb_pc = 0x1c01540c
+        [ 262000 ns] Test is running, debug_wb_pc = 0x1c0163ac
+----[ 263245 ns] Number 8'd12 Functional Test Point PASS!!!
+        [ 272000 ns] Test is running, debug_wb_pc = 0x1c0172d0
+----[ 281695 ns] Number 8'd13 Functional Test Point PASS!!!
+        [ 282000 ns] Test is running, debug_wb_pc = 0x1c0100b8
+        [ 292000 ns] Test is running, debug_wb_pc = 0x1c018e78
+----[ 294885 ns] Number 8'd14 Functional Test Point PASS!!!
+        [ 302000 ns] Test is running, debug_wb_pc = 0x1c019a98
+----[ 309075 ns] Number 8'd15 Functional Test Point PASS!!!
+        [ 312000 ns] Test is running, debug_wb_pc = 0x1c01a7e4
+        [ 322000 ns] Test is running, debug_wb_pc = 0x1c01b8e4
+        [ 332000 ns] Test is running, debug_wb_pc = 0x1c01c9dc
+        [ 342000 ns] Test is running, debug_wb_pc = 0x1c01d77c
+        [ 352000 ns] Test is running, debug_wb_pc = 0x1c01e4d8
+        [ 362000 ns] Test is running, debug_wb_pc = 0x1c01f2a4
+        [ 372000 ns] Test is running, debug_wb_pc = 0x1c02039c
+        [ 382000 ns] Test is running, debug_wb_pc = 0x1c02149c
+----[ 384755 ns] Number 8'd16 Functional Test Point PASS!!!
+        [ 392000 ns] Test is running, debug_wb_pc = 0x1c022284
+        [ 402000 ns] Test is running, debug_wb_pc = 0x1c02300c
+        [ 412000 ns] Test is running, debug_wb_pc = 0x1c023d74
+        [ 422000 ns] Test is running, debug_wb_pc = 0x1c024dbc
+        [ 432000 ns] Test is running, debug_wb_pc = 0x1c025eb4
+        [ 442000 ns] Test is running, debug_wb_pc = 0x1c026df4
+        [ 452000 ns] Test is running, debug_wb_pc = 0x1c027b7c
+        [ 462000 ns] Test is running, debug_wb_pc = 0x1c0288e4
+----[ 466375 ns] Number 8'd17 Functional Test Point PASS!!!
+        [ 472000 ns] Test is running, debug_wb_pc = 0x1c02961c
+        [ 482000 ns] Test is running, debug_wb_pc = 0x1c02a3d4
+        [ 492000 ns] Test is running, debug_wb_pc = 0x1c02b184
+        [ 502000 ns] Test is running, debug_wb_pc = 0x1c02bf2c
+        [ 512000 ns] Test is running, debug_wb_pc = 0x1c02cccc
+        [ 522000 ns] Test is running, debug_wb_pc = 0x1c02da84
+----[ 530765 ns] Number 8'd18 Functional Test Point PASS!!!
+        [ 532000 ns] Test is running, debug_wb_pc = 0x1c02e7b0
+        [ 542000 ns] Test is running, debug_wb_pc = 0x1c02f468
+        [ 552000 ns] Test is running, debug_wb_pc = 0x1c030118
+        [ 562000 ns] Test is running, debug_wb_pc = 0x1c030dbc
+        [ 572000 ns] Test is running, debug_wb_pc = 0x1c031a78
+        [ 582000 ns] Test is running, debug_wb_pc = 0x1c032730
+        [ 592000 ns] Test is running, debug_wb_pc = 0x1c0333e0
+----[ 595155 ns] Number 8'd19 Functional Test Point PASS!!!
+        [ 602000 ns] Test is running, debug_wb_pc = 0x1c034fd4
+        [ 612000 ns] Test is running, debug_wb_pc = 0x1c035cf4
+        [ 622000 ns] Test is running, debug_wb_pc = 0x1c036a14
+        [ 632000 ns] Test is running, debug_wb_pc = 0x1c037734
+        [ 642000 ns] Test is running, debug_wb_pc = 0x1c038454
+----[ 645545 ns] Number 8'd20 Functional Test Point PASS!!!
+        [ 652000 ns] Test is running, debug_wb_pc = 0x1c038eb8
+        [ 662000 ns] Test is running, debug_wb_pc = 0x1c03982c
+        [ 672000 ns] Test is running, debug_wb_pc = 0x1c03a188
+        [ 682000 ns] Test is running, debug_wb_pc = 0x1c03aad8
+----[ 691085 ns] Number 8'd21 Functional Test Point PASS!!!
+        [ 692000 ns] Test is running, debug_wb_pc = 0x1c03b468
+        [ 702000 ns] Test is running, debug_wb_pc = 0x1c03c408
+----[ 709535 ns] Number 8'd22 Functional Test Point PASS!!!
+        [ 712000 ns] Test is running, debug_wb_pc = 0x1c03d32c
+        [ 722000 ns] Test is running, debug_wb_pc = 0x1c03e2cc
+----[ 727985 ns] Number 8'd23 Functional Test Point PASS!!!
+        [ 732000 ns] Test is running, debug_wb_pc = 0x1c03f1f0
+        [ 742000 ns] Test is running, debug_wb_pc = 0x1c040190
+----[ 746435 ns] Number 8'd24 Functional Test Point PASS!!!
+        [ 752000 ns] Test is running, debug_wb_pc = 0x1c0410b4
+        [ 762000 ns] Test is running, debug_wb_pc = 0x1c042054
+----[ 764885 ns] Number 8'd25 Functional Test Point PASS!!!
+        [ 772000 ns] Test is running, debug_wb_pc = 0x1c042f78
+        [ 782000 ns] Test is running, debug_wb_pc = 0x1c043f18
+----[ 783335 ns] Number 8'd26 Functional Test Point PASS!!!
+        [ 792000 ns] Test is running, debug_wb_pc = 0x1c044e3c
+        [ 802000 ns] Test is running, debug_wb_pc = 0x1c045ddc
+----[ 807805 ns] Number 8'd27 Functional Test Point PASS!!!
+        [ 812000 ns] Test is running, debug_wb_pc = 0x1c046d00
+        [ 822000 ns] Test is running, debug_wb_pc = 0x1c047ca0
+        [ 832000 ns] Test is running, debug_wb_pc = 0x1c048c40
+----[ 832275 ns] Number 8'd28 Functional Test Point PASS!!!
+        [ 842000 ns] Test is running, debug_wb_pc = 0x1c049b64
+        [ 852000 ns] Test is running, debug_wb_pc = 0x1c04ab04
+----[ 856745 ns] Number 8'd29 Functional Test Point PASS!!!
+        [ 862000 ns] Test is running, debug_wb_pc = 0x1c04dfe8
+----[ 865635 ns] Number 8'd30 Functional Test Point PASS!!!
+        [ 872000 ns] Test is running, debug_wb_pc = 0x1c04ef0c
+----[ 878395 ns] Number 8'd31 Functional Test Point PASS!!!
+        [ 882000 ns] Test is running, debug_wb_pc = 0x1c04fe34
+----[ 890905 ns] Number 8'd32 Functional Test Point PASS!!!
+        [ 892000 ns] Test is running, debug_wb_pc = 0x1c050d58
+        [ 902000 ns] Test is running, debug_wb_pc = 0x1c051cf8
+----[ 903555 ns] Number 8'd33 Functional Test Point PASS!!!
+        [ 912000 ns] Test is running, debug_wb_pc = 0x1c052c1c
+----[ 915045 ns] Number 8'd34 Functional Test Point PASS!!!
+        [ 922000 ns] Test is running, debug_wb_pc = 0x1c053b40
+----[ 925125 ns] Number 8'd35 Functional Test Point PASS!!!
+        [ 932000 ns] Test is running, debug_wb_pc = 0x1c054a68
+----[ 939585 ns] Number 8'd36 Functional Test Point PASS!!!
+        [ 942000 ns] Test is running, debug_wb_pc = 0x1c055968
+        [ 952000 ns] Test is running, debug_wb_pc = 0x1c05682c
+        [ 962000 ns] Test is running, debug_wb_pc = 0x1c057740
+        [ 972000 ns] Test is running, debug_wb_pc = 0x1c058694
+----[ 981815 ns] Number 8'd37 Functional Test Point PASS!!!
+        [ 982000 ns] Test is running, debug_wb_pc = 0x1c01024c
+        [ 992000 ns] Test is running, debug_wb_pc = 0x1c05a43c
+        [1002000 ns] Test is running, debug_wb_pc = 0x1c05b354
+        [1012000 ns] Test is running, debug_wb_pc = 0x1c05c230
+        [1022000 ns] Test is running, debug_wb_pc = 0x1c05d10c
+----[1024815 ns] Number 8'd38 Functional Test Point PASS!!!
+        [1032000 ns] Test is running, debug_wb_pc = 0x1c05df30
+        [1042000 ns] Test is running, debug_wb_pc = 0x1c05ee60
+        [1052000 ns] Test is running, debug_wb_pc = 0x1c05fce8
+        [1062000 ns] Test is running, debug_wb_pc = 0x1c060b68
+----[1067775 ns] Number 8'd39 Functional Test Point PASS!!!
+        [1072000 ns] Test is running, debug_wb_pc = 0x1c063664
+        [1082000 ns] Test is running, debug_wb_pc = 0x1c064554
+        [1092000 ns] Test is running, debug_wb_pc = 0x1c065454
+        [1102000 ns] Test is running, debug_wb_pc = 0x1c066328
+----[1110855 ns] Number 8'd40 Functional Test Point PASS!!!
+        [1112000 ns] Test is running, debug_wb_pc = 0x1c067198
+        [1122000 ns] Test is running, debug_wb_pc = 0x1c067d88
+        [1132000 ns] Test is running, debug_wb_pc = 0x1c068968
+----[1135815 ns] Number 8'd41 Functional Test Point PASS!!!
+        [1142000 ns] Test is running, debug_wb_pc = 0x1c0694f8
+        [1152000 ns] Test is running, debug_wb_pc = 0x1c06a0e8
+----[1154265 ns] Number 8'd42 Functional Test Point PASS!!!
+        [1162000 ns] Test is running, debug_wb_pc = 0x1c06ac74
+        [1172000 ns] Test is running, debug_wb_pc = 0x1c06b858
+----[1181115 ns] Number 8'd43 Functional Test Point PASS!!!
+        [1182000 ns] Test is running, debug_wb_pc = 0x1c06c3f0
+        [1192000 ns] Test is running, debug_wb_pc = 0x1c06cfd4
+        [1202000 ns] Test is running, debug_wb_pc = 0x1c06dbb8
+----[1204605 ns] Number 8'd44 Functional Test Point PASS!!!
+        [1212000 ns] Test is running, debug_wb_pc = 0x1c06e748
+        [1222000 ns] Test is running, debug_wb_pc = 0x1c06f328
+        [1232000 ns] Test is running, debug_wb_pc = 0x1c06ff08
+----[1233245 ns] Number 8'd45 Functional Test Point PASS!!!
+        [1242000 ns] Test is running, debug_wb_pc = 0x1c070a98
+        [1252000 ns] Test is running, debug_wb_pc = 0x1c071678
+----[1259385 ns] Number 8'd46 Functional Test Point PASS!!!
+==============================================================
+Test end!
+----PASS!!!
+$finish called at time : 1259885 ns : File "Y:/local_sim_ex7/tb_top_ex6.v" Line 268
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:12 . Memory (MB): peak = 301.652 ; gain = 0.039
+xsim: Time (s): cpu = 00:00:00 ; elapsed = 00:00:13 . Memory (MB): peak = 301.652 ; gain = 9.227
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for all
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:20 . Memory (MB): peak = 301.652 ; gain = 18.918
+# if {[string length [current_wave_config]] > 0} {
+#     save_wave_config $wave_file
+# }
+# close_sim
+INFO: [Simtcl 6-16] Simulation closed
+# close_project
+# exit
+INFO: [Common 17-206] Exiting Vivado at Thu Sep 17 13:25:58 2026...

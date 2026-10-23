@@ -1,0 +1,1 @@
+PASS arbiter: 5-source round-robin/full-line exclusivity/final-WB-ack/backpressure/zero+delayed replies/full-U-address/reset; zero=333 delayed=593 stall=371

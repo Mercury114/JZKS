@@ -1,0 +1,50 @@
+[
+  {
+    "experiment": 4,
+    "points": 29,
+    "ways": 2,
+    "enabled": 1,
+    "cycles": 496649,
+    "coe_sha256": "305c8db250d935c461524f596edaa9ddced867e30b2c3364f1934a51228706e5"
+  },
+  {
+    "experiment": 5,
+    "points": 33,
+    "ways": 2,
+    "enabled": 1,
+    "cycles": 591736,
+    "coe_sha256": "72ea0a77a4d1e9c20228b6a6543314adc057f53d76813512d846c8fa21c2ddaf"
+  },
+  {
+    "experiment": 6,
+    "points": 39,
+    "ways": 2,
+    "enabled": 1,
+    "cycles": 668904,
+    "coe_sha256": "3b1a8c62ed17d2afdf633e492d2e99d04084d1e9088c3b5a8b8f728f4ada96b2"
+  },
+  {
+    "experiment": 7,
+    "points": 46,
+    "ways": 2,
+    "enabled": 1,
+    "cycles": 734105,
+    "coe_sha256": "496a19f493b1aeba769a35761d71bd7ccb439c3f532f7f3a24be253c2ff1381a"
+  },
+  {
+    "experiment": 8,
+    "points": 47,
+    "ways": 2,
+    "enabled": 1,
+    "cycles": 735078,
+    "coe_sha256": "e6a1f8aa036755fb53b4a2ec9847c9d850a2d104e2a9e5feea7d2d9324d25a05"
+  },
+  {
+    "experiment": 9,
+    "points": 58,
+    "ways": 2,
+    "enabled": 1,
+    "cycles": 819922,
+    "coe_sha256": "bea7a2c05524b198d77f79b8f85f84c4693b0b416bd7560fe2891be646525221"
+  }
+]
