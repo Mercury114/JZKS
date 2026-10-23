@@ -1,0 +1,13 @@
+UART_STOPWATCH_CASE_PASS: initial TIME=0.000 s
+UART_STOPWATCH_CASE_PASS: STOP is idempotent before START
+UART_STOPWATCH_CASE_PASS: START and repeated running TIME
+UART_STOPWATCH_CASE_PASS: 32-bit peripheral counter rollover
+UART_STOPWATCH_CASE_PASS: 64-bit accumulation and decimal conversion
+UART_STOPWATCH_CASE_PASS: STOP freezes repeated TIME queries
+UART_STOPWATCH_CASE_PASS: START resumes elapsed time and excludes paused interval
+UART_STOPWATCH_CASE_PASS: RESET clears and stops
+UART_STOPWATCH_CASE_PASS: repeated START while running never clears elapsed time
+UART_STOPWATCH_CASE_PASS: arguments rejected without state changes
+UART_STOPWATCH_CASE_PASS: RESET while running
+UART_STOPWATCH_PASS: hardware_clock=1 cases=11 checks=1099
+/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_stopwatch.v:281: $finish called at 517185390000 (1ps)

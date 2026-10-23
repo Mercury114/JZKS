@@ -1,0 +1,19 @@
+UART_COMMAND_PASS: boot uses initialized data RAM strings
+UART_COMMAND_PASS: HELP plus queued LED command through FIFO
+UART_COMMAND_PASS: DISP with CRLF
+UART_COMMAND_PASS: CODE A and ASCII display
+UART_COMMAND_PASS: SW webpage polarity
+UART_COMMAND_PASS: TIME is zero until START
+UART_COMMAND_PASS: MIRROR input-to-output interaction
+UART_COMMAND_PASS: MIRROR OFF
+UART_COMMAND_PASS: case-insensitive command with lowercase argument
+UART_COMMAND_PASS: single-character ASCII shortcut
+UART_COMMAND_PASS: hex and whitespace parsing
+UART_COMMAND_PASS: backspace editing
+UART_COMMAND_PASS: unknown command, bad arguments and overflow rejected
+UART_COMMAND_PASS: long-line recovery
+UART_COMMAND_PASS: FIFO status register exposed to CPU
+UART_COMMAND_PASS: stopped stopwatch remains zero
+UART_COMMAND_PASS: manual output command exits MIRROR
+UART_CONSOLE_PASS: hardware_clock=0 cases=17 checks=962
+/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_console.v:211: $finish called at 7296050000 (1ps)

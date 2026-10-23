@@ -1,0 +1,12 @@
+UART_IRQ_CASE_PASS: boot and zero IRQ count
+UART_IRQ_CASE_PASS: invalid IRQ commands rejected
+UART_IRQ_CASE_PASS: periodic timer invokes handler and toggles LEDs
+UART_IRQ_CASE_PASS: idempotent ON and live counter query
+UART_IRQ_CASE_PASS: ASCII display and switch commands coexist with IRQ
+UART_IRQ_CASE_PASS: stopwatch and UART formatting survive asynchronous interrupts
+UART_IRQ_CASE_PASS: OFF freezes LEDs and count and is idempotent
+UART_IRQ_CASE_PASS: manual LED command stops blink atomically
+UART_IRQ_CASE_PASS: MIRROR and IRQ ownership and invalid command behavior
+UART_IRQ_CASE_PASS: complete interrupt and foreground recovery
+UART_IRQ_PASS: hardware_clock=1 cases=10 checks=29608 entries=703 returns=703
+/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_irq.v:313: $finish called at 474077710000 (1ps)

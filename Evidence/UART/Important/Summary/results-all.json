@@ -1,0 +1,37 @@
+[
+  {
+    "mode": "console",
+    "seconds": 17.18,
+    "output": "UART_COMMAND_PASS: boot uses initialized data RAM strings\nUART_COMMAND_PASS: HELP plus queued LED command through FIFO\nUART_COMMAND_PASS: DISP with CRLF\nUART_COMMAND_PASS: CODE A and ASCII display\nUART_COMMAND_PASS: SW webpage polarity\nUART_COMMAND_PASS: TIME is zero until START\nUART_COMMAND_PASS: MIRROR input-to-output interaction\nUART_COMMAND_PASS: MIRROR OFF\nUART_COMMAND_PASS: case-insensitive command with lowercase argument\nUART_COMMAND_PASS: single-character ASCII shortcut\nUART_COMMAND_PASS: hex and whitespace parsing\nUART_COMMAND_PASS: backspace editing\nUART_COMMAND_PASS: unknown command, bad arguments and overflow rejected\nUART_COMMAND_PASS: long-line recovery\nUART_COMMAND_PASS: FIFO status register exposed to CPU\nUART_COMMAND_PASS: stopped stopwatch remains zero\nUART_COMMAND_PASS: manual output command exits MIRROR\nUART_CONSOLE_PASS: hardware_clock=0 cases=17 checks=962\n/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_console.v:211: $finish called at 7296050000 (1ps)"
+  },
+  {
+    "mode": "console_hw",
+    "seconds": 23.37,
+    "output": "UART_COMMAND_PASS: boot uses initialized data RAM strings\nUART_COMMAND_PASS: hardware-clock LED command\nUART_COMMAND_PASS: DISP with CRLF\nUART_COMMAND_PASS: CODE A and ASCII display\nUART_COMMAND_PASS: SW webpage polarity\nUART_COMMAND_PASS: TIME is zero until START\nUART_COMMAND_PASS: MIRROR input-to-output interaction\nUART_COMMAND_PASS: MIRROR OFF\nUART_CONSOLE_PASS: hardware_clock=1 cases=8 checks=230\n/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_console.v:211: $finish called at 130048110000 (1ps)"
+  },
+  {
+    "mode": "stopwatch",
+    "seconds": 127.5,
+    "output": "UART_STOPWATCH_CASE_PASS: initial TIME=0.000 s\nUART_STOPWATCH_CASE_PASS: STOP is idempotent before START\nUART_STOPWATCH_CASE_PASS: START and repeated running TIME\nUART_STOPWATCH_CASE_PASS: 32-bit peripheral counter rollover\nUART_STOPWATCH_CASE_PASS: 64-bit accumulation and decimal conversion\nUART_STOPWATCH_CASE_PASS: STOP freezes repeated TIME queries\nUART_STOPWATCH_CASE_PASS: START resumes elapsed time and excludes paused interval\nUART_STOPWATCH_CASE_PASS: RESET clears and stops\nUART_STOPWATCH_CASE_PASS: repeated START while running never clears elapsed time\nUART_STOPWATCH_CASE_PASS: arguments rejected without state changes\nUART_STOPWATCH_CASE_PASS: RESET while running\nUART_STOPWATCH_PASS: hardware_clock=0 cases=11 checks=1099\n/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_stopwatch.v:281: $finish called at 45664350000 (1ps)"
+  },
+  {
+    "mode": "stopwatch_hw",
+    "seconds": 108.17,
+    "output": "UART_STOPWATCH_CASE_PASS: initial TIME=0.000 s\nUART_STOPWATCH_CASE_PASS: STOP is idempotent before START\nUART_STOPWATCH_CASE_PASS: START and repeated running TIME\nUART_STOPWATCH_CASE_PASS: 32-bit peripheral counter rollover\nUART_STOPWATCH_CASE_PASS: 64-bit accumulation and decimal conversion\nUART_STOPWATCH_CASE_PASS: STOP freezes repeated TIME queries\nUART_STOPWATCH_CASE_PASS: START resumes elapsed time and excludes paused interval\nUART_STOPWATCH_CASE_PASS: RESET clears and stops\nUART_STOPWATCH_CASE_PASS: repeated START while running never clears elapsed time\nUART_STOPWATCH_CASE_PASS: arguments rejected without state changes\nUART_STOPWATCH_CASE_PASS: RESET while running\nUART_STOPWATCH_PASS: hardware_clock=1 cases=11 checks=1099\n/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_stopwatch.v:281: $finish called at 517185390000 (1ps)"
+  },
+  {
+    "mode": "irq",
+    "seconds": 32.31,
+    "output": "UART_IRQ_CASE_PASS: boot and zero IRQ count\nUART_IRQ_CASE_PASS: invalid IRQ commands rejected\nUART_IRQ_CASE_PASS: periodic timer invokes handler and toggles LEDs\nUART_IRQ_CASE_PASS: idempotent ON and live counter query\nUART_IRQ_CASE_PASS: ASCII display and switch commands coexist with IRQ\nUART_IRQ_CASE_PASS: stopwatch and UART formatting survive asynchronous interrupts\nUART_IRQ_CASE_PASS: OFF freezes LEDs and count and is idempotent\nUART_IRQ_CASE_PASS: manual LED command stops blink atomically\nUART_IRQ_CASE_PASS: MIRROR and IRQ ownership and invalid command behavior\nUART_IRQ_CASE_PASS: complete interrupt and foreground recovery\nUART_IRQ_PASS: hardware_clock=0 cases=10 checks=1246 entries=11 returns=11\n/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_irq.v:313: $finish called at 13528280000 (1ps)"
+  },
+  {
+    "mode": "irq_hw",
+    "seconds": 87.51,
+    "output": "UART_IRQ_CASE_PASS: boot and zero IRQ count\nUART_IRQ_CASE_PASS: invalid IRQ commands rejected\nUART_IRQ_CASE_PASS: periodic timer invokes handler and toggles LEDs\nUART_IRQ_CASE_PASS: idempotent ON and live counter query\nUART_IRQ_CASE_PASS: ASCII display and switch commands coexist with IRQ\nUART_IRQ_CASE_PASS: stopwatch and UART formatting survive asynchronous interrupts\nUART_IRQ_CASE_PASS: OFF freezes LEDs and count and is idempotent\nUART_IRQ_CASE_PASS: manual LED command stops blink atomically\nUART_IRQ_CASE_PASS: MIRROR and IRQ ownership and invalid command behavior\nUART_IRQ_CASE_PASS: complete interrupt and foreground recovery\nUART_IRQ_PASS: hardware_clock=1 cases=10 checks=29608 entries=703 returns=703\n/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_irq.v:313: $finish called at 474077710000 (1ps)"
+  },
+  {
+    "mode": "fifo",
+    "seconds": 0.02,
+    "output": "UART_FIFO_PASS: checks=118\n/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_fifo.v:105: $finish called at 98500000 (1ps)"
+  }
+]

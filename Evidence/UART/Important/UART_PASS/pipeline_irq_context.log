@@ -1,0 +1,2 @@
+PIPELINE_CONTROL_PASS: case=irq checks=3514 entries=32 returns=32 iterations=1164
+/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_pipeline_control.v:102: $finish called at 259130000 (1ps)

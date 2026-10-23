@@ -1,0 +1,10 @@
+UART_COMMAND_PASS: boot uses initialized data RAM strings
+UART_COMMAND_PASS: hardware-clock LED command
+UART_COMMAND_PASS: DISP with CRLF
+UART_COMMAND_PASS: CODE A and ASCII display
+UART_COMMAND_PASS: SW webpage polarity
+UART_COMMAND_PASS: TIME is zero until START
+UART_COMMAND_PASS: MIRROR input-to-output interaction
+UART_COMMAND_PASS: MIRROR OFF
+UART_CONSOLE_PASS: hardware_clock=1 cases=8 checks=230
+/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_console.v:211: $finish called at 130048110000 (1ps)

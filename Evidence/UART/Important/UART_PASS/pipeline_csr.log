@@ -1,0 +1,2 @@
+PIPELINE_CONTROL_PASS: case=csr checks=6
+/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_pipeline_control.v:96: $finish called at 1091000 (1ps)

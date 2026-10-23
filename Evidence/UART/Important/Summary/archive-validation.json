@@ -1,0 +1,12 @@
+{
+  "archive_date": "2026-10-23",
+  "source_commit": "0bb61f5a7e5a4283d0e9cf0b88fd72bf146fe26c",
+  "source_checkout_clean": true,
+  "original_test_date": "2026-10-21",
+  "regression_modes": 7,
+  "uart_checks": 34362,
+  "log_and_results_consistent": true,
+  "source_hashes_match_original_verification": true,
+  "wave_database_open": "PASS with Vivado 2018.3; uart_rx/uart_tx/web_led/test_end/global_err/checks present",
+  "full_simulation_rerun_during_packaging": false
+}

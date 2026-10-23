@@ -1,0 +1,2 @@
+UART_FIFO_PASS: checks=118
+/mnt/d/2026_ComputerOrganizationLab/JZKS/innovation_uart/sim/tb_uart_fifo.v:105: $finish called at 98500000 (1ps)
