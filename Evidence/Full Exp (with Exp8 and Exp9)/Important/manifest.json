@@ -1,21 +1,13 @@
 ﻿{
-    "schema":  "evidence-manifest-v1",
-    "generated_utc":  "2026-10-23T01:35:11.1658498Z",
+    "schema":  "evidence-manifest-v2",
+    "generated_utc":  "2026-10-23T02:14:15.2684262Z",
+    "root_layout":  [
+                        "D-cache",
+                        "Full Exp (with Exp8 and Exp9)"
+                    ],
     "file_count":  632,
-    "total_bytes":  887422147,
+    "total_bytes":  887420834,
     "files":  [
-                  {
-                      "path":  "README.md",
-                      "bytes":  2377,
-                      "sha256":  "09c7b6c53578c8296d3c33dbdf5e6c3425dbfb78c65041d11dd049690d8327fe",
-                      "category":  "full-exp-material"
-                  },
-                  {
-                      "path":  "split_wdb.ps1",
-                      "bytes":  1590,
-                      "sha256":  "9f8bf13173f565cd0846d53235b37a25537f331d645f5237e5a3cd2d538f974f",
-                      "category":  "full-exp-material"
-                  },
                   {
                       "path":  "D-cache/.gitignore",
                       "bytes":  300,
@@ -92,6 +84,48 @@
                       "path":  "D-cache/docs/DCache_写入机制技术文档.md",
                       "bytes":  4715,
                       "sha256":  "917498dcfacd6810ef2b9e9453334176b410deeb5632c202d34186a7fed5eda6",
+                      "category":  "d-cache-material"
+                  },
+                  {
+                      "path":  "D-cache/Important/README.md",
+                      "bytes":  804,
+                      "sha256":  "f787823666cc9bde161fbaab9e81bcd4a0859c44ce88d3552e3fac873dff21c5",
+                      "category":  "d-cache-material"
+                  },
+                  {
+                      "path":  "D-cache/Important/D-Cache_PASS/dcache-extended.log",
+                      "bytes":  344,
+                      "sha256":  "ea33919ab66b879d0fb1a84124eee9c7a82d57c208e8bcf77926b4c912ed03e7",
+                      "category":  "d-cache-material"
+                  },
+                  {
+                      "path":  "D-cache/Important/D-Cache_PASS/dcache_extension.xpr",
+                      "bytes":  11451,
+                      "sha256":  "413b5745ede44aac2cad12892e2de5e88f69d28b342953165e911bce8d8922be",
+                      "category":  "d-cache-material"
+                  },
+                  {
+                      "path":  "D-cache/Important/D-Cache_PASS/dcache_tb.wcfg",
+                      "bytes":  2778,
+                      "sha256":  "564d3c71b4a70a54b3b8543dc0c1ae496e0e3219abfb591402b1cc648113aa37",
+                      "category":  "d-cache-material"
+                  },
+                  {
+                      "path":  "D-cache/Important/D-Cache_PASS/dcache_tb_wave.wdb",
+                      "bytes":  1326493,
+                      "sha256":  "da894f9c219d1281de42883baa1e59a9d4bf6b0aeb32d8d1481977215592485a",
+                      "category":  "d-cache-material"
+                  },
+                  {
+                      "path":  "D-cache/Important/D-Cache_PASS/final_sim.log",
+                      "bytes":  1568,
+                      "sha256":  "c687dfd6539409e0318afa530509e991b33a00233f9e0a9194d5c7cee2ca7e4c",
+                      "category":  "d-cache-material"
+                  },
+                  {
+                      "path":  "D-cache/Important/D-Cache_PASS/school_cache_verify.log",
+                      "bytes":  21082,
+                      "sha256":  "25b39347b9916dfd1396182a5187c8dcaad7a2f66282708f2ce77bc8e057dbbe",
                       "category":  "d-cache-material"
                   },
                   {
@@ -3617,6 +3651,102 @@
                       "category":  "full-exp-material"
                   },
                   {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/README.md",
+                      "bytes":  1914,
+                      "sha256":  "8a6c380467b6c3c89321fa11627ce8a0700df0834c045fe613f1976803e27e0b",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/split_wdb.ps1",
+                      "bytes":  906,
+                      "sha256":  "3e838238655b1705f817363af4e838bdbb43b15226b0ac0d95ccc440e9d4ede8",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/ex8_looongson_remote_top.bit",
+                      "bytes":  5233299,
+                      "sha256":  "8235414ec1d704f416190786e549ad9155efff0673f3a8195cfe60a8fb9c83cb",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/ex9_looongson_remote_top.bit",
+                      "bytes":  5254391,
+                      "sha256":  "d388e3a17cf680cc545be16345541e30de3dddb371e9e1b868b2cfe20879f813",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/golden_trace_ex8.txt",
+                      "bytes":  2090400,
+                      "sha256":  "164ee67dd976f4734d3420e38944c7d250626dad7e02c33b876b19b9e7a1b24e",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/golden_trace_ex9.txt",
+                      "bytes":  2198232,
+                      "sha256":  "574347c0d63d1ba8be104c0ec39cb464c03ae9c4ec76e8aa46c192f8c16cdfff",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/run_reference_ex8.log",
+                      "bytes":  18356,
+                      "sha256":  "8bdb55df7e2374653373c13dc1e2a54be7356e657c31c60e5e5bc845894e4fe4",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/run_reference_ex9.log",
+                      "bytes":  22670,
+                      "sha256":  "2a8a6a71d30351f93ce6a3f0444d08a633a988a09398870883ff4c4d7329fea1",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/simulate.log",
+                      "bytes":  9166,
+                      "sha256":  "f135889f00580acd4ccb2c95c64d5b5fbd897db1821302cb7981db8611118343",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/tb_top_behav.wcfg",
+                      "bytes":  5147,
+                      "sha256":  "690800323c319d45d62b9e04f47fa773668cbd6d33eea9b67d2f5673087b5b23",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/teacher-ex4-to-ex9-two-way.log",
+                      "bytes":  294,
+                      "sha256":  "a2170eadb4b77093acaab285bd0f39b29e01ef4aceac2c3c7edebeb1d9674831",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/teacher-ex9-no-cache.log",
+                      "bytes":  49,
+                      "sha256":  "07aa3007c2df2485a395c73bd057f0fd3b7f013fefb5c422429f939c7f778776",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/teacher-ex9-ways1.log",
+                      "bytes":  49,
+                      "sha256":  "477fbe00c1a9eddb87fd50b39f1cc7749725a539155994fcc687833fb29f6602",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/teacher-ex9-ways4.log",
+                      "bytes":  49,
+                      "sha256":  "76b05c52b47bf541bebce96426abcd48d0a3569a1e4556ba9b4344ef7229c5a1",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Summary/verification-results.json",
+                      "bytes":  36613,
+                      "sha256":  "449cbf76c942bb82a84de5a0e94531289002933014544c041270b854d1e6563c",
+                      "category":  "full-exp-material"
+                  },
+                  {
+                      "path":  "Full Exp (with Exp8 and Exp9)/Important/Summary/关键 PASS 输出汇总.md",
+                      "bytes":  950,
+                      "sha256":  "d1d9a14d95513db6a6995b1bf9e72efeae220976bfced5eac8b038badceefcc1",
+                      "category":  "full-exp-material"
+                  },
+                  {
                       "path":  "Full Exp (with Exp8 and Exp9)/reports/第五章_Exp8_Exp9_报告资料说明.md",
                       "bytes":  12447,
                       "sha256":  "7ffa9233033e100242cb353e94dda7947561d455efb6117962c066c48e26a23a",
@@ -3669,132 +3799,6 @@
                       "bytes":  85803166,
                       "sha256":  "013a01ccd994b695c2bb94d4937964ba2d9f0c921d6f17d4dd9d51ace78a1cb2",
                       "category":  "full-exp-material"
-                  },
-                  {
-                      "path":  "Important/README.md",
-                      "bytes":  970,
-                      "sha256":  "41a8dd295817d48bbfd6141144a6c5171d63950ae949b198d6cd3fd4e9b3031f",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/D-Cache_PASS/dcache-extended.log",
-                      "bytes":  344,
-                      "sha256":  "ea33919ab66b879d0fb1a84124eee9c7a82d57c208e8bcf77926b4c912ed03e7",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/D-Cache_PASS/dcache_extension.xpr",
-                      "bytes":  11451,
-                      "sha256":  "413b5745ede44aac2cad12892e2de5e88f69d28b342953165e911bce8d8922be",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/D-Cache_PASS/dcache_tb.wcfg",
-                      "bytes":  2778,
-                      "sha256":  "564d3c71b4a70a54b3b8543dc0c1ae496e0e3219abfb591402b1cc648113aa37",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/D-Cache_PASS/dcache_tb_wave.wdb",
-                      "bytes":  1326493,
-                      "sha256":  "da894f9c219d1281de42883baa1e59a9d4bf6b0aeb32d8d1481977215592485a",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/D-Cache_PASS/final_sim.log",
-                      "bytes":  1568,
-                      "sha256":  "c687dfd6539409e0318afa530509e991b33a00233f9e0a9194d5c7cee2ca7e4c",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/D-Cache_PASS/school_cache_verify.log",
-                      "bytes":  21082,
-                      "sha256":  "25b39347b9916dfd1396182a5187c8dcaad7a2f66282708f2ce77bc8e057dbbe",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/ex8_looongson_remote_top.bit",
-                      "bytes":  5233299,
-                      "sha256":  "8235414ec1d704f416190786e549ad9155efff0673f3a8195cfe60a8fb9c83cb",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/ex9_looongson_remote_top.bit",
-                      "bytes":  5254391,
-                      "sha256":  "d388e3a17cf680cc545be16345541e30de3dddb371e9e1b868b2cfe20879f813",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/golden_trace_ex8.txt",
-                      "bytes":  2090400,
-                      "sha256":  "164ee67dd976f4734d3420e38944c7d250626dad7e02c33b876b19b9e7a1b24e",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/golden_trace_ex9.txt",
-                      "bytes":  2198232,
-                      "sha256":  "574347c0d63d1ba8be104c0ec39cb464c03ae9c4ec76e8aa46c192f8c16cdfff",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/run_reference_ex8.log",
-                      "bytes":  18356,
-                      "sha256":  "8bdb55df7e2374653373c13dc1e2a54be7356e657c31c60e5e5bc845894e4fe4",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/run_reference_ex9.log",
-                      "bytes":  22670,
-                      "sha256":  "2a8a6a71d30351f93ce6a3f0444d08a633a988a09398870883ff4c4d7329fea1",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/simulate.log",
-                      "bytes":  9166,
-                      "sha256":  "f135889f00580acd4ccb2c95c64d5b5fbd897db1821302cb7981db8611118343",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/tb_top_behav.wcfg",
-                      "bytes":  5147,
-                      "sha256":  "690800323c319d45d62b9e04f47fa773668cbd6d33eea9b67d2f5673087b5b23",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/teacher-ex4-to-ex9-two-way.log",
-                      "bytes":  294,
-                      "sha256":  "a2170eadb4b77093acaab285bd0f39b29e01ef4aceac2c3c7edebeb1d9674831",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/teacher-ex9-no-cache.log",
-                      "bytes":  49,
-                      "sha256":  "07aa3007c2df2485a395c73bd057f0fd3b7f013fefb5c422429f939c7f778776",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/teacher-ex9-ways1.log",
-                      "bytes":  49,
-                      "sha256":  "477fbe00c1a9eddb87fd50b39f1cc7749725a539155994fcc687833fb29f6602",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Full-Exp_PASS/teacher-ex9-ways4.log",
-                      "bytes":  49,
-                      "sha256":  "76b05c52b47bf541bebce96426abcd48d0a3569a1e4556ba9b4344ef7229c5a1",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Summary/verification-results.json",
-                      "bytes":  36613,
-                      "sha256":  "449cbf76c942bb82a84de5a0e94531289002933014544c041270b854d1e6563c",
-                      "category":  "priority-evidence"
-                  },
-                  {
-                      "path":  "Important/Summary/关键 PASS 输出汇总.md",
-                      "bytes":  950,
-                      "sha256":  "d1d9a14d95513db6a6995b1bf9e72efeae220976bfced5eac8b038badceefcc1",
-                      "category":  "priority-evidence"
                   }
               ]
 }

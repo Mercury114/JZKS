@@ -1,6 +1,3 @@
-b2a7776ddaedddfe904946b9adca6921608246952f3d71b5cb300c463069c316  manifest.json
-09c7b6c53578c8296d3c33dbdf5e6c3425dbfb78c65041d11dd049690d8327fe  README.md
-9f8bf13173f565cd0846d53235b37a25537f331d645f5237e5a3cd2d538f974f  split_wdb.ps1
 84129b769113575f2d2bc699ea2c1e6750dafa40f641f59f49dd073fcc53f83d  D-cache/.gitignore
 917498dcfacd6810ef2b9e9453334176b410deeb5632c202d34186a7fed5eda6  D-cache/DCache_????????.md
 d301303742ac82dcc3edb8981d94b2205393b17ea197058b9a1072fd7063d970  D-cache/README.md
@@ -14,6 +11,13 @@ b68e2ab5c5a01c4b3b84710737474d7ffd9f38dc76c53404f8b4a129448d6691  D-cache/build/
 c687dfd6539409e0318afa530509e991b33a00233f9e0a9194d5c7cee2ca7e4c  D-cache/build/final_sim.log
 25b39347b9916dfd1396182a5187c8dcaad7a2f66282708f2ce77bc8e057dbbe  D-cache/build/school_cache_verify.log
 917498dcfacd6810ef2b9e9453334176b410deeb5632c202d34186a7fed5eda6  D-cache/docs/DCache_????????.md
+f787823666cc9bde161fbaab9e81bcd4a0859c44ce88d3552e3fac873dff21c5  D-cache/Important/README.md
+ea33919ab66b879d0fb1a84124eee9c7a82d57c208e8bcf77926b4c912ed03e7  D-cache/Important/D-Cache_PASS/dcache-extended.log
+413b5745ede44aac2cad12892e2de5e88f69d28b342953165e911bce8d8922be  D-cache/Important/D-Cache_PASS/dcache_extension.xpr
+564d3c71b4a70a54b3b8543dc0c1ae496e0e3219abfb591402b1cc648113aa37  D-cache/Important/D-Cache_PASS/dcache_tb.wcfg
+da894f9c219d1281de42883baa1e59a9d4bf6b0aeb32d8d1481977215592485a  D-cache/Important/D-Cache_PASS/dcache_tb_wave.wdb
+c687dfd6539409e0318afa530509e991b33a00233f9e0a9194d5c7cee2ca7e4c  D-cache/Important/D-Cache_PASS/final_sim.log
+25b39347b9916dfd1396182a5187c8dcaad7a2f66282708f2ce77bc8e057dbbe  D-cache/Important/D-Cache_PASS/school_cache_verify.log
 b4a907edb65f8f6f3ba517f38d9525e757609216b58c90a3f80b89bbc48b9b0a  D-cache/integrated-cache/build/regression/arbiter
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  D-cache/integrated-cache/build/regression/arbiter-compile.log
 d1e8920653c59556d983437e804645808de8e890174307fa085fb23f83db9cf4  D-cache/integrated-cache/build/regression/arbiter.log
@@ -601,6 +605,23 @@ f135889f00580acd4ccb2c95c64d5b5fbd897db1821302cb7981db8611118343  Full Exp (with
 2a8a6a71d30351f93ce6a3f0444d08a633a988a09398870883ff4c4d7329fea1  Full Exp (with Exp8 and Exp9)/evidence/Exp9/run_reference_ex9.log
 f135889f00580acd4ccb2c95c64d5b5fbd897db1821302cb7981db8611118343  Full Exp (with Exp8 and Exp9)/evidence/Exp9/simulate.log
 690800323c319d45d62b9e04f47fa773668cbd6d33eea9b67d2f5673087b5b23  Full Exp (with Exp8 and Exp9)/evidence/Exp9/tb_top_behav.wcfg
+6c90aa6480a1e70aadb0dadb704d10b3eba817c35265b49fd08d34292b83968d  Full Exp (with Exp8 and Exp9)/Important/manifest.json
+8a6c380467b6c3c89321fa11627ce8a0700df0834c045fe613f1976803e27e0b  Full Exp (with Exp8 and Exp9)/Important/README.md
+3e838238655b1705f817363af4e838bdbb43b15226b0ac0d95ccc440e9d4ede8  Full Exp (with Exp8 and Exp9)/Important/split_wdb.ps1
+8235414ec1d704f416190786e549ad9155efff0673f3a8195cfe60a8fb9c83cb  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/ex8_looongson_remote_top.bit
+d388e3a17cf680cc545be16345541e30de3dddb371e9e1b868b2cfe20879f813  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/ex9_looongson_remote_top.bit
+164ee67dd976f4734d3420e38944c7d250626dad7e02c33b876b19b9e7a1b24e  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/golden_trace_ex8.txt
+574347c0d63d1ba8be104c0ec39cb464c03ae9c4ec76e8aa46c192f8c16cdfff  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/golden_trace_ex9.txt
+8bdb55df7e2374653373c13dc1e2a54be7356e657c31c60e5e5bc845894e4fe4  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/run_reference_ex8.log
+2a8a6a71d30351f93ce6a3f0444d08a633a988a09398870883ff4c4d7329fea1  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/run_reference_ex9.log
+f135889f00580acd4ccb2c95c64d5b5fbd897db1821302cb7981db8611118343  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/simulate.log
+690800323c319d45d62b9e04f47fa773668cbd6d33eea9b67d2f5673087b5b23  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/tb_top_behav.wcfg
+a2170eadb4b77093acaab285bd0f39b29e01ef4aceac2c3c7edebeb1d9674831  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/teacher-ex4-to-ex9-two-way.log
+07aa3007c2df2485a395c73bd057f0fd3b7f013fefb5c422429f939c7f778776  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/teacher-ex9-no-cache.log
+477fbe00c1a9eddb87fd50b39f1cc7749725a539155994fcc687833fb29f6602  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/teacher-ex9-ways1.log
+76b05c52b47bf541bebce96426abcd48d0a3569a1e4556ba9b4344ef7229c5a1  Full Exp (with Exp8 and Exp9)/Important/Full-Exp_PASS/teacher-ex9-ways4.log
+449cbf76c942bb82a84de5a0e94531289002933014544c041270b854d1e6563c  Full Exp (with Exp8 and Exp9)/Important/Summary/verification-results.json
+d1d9a14d95513db6a6995b1bf9e72efeae220976bfced5eac8b038badceefcc1  Full Exp (with Exp8 and Exp9)/Important/Summary/?? PASS ????.md
 7ffa9233033e100242cb353e94dda7947561d455efb6117962c066c48e26a23a  Full Exp (with Exp8 and Exp9)/reports/???_Exp8_Exp9_??????.md
 ae6f4d7da2de6df807e0cac8ab69b1f5e849d8ffacc3b8e6da7752e21534fb43  Full Exp (with Exp8 and Exp9)/waveforms/Exp8/tb_top_behav.wdb.part01
 3bc614f22e897502a72b2a5581c138bd57bc0cd5652d6127c22fb3cdc85207de  Full Exp (with Exp8 and Exp9)/waveforms/Exp8/tb_top_behav.wdb.part02
@@ -610,24 +631,3 @@ feeb0b471f7295900037c5c7d53dc592f2698f3d862aaf25790db8e7e0aa0f2f  Full Exp (with
 5af976991fd50178c040b5a8a2746d7e524237e24737e19f1c3b392ce42a2630  Full Exp (with Exp8 and Exp9)/waveforms/Exp9/tb_top_behav.wdb.part02
 76d4f1387993476ca68750abc8082a6e0ee0e4985bf1186adf86caac28d05efc  Full Exp (with Exp8 and Exp9)/waveforms/Exp9/tb_top_behav.wdb.part03
 013a01ccd994b695c2bb94d4937964ba2d9f0c921d6f17d4dd9d51ace78a1cb2  Full Exp (with Exp8 and Exp9)/waveforms/Exp9/tb_top_behav.wdb.part04
-41a8dd295817d48bbfd6141144a6c5171d63950ae949b198d6cd3fd4e9b3031f  Important/README.md
-ea33919ab66b879d0fb1a84124eee9c7a82d57c208e8bcf77926b4c912ed03e7  Important/D-Cache_PASS/dcache-extended.log
-413b5745ede44aac2cad12892e2de5e88f69d28b342953165e911bce8d8922be  Important/D-Cache_PASS/dcache_extension.xpr
-564d3c71b4a70a54b3b8543dc0c1ae496e0e3219abfb591402b1cc648113aa37  Important/D-Cache_PASS/dcache_tb.wcfg
-da894f9c219d1281de42883baa1e59a9d4bf6b0aeb32d8d1481977215592485a  Important/D-Cache_PASS/dcache_tb_wave.wdb
-c687dfd6539409e0318afa530509e991b33a00233f9e0a9194d5c7cee2ca7e4c  Important/D-Cache_PASS/final_sim.log
-25b39347b9916dfd1396182a5187c8dcaad7a2f66282708f2ce77bc8e057dbbe  Important/D-Cache_PASS/school_cache_verify.log
-8235414ec1d704f416190786e549ad9155efff0673f3a8195cfe60a8fb9c83cb  Important/Full-Exp_PASS/ex8_looongson_remote_top.bit
-d388e3a17cf680cc545be16345541e30de3dddb371e9e1b868b2cfe20879f813  Important/Full-Exp_PASS/ex9_looongson_remote_top.bit
-164ee67dd976f4734d3420e38944c7d250626dad7e02c33b876b19b9e7a1b24e  Important/Full-Exp_PASS/golden_trace_ex8.txt
-574347c0d63d1ba8be104c0ec39cb464c03ae9c4ec76e8aa46c192f8c16cdfff  Important/Full-Exp_PASS/golden_trace_ex9.txt
-8bdb55df7e2374653373c13dc1e2a54be7356e657c31c60e5e5bc845894e4fe4  Important/Full-Exp_PASS/run_reference_ex8.log
-2a8a6a71d30351f93ce6a3f0444d08a633a988a09398870883ff4c4d7329fea1  Important/Full-Exp_PASS/run_reference_ex9.log
-f135889f00580acd4ccb2c95c64d5b5fbd897db1821302cb7981db8611118343  Important/Full-Exp_PASS/simulate.log
-690800323c319d45d62b9e04f47fa773668cbd6d33eea9b67d2f5673087b5b23  Important/Full-Exp_PASS/tb_top_behav.wcfg
-a2170eadb4b77093acaab285bd0f39b29e01ef4aceac2c3c7edebeb1d9674831  Important/Full-Exp_PASS/teacher-ex4-to-ex9-two-way.log
-07aa3007c2df2485a395c73bd057f0fd3b7f013fefb5c422429f939c7f778776  Important/Full-Exp_PASS/teacher-ex9-no-cache.log
-477fbe00c1a9eddb87fd50b39f1cc7749725a539155994fcc687833fb29f6602  Important/Full-Exp_PASS/teacher-ex9-ways1.log
-76b05c52b47bf541bebce96426abcd48d0a3569a1e4556ba9b4344ef7229c5a1  Important/Full-Exp_PASS/teacher-ex9-ways4.log
-449cbf76c942bb82a84de5a0e94531289002933014544c041270b854d1e6563c  Important/Summary/verification-results.json
-d1d9a14d95513db6a6995b1bf9e72efeae220976bfced5eac8b038badceefcc1  Important/Summary/?? PASS ????.md
