@@ -8,7 +8,9 @@ foreach candidate [glob -nocomplain -directory $repo_dir -types d */rtl] {
 if {[llength $rtl_candidates] != 1} {error "Expected exactly one repository CPU directory"}
 set rtl_dir [lindex $rtl_candidates 0]
 set hardware_dir [file dirname $rtl_dir]
-set build_dir [file join $scripts_dir console_build]
+# UART IRQ fix: explicit firmware profiles keep course fixtures immutable.
+if {![info exists firmware]} {set firmware ex9}
+if {![info exists build_dir]} {set build_dir [file join $scripts_dir [expr {$firmware eq "uart" ? "console_build_uart" : "console_build"}]]}
 set xpr [file join $build_dir pipeline_uart.xpr]
 if {[file exists $xpr]} {error "Project already exists: $xpr"}
 create_project pipeline_uart $build_dir -part xc7a200tfbg676-1
@@ -28,20 +30,18 @@ foreach name {
     add_files -norecurse [file join $rtl_dir $name]
 }
 add_files -fileset constrs_1 -norecurse [file join $rtl_dir loongson_remote.xdc]
-foreach image [list \
-    [file join $hardware_dir ip_ascii inst_ram inst_ram.mif] \
-    [file join $hardware_dir ip_ascii data_ram data_ram.mif]] {
+if {$firmware eq "uart"} {
+    set image_dir [file join $repo_dir innovation_uart sw obj]
+} else {
+    set image_dir [file join $hardware_dir ip_ascii]
+}
+foreach name {inst_ram data_ram} {
+    set image [expr {$firmware eq "uart" ? [file join $image_dir ${name}.mif] : [file join $image_dir $name ${name}.mif]}]
+    if {![file exists $image]} {error "Image missing: $image (run prepare_images.py for UART)"}
     add_files -norecurse $image
+    add_files -fileset sim_1 -norecurse $image
 }
-# Use checked-in MIF images with the source-level RAM wrappers.  This avoids
-# Vivado 2023.2 attempting to regenerate the locked course XCI files.
-set sim_sources [list \
-    [file join $hardware_dir ip_ascii inst_ram inst_ram.mif] \
-    [file join $hardware_dir ip_ascii data_ram data_ram.mif]]
-foreach source $sim_sources {
-    if {[file exists $source]} {add_files -fileset sim_1 -norecurse $source}
-}
-foreach name {tb_uart_console.v tb_uart_fifo.v tb_uart_stopwatch.v tb_uart_irq.v} {
+foreach name {tb_uart_console.v tb_uart_fifo.v tb_uart_stopwatch.v tb_uart_irq.v tb_uart_board_boot.v} {
     add_files -fileset sim_1 -norecurse [file join $repo_dir innovation_uart sim $name]
 }
 set_property is_enabled true [get_files -of_objects [get_filesets sources_1]]

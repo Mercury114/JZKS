@@ -1,3 +1,19 @@
+# 五级流水UART回归入口（2026-10-21）
+
+以下命令在仓库根目录的Linux/WSL中执行，需要Python3和Icarus Verilog：
+
+```bash
+python3 innovation_uart/sim/run_control.py
+python3 innovation_uart/sim/run_regression.py --mode all
+```
+
+run_control覆盖精确CSR返回值、掩码、load依赖及32次中断的寄存器/内存完整性。
+run_regression支持console、console_hw、stopwatch、stopwatch_hw、irq、irq_hw、fifo。
+真实CPU和源级同步RAM不替换运算结果，初始化来自当前两份UART COE。
+Vivado使用run.ps1的-Firmware uart，完整操作与证据见docs/TIMER_IRQ.md和VERIFICATION.md。
+
+## 旧测试说明
+
 # UART FIFO与命令终端仿真
 
 当前使用 `tb_uart_fifo.v` 与 `tb_uart_console.v`，工程仿真顶层默认 `tb_uart_console`。
@@ -30,3 +46,11 @@
 并验证中断期间串口命令及秒表不被破坏。
 快速模式的0.5ms周期不作强制修改；硬件模式仅推进定时器接近到期以缩短运行时间。
 具体时钟、命令与波形见 `innovation_uart/docs/TIMER_IRQ.md`。
+
+
+## 综合后板级启动自检
+
+`tb_uart_board_boot.v` 使用真正板级顶层和硬件UART配置，检查复位TX空闲、LED初始化和CPU触发TX起始位。
+UART bitstream构建会自动运行该综合后功能仿真；失败则停止，防止RTL仿真通过而综合ROM为空。
+CPU的 /16 时钟在XDC中显式约束为320ns，构建结束另查实际布线后的setup/hold。
+这项冒烟测试不替代已有完整命令、FIFO、秒表和IRQ回归。

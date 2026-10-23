@@ -2,6 +2,19 @@
 
 本分支 `pipeline-cache-uart` 以课程 Exp7 的五级流水实现为 CPU 基线，整理了第五章 Exp8/Exp9 所需的访存、CSR、异常、中断和计数器逻辑，并保留 `D-cache` 与 `innovation/uart-echo` 两个分支的扩展资产。`main`、`D-cache`、`innovation/uart-echo` 均未被覆盖。
 
+## 2026-10-21：UART定时器IRQ修复（基于main a6223e5）
+
+已修复课程五级流水CPU的CSR读回数据、CSR/ERTN串行控制、中断排空及精确ERA保存。
+没有合入uart-irq-wip中的重复加载/NOP；原汇编和两份COE保持不变。
+UART的全部快速/硬件分频回归、独立CSR/IRQ架构测试及Vivado 2018.3 IRQ仿真通过。
+Cache CPU和系统回归仍通过，Cache/D-cache及官方镜像源码不变。
+
+UART请显式使用 `-Firmware uart`，工程为 `vivado/console_build_uart/pipeline_uart.xpr`。
+官方Exp9使用 `-Firmware ex9`，仍是 `vivado/console_build/pipeline_uart.xpr`。
+默认create/bitstream保留官方Exp9语义，不能拿官方测试bit作为UART演示bit。
+完整根因、测试记录和操作见 `innovation_uart/docs/TIMER_IRQ.md` 和 `VERIFICATION.md`。
+以下为原合并分支历史说明；其中旧版“UART未验证”和XSim环境问题不作为本次结果。
+
 ## 工程入口
 
 - Vivado 工程：`vivado/console_build/pipeline_uart.xpr`

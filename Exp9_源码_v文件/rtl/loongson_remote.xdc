@@ -3,6 +3,8 @@ set_property -dict {PACKAGE_PIN K21 IOSTANDARD LVCMOS33} [get_ports clk_50M] ;#5
 set_property -dict {PACKAGE_PIN H21 IOSTANDARD LVCMOS33} [get_ports clk_11M0592] ;#11.0592MHz clock for UART
 
 create_clock -period 20.000 -name clk_50M -waveform {0.000 10.000} [get_ports clk_50M]
+# UART board fix: constrain the real 50 MHz / 16 CPU clock.
+create_generated_clock -name cpu_clk -source [get_ports clk_50M] -divide_by 16 [get_pins {soc_lite/pll.cpu_clk_div_reg[3]/Q}]
 create_clock -period 90.422 -name clk_11M0592 -waveform {0.000 45.211} [get_ports clk_11M0592]
 
 #Touch Button

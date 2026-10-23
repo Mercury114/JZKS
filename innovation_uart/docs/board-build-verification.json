@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-21",
+  "base_main": "a6223e5",
+  "failure_reproduced": "old synthesized board netlist: 0 TX bytes, LEDs=ffff after reset",
+  "cause": "synthesized instruction RAM start initialized to zero despite correct RTL MIF",
+  "fix": "synthesis translate_off/on around simulation zero-fill; MIF is sole synthesized initialization",
+  "synthesized_board_boot": "PASS: reset TX idle high, startup LEDs=0000, CPU triggers TX start; 3 checks; no frame decoding",
+  "rtl_regression": {
+    "console": {
+      "cases": 17,
+      "checks": 962
+    },
+    "irq": {
+      "cases": 10,
+      "checks": 1246,
+      "entries": 11,
+      "returns": 11
+    }
+  },
+  "timing_report": "vivado\\console_build_uart_board\\pipeline_uart.runs\\impl_1\\looongson_remote_top_timing_summary_routed.rpt",
+  "cpu_clock_ns": 320.0,
+  "unclocked_register_pins": 0,
+  "routed_setup_hold": "PASS",
+  "bit": "innovation_uart\\build\\uart_console_fixed_20261021.bit",
+  "bytes": 2745123,
+  "sha256": "c378e9b2a87b927295e63ddb7e2ca7bc5ffdb7c12191e97e97f3ed6afbe1b5b3",
+  "pending": [
+    "remote FPGA platform retest"
+  ]
+}

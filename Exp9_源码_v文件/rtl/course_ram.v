@@ -12,7 +12,11 @@ module inst_ram(
     reg [31:0] mem [0:262143];
     integer i;
     initial begin
+        // UART board fix: keep simulation padding out of synthesis.
+        // The MIF is the sole synthesis initialization source.
+        // synthesis translate_off
         for (i = 0; i < 262144; i = i + 1) mem[i] = 32'b0;
+        // synthesis translate_on
         $readmemb("inst_ram.mif", mem);
     end
     always @(posedge clka) begin
@@ -37,7 +41,11 @@ module data_ram(
     reg [31:0] mem [0:65535];
     integer i;
     initial begin
+        // UART board fix: keep simulation padding out of synthesis.
+        // The MIF is the sole synthesis initialization source.
+        // synthesis translate_off
         for (i = 0; i < 65536; i = i + 1) mem[i] = 32'b0;
+        // synthesis translate_on
         $readmemb("data_ram.mif", mem);
     end
     always @(posedge clka) begin

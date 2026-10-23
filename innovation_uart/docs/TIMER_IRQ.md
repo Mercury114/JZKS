@@ -1,81 +1,79 @@
-# 定时器中断驱动LED闪烁
+# 五级流水定时器IRQ修复与演示
 
-## 版本保存
+## 根因
 
-2026-10-20修改前版本位于本机：
-`D:/2026_ComputerOrganizationLab/JZKS_backups/before_timer_irq_20261020_214806`。
-包含源码、配置、完整编译输出和此前已生成的 `verified_before_irq.bit`。
-`manifest.json`记录52个文件的SHA256；修改前已逐字节核对源码备份。
-备份位于仓库外，本次没有commit或push。
+旧的多周期实现已被替换为五级流水，不能继续假定进入/退出中断时没有在途指令。
 
-## 修改范围与控制路径
+1. CSR编号与普通立即数字段重叠，旧ID路径把CSR读值加上了编号。
+   例如SAVE0初始0却返回0x30；TCFG初始0可能被读成0x41，IRQ ON误以为已经开启。
+2. CSRXCHG的GPR返回值误用了掩码，应返回旧CSR；CSRWR的rd源也需要加载相关检查。
+3. CSR读组合函数只以编号作为显式输入；相邻同号访问的读值更新不可靠，改为显式组合case。
+4. 仅在ID空泡进入中断并不代表EX/MEM已提交，旧ERA还用取指地址减4猜测。
+5. ERTN/CSR/异常可能在前面恢复寄存器、访存尚未完成时生效；控制副作用也需受真实ID握手约束。
+6. 板级分频时钟初始保持低，仿真从低复位开始时需确定cpu_resetn上电值。
 
-仅增加汇编程序、链接布局、字符串和自检，不修改原CPU及UART硬件。
-`sw/uart_echo.S`中的初始化设置EENTRY=0x1c001000、ECFG.LIE[11]=1，默认保持全局中断关闭。
-`command_irq`解析ON/OFF/COUNT，`irq_on`配置周期定时器并开启CRMD.IE。
-`irq_disable`先关闭全局IE，再停止TCFG、清TICLR，供OFF、LED和MIRROR ON复用。
-`sw/uart.lds`将`.text.irq`固定在指令RAM偏移0x1000，链接时检查主程序不能覆盖入口。
+## 修复方法
 
-CPU已有中断条件为 `CRMD.IE && |(ESTAT.IS & ECFG.LIE)`。
-当前CPU是多周期状态机，在S_EXEC执行当前指令之前判断中断。
-进入中断时硬件保存ERA和PRMD、关闭IE、跳转EENTRY；当前指令尚未执行。
-处理程序为使用的r12..r15分配32字节栈帧，保存寄存器并检查中断原因。
-随后写TICLR[0]清定时器中断，累计次数、切换LED，恢复寄存器与SP，执行ERTN。
-ERTN恢复CRMD并返回ERA，被打断的指令继续执行，不跳过一条指令。
-中断中不调用串口打印、不重新开启IE、不进行嵌套中断。
-非预期同步异常停在irq_fault保留现场，不把它当作定时器事件返回。
+`ID_stage.v`：CSR和计数器读回以0为ALU加数，CSRXCHG单独保留旧CSR与写掩码路径，
+补CSRWR加载依赖；副作用使用 `ds_fire = valid && ready && es_allowin`。
+CSR、异常、ERTN和CACOP等串行控制等待旧EX/MEM排空，普通算术/访存仍按原流水前递运行。
+定时器中断挂起时停止ID发射，让旧指令自然提交；待ID有下一条未执行指令且EX/MEM空时响应。
+`mycpu_top.v`保存这条ID指令的真实PC到ERA，屏蔽IE并跳EENTRY；不再从取指地址反推。
+`ERTN`等待最后一条寄存器恢复提交后返回，所有GPR和SP得到保留。
 
-## 时钟与周期
+复用主线原单次加载的 `uart_echo.S` 和两份COE，没有合入WIP中的重复加载、NOP或跳过异常原因检查。
+UART FIFO保持主线已修复的“同步MMIO读请求只弹出一次”实现。
+测试保留严格的一次ISR一次计数写入及全部31个非零GPR恢复检查，不忽略非预期写入。
 
-硬件CPU时钟=50MHz/16=3.125MHz，TCFG=1562503。
-其中初值1562500、周期模式bit1=1、使能bit0=1。
-当前CPU计数器从初值递减至0，再触发并重装，间隔为1562501个CPU周期：约0.50000032秒。
-全部16个LED每次中断在全亮/全灭之间切换，完整亮灭周期约1秒。
-快速仿真检测已有SIMU_FLAG，将TCFG设置为25003，50MHz下每25001拍触发，约0.5毫秒。
-板上SIMULATION=0，不会使用快速仿真的周期。
+## 行为
 
-CPU内部CSR定时器与confreg中0xBFAFE000的50MHz计数器相互独立。
-秒表仍读取原有confreg计数器，不因IRQ ON/OFF改变计时语义。
-
-## 命令语义
+串口9600、8N1、换行LF，逐条命令等待响应：
 
 | 命令 | 行为 |
 | --- | --- |
-| IRQ ON | 从关闭状态开启时清次数、LED全灭；自动关闭MIRROR；已开启时重复ON幂等 |
-| IRQ OFF | 停止闪灯，保留最后LED状态和中断次数；重复OFF幂等 |
-| IRQ COUNT | 返回32位十六进制次数快照，例如IRQ_COUNT=0x0000000A表示10次 |
-| LED xxxx | 参数合法后关闭闪灯和MIRROR，再设置全部16个LED |
-| MIRROR ON | 关闭闪灯，转为开关控制LED和数码管 |
-| CODE / DISP | 更新数码管并关闭MIRROR，不停止独立的中断闪灯 |
-| START / STOP / TIME / RESET | 只操作秒表，与中断闪灯独立 |
+| IRQ ON | 关闭状态开始新一轮，次数归零、LED全灭；已开启时重复ON不重置 |
+| IRQ OFF | 停止闪灯，保留最后LED状态和次数 |
+| IRQ COUNT | 返回32位十六进制次数快照，0x0000000A即10次 |
+| LED xxxx / MIRROR ON | 参数合法后先停中断闪灯，再接管LED |
+| CODE / DISP / SW / STAT | 可在闪灯时使用，CODE和DISP关闭MIRROR但不停止独立IRQ |
+| START / STOP / TIME / RESET | 仍为独立秒表，不改变中断闪灯状态 |
 
-关闭闪灯后重新ON开始新一轮次数；次数为32位，达到最大值后模2^32回绕。
-COUNT先读取快照再打印，因此响应期间实际次数可能继续增加。
-未知参数、ONX、额外参数等返回ERR，不改变中断状态。
+硬件CPU时钟50MHz/16=3.125MHz，TCFG初值1562500，间隔1562501拍，约0.5秒切换亮灭。
+快速仿真通过SIMU_FLAG使用25001拍/50MHz，即约0.5毫秒。
+CPU内部CSR定时器与confreg的50MHz秒表计数器相互独立。
 
-## 验证方法
+## 生成正确的UART工程和bit
 
-`tb_uart_irq.v`实例化真实仓库CPU、真实RAM IP和当前固件，通过串行输入命令并逐字节检查输出。
-独立监视S_EXEC的has_int、通用寄存器快照、ERA/PRMD、TICLR、ERTN和实际LED总线写入。
-每次返回前检查全部31个非零通用寄存器（包括SP）与进入时相同，返回后PC和IE恢复。
-中断次数的内存写入、串口COUNT快照和LED相位相互交叉检查。
-覆盖默认关闭、非法参数、重复ON/OFF、后台ASCII/数码管/开关/秒表、手动LED与MIRROR接管。
+官方Exp9固件与UART固件必须区分，官方镜像不覆盖。
+UART MIF由跟踪的两份COE生成，放在忽略的sw/obj中；无需重新汇编即可从clone重建工程。
 
-快速模式不强制修改定时器，直接验证相邻到期事件间隔为25001拍。
-硬件模式使用真实/16分频、326拍UART和外部标准9600波特率；核对TCFG初值及逐拍递减。
-为缩短硬件模式仿真，测试平台仅把CPU内定时器timer_cnt推进至接近到期，再让真实硬件触发。
-不强制修改CPU状态、通用寄存器、CSR使能/屏蔽、软件中断次数、RAM结果或LED数据。
-这部分是硬件仿真加速手段，实体板仍需通过新bit确认实际约0.5秒的闪灯效果。
+```powershell
+powershell -ExecutionPolicy Bypass -File .\vivado\run.ps1 -Mode create -Firmware uart
+powershell -ExecutionPolicy Bypass -File .\vivado\run.ps1 -Mode irq -Firmware uart
+powershell -ExecutionPolicy Bypass -File .\vivado\run.ps1 -Mode bitstream -Firmware uart
+```
 
-## 截图信号
+需安装Python3；可用 `-Python` 指定解释器，用 `-Vivado` 指定Vivado路径。
+UART工程为 `vivado/console_build_uart/pipeline_uart.xpr`，UART bit为
+`vivado/console_build_uart/pipeline_uart.runs/impl_1/looongson_remote_top.bit`。
+官方Exp9仍用 `-Firmware ex9` 和原 `vivado/console_build/pipeline_uart.xpr`。
+省略Firmware时，create/bitstream默认ex9，各UART仿真模式默认uart。
 
-在IRQ自检中加入：
-`dut.cpu.pc`、`state`、`has_int`、`timer_cnt`、`csr_crmd`、`csr_ecfg`、
-`csr_estat`、`csr_era`、`csr_eentry`、`inst_ertn`、
-`dut.cpu_data_en`、`cpu_data_we`、`cpu_data_addr`、`cpu_data_wdata`、`web_led`。
-展示定时到期/ESTAT[11]置位、PC进入0x1c001000、LED地址0xBFAFF020写入、
-TICLR清标志、ERTN恢复ERA的完整过程。控制台应出现UART_IRQ_PASS和UART_IRQ_VERIFIED。
+## 平台验收
 
-工程仍为 `vivado/console_build/uart_console.xpr`，默认仿真顶层保持tb_uart_console。
-汇编重新构建后，两份COE都需要更新，脚本已自动重新生成RAM输出产品。
-本次未重新生成bit、未在远程实体板测试中断版本，需用户重新综合、实现、生成bit并上传演示。
+上传新UART bit，打开串口后复位，应收到UART CONSOLE READY。
+IRQ ON后等待几秒观察约0.5秒亮灭切换；IRQ COUNT约每秒增加2。
+闪灯时执行CODE A、DISP 3A、SW、秒表命令，检查前台响应仍正确。
+IRQ OFF后间隔两次查询次数应保持；LED 00FF接管后不应再被ISR覆盖。
+
+## 波形
+
+观察 `dut.cpu.interrupt_redirect`、`timer_has_int`、`id_pc`、`id_valid`、`pipeline_busy`、
+`csr_estat`、`csr_era`、`csr_eentry`、`csr_crmd`、`id_ertn`、
+`dut.cpu_data_en/we/addr/wdata`和`web_led`。
+确认IRQ响应时ID有效且旧流水为空，ERA等于被暂停的ID PC；PC跳0x1c001000，
+TICLR清标志、LED地址0xBFAFF020写入，ERTN在所有寄存器恢复后返回。
+不能再使用旧多周期的state==S_EXEC/has_int作为一次IRQ入口判据，也不能用重定向后的取指PC充当ERA。
+
+最新测试结果见VERIFICATION.md和pipeline-irq-verification.json。
+已修复指令RAM综合初始化并生成新bit；综合后板级启动及实现时序通过，平台重测待完成。详见VERIFICATION.md。

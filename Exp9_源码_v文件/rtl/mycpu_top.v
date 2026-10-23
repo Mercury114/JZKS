@@ -55,7 +55,7 @@ reg [31:0] csr_eentry, csr_save0, csr_save1, csr_save2, csr_save3;
 reg [31:0] csr_tid, csr_tcfg, timer_cnt;
 reg [63:0] stable_counter;
 wire [13:0] id_csr_num;
-wire [31:0] csr_rdata;
+reg [31:0] csr_rdata;
 wire [31:0] rdcnt_value;
 wire id_csr_we;
 wire [31:0] id_csr_mask, id_csr_wdata;
@@ -76,38 +76,39 @@ localparam [5:0] ECODE_SYS  = 6'h0b;
 localparam [5:0] ECODE_BRK  = 6'h0c;
 localparam [5:0] ECODE_INE  = 6'h0d;
 
-function [31:0] read_csr;
-    input [13:0] number;
-    begin
-        case (number)
-            14'h0000: read_csr = csr_crmd;
-            14'h0001: read_csr = csr_prmd;
-            14'h0004: read_csr = csr_ecfg;
-            14'h0005: read_csr = csr_estat;
-            14'h0006: read_csr = csr_era;
-            14'h0007: read_csr = csr_badv;
-            14'h000c: read_csr = csr_eentry;
-            14'h0030: read_csr = csr_save0;
-            14'h0031: read_csr = csr_save1;
-            14'h0032: read_csr = csr_save2;
-            14'h0033: read_csr = csr_save3;
-            14'h0040: read_csr = csr_tid;
-            14'h0041: read_csr = csr_tcfg;
-            14'h0042: read_csr = timer_cnt;
-            default:  read_csr = 32'b0;
+// UART IRQ fix: explicit sensitivity to every CSR value, not only csr_num.
+// Adjacent accesses to the same CSR and changing TVAL must see current data.
+always @(*) begin
+        case (id_csr_num)
+            14'h0000: csr_rdata = csr_crmd;
+            14'h0001: csr_rdata = csr_prmd;
+            14'h0004: csr_rdata = csr_ecfg;
+            14'h0005: csr_rdata = csr_estat;
+            14'h0006: csr_rdata = csr_era;
+            14'h0007: csr_rdata = csr_badv;
+            14'h000c: csr_rdata = csr_eentry;
+            14'h0030: csr_rdata = csr_save0;
+            14'h0031: csr_rdata = csr_save1;
+            14'h0032: csr_rdata = csr_save2;
+            14'h0033: csr_rdata = csr_save3;
+            14'h0040: csr_rdata = csr_tid;
+            14'h0041: csr_rdata = csr_tcfg;
+            14'h0042: csr_rdata = timer_cnt;
+            default:  csr_rdata = 32'b0;
         endcase
-    end
-endfunction
-assign csr_rdata = read_csr(id_csr_num);
+end
 assign rdcnt_value = (id_pc[0]) ? stable_counter[63:32] : stable_counter[31:0];
 
 wire timer_has_int = csr_crmd[2] && |(csr_estat[12:0] & csr_ecfg[12:0]);
 wire exception_redirect = id_exception;
 wire ertn_redirect = id_ertn;
-// Take an asynchronous interrupt at a pipeline bubble.  Older instructions
-// have already reached WB, while the IF/ID stages are flushed by the same
-// redirect bus used for branches.
-wire interrupt_redirect = timer_has_int && id_empty && !exception_redirect && !ertn_redirect;
+// UART IRQ fix: stop ID issue when IRQ is pending, drain all older stages,
+// and interrupt before the held ID instruction. ERA is that exact ID PC.
+// Fetch-address arithmetic is not a retirement boundary (it may be stalled
+// or already redirected), and must never be used to reconstruct ERA.
+wire pipeline_busy = es_to_ms_valid || ms_hazard_valid;
+wire interrupt_redirect = timer_has_int && id_valid && !pipeline_busy &&
+                          !exception_redirect && !ertn_redirect;
 wire normal_redirect = id_br_bus[32];
 wire redirect_valid = normal_redirect | exception_redirect | ertn_redirect | interrupt_redirect;
 wire [31:0] redirect_target = exception_redirect ? {csr_eentry[31:6],6'b0} :
@@ -156,6 +157,8 @@ ID_stage u_id_stage(
     .rdcnt_high(stable_counter[63:32]),
     .csr_tid_value(csr_tid),
     .redirect_flush(redirect_flush),
+    .pipeline_busy(pipeline_busy),
+    .interrupt_pending(timer_has_int),
     .id_csr_we(id_csr_we),
     .id_csr_num(id_csr_num),
     .id_csr_mask(id_csr_mask),
@@ -220,9 +223,9 @@ WB_stage u_wb_stage(
     .debug_wb_rf_wdata(debug_wb_rf_wdata)
 );
 
-// CSR/timer commit happens on the same clock edge as an ID instruction's
-// advance.  This keeps CSR read-after-write ordering deterministic without
-// adding a second architectural writeback port to the datapath.
+// UART IRQ fix: ID-side CSR/exception/ERTN operations are serialized after
+// EX/MEM drain. Their architectural side effects occur exactly once at ds_fire;
+// normal data-path results still use the existing register-writeback path.
 integer csr_i;
 reg [3:0] state;
 wire [31:0] pc = inst_sram_addr;
@@ -303,7 +306,7 @@ always @(posedge clk) begin
             csr_crmd[2] <= 1'b0;
             csr_estat[21:16] <= ECODE_INT;
             csr_estat[30:22] <= 9'b0;
-            csr_era <= inst_sram_addr - 32'd4;
+            csr_era <= id_pc;
         end else if (id_ertn) begin
             csr_crmd[1:0] <= csr_prmd[1:0];
             csr_crmd[2] <= csr_prmd[2];
