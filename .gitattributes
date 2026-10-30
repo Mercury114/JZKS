@@ -3,3 +3,7 @@
 *.py text eol=lf
 *.S text eol=lf
 *.lds text eol=lf
+Evidence/AXI/*.md text eol=lf
+Evidence/AXI/**/*.md text eol=lf
+Evidence/AXI/*.json text eol=lf
+Evidence/AXI/**/*.json text eol=lf
