@@ -1,0 +1,18 @@
+
+****** xsim v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/cache_axi_bridge_tb_wave_sim/xsim_script.tcl
+# xsim {cache_axi_bridge_tb_wave_sim} -autoloadwcfg -tclbatch {C:/Users/chnjn/Documents/Codex/2026-10-21/https-github-com-mercury114-jzks-https/work/JZKS/Cache/scripts/axi_bridge_vcd.tcl}
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source C:/Users/chnjn/Documents/Codex/2026-10-21/https-github-com-mercury114-jzks-https/work/JZKS/Cache/scripts/axi_bridge_vcd.tcl
+## open_vcd cache_axi_bridge_tb.vcd
+## log_vcd /cache_axi_bridge_tb/*
+## run all
+PASS cache_axi_bridge: independent channels, backpressure, completion, error
+$finish called at time : 240 ns : File "C:/Users/chnjn/Documents/Codex/2026-10-21/https-github-com-mercury114-jzks-https/work/JZKS/Cache/tb/cache_axi_bridge_tb.v" Line 110
+## close_vcd
+INFO: [Common 17-206] Exiting xsim at Fri Oct 30 08:09:42 2026...
