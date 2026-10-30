@@ -1,0 +1,150 @@
+{
+  "source_commit": "749329b7ac36e2265977e55558c36c206b32dd86",
+  "archive_date": "2026-10-30",
+  "files": [
+    {
+      "path": "docs/波形解读.md",
+      "bytes": 2681,
+      "sha256": "4eb67c0eb306532b6ee19d48c1267fbe397632bc86af47665341e99b1dfbce0b",
+      "source": "AXI evidence documentation"
+    },
+    {
+      "path": "Important/AXI_PASS/bridge/cache_axi_bridge_tb.vcd",
+      "bytes": 6436,
+      "sha256": "c5ea129532b9ac5c9428f953c1f04e24e9be3d24e6b9a0c60428814b4f2b4928",
+      "source": "Cache/build/axi/cache_axi_bridge_tb.vcd"
+    },
+    {
+      "path": "Important/AXI_PASS/bridge/cache_axi_bridge_tb.wcfg",
+      "bytes": 10437,
+      "sha256": "14353bdb1b14211a565b70be9838d2443ac9b47e73252c4f079775883f2ffeeb",
+      "source": "Vivado-generated WCFG with viewing layout adjustments"
+    },
+    {
+      "path": "Important/AXI_PASS/bridge/cache_axi_bridge_tb.wdb",
+      "bytes": 30933,
+      "sha256": "914bf6d5cf92ca1690b111fc3b31485297345d878aefb613f895a59c8d641b3f",
+      "source": "Cache/build/axi/cache_axi_bridge_tb.wdb"
+    },
+    {
+      "path": "Important/AXI_PASS/bridge/open_wave.tcl",
+      "bytes": 200,
+      "sha256": "af3d13748445d3f669229c12f4b54c7821d535c4757126744b41a537087acd8c",
+      "source": "archive-local Vivado opening helper"
+    },
+    {
+      "path": "Important/AXI_PASS/bridge/vcd_export.log",
+      "bytes": 1059,
+      "sha256": "c4095f984249127cdc74efeabcb099fbc80d86f718c735c860a6bf85728cb334",
+      "source": "Cache/build/axi/cache_axi_bridge_tb_vcd.log"
+    },
+    {
+      "path": "Important/AXI_PASS/bridge/xsim.log",
+      "bytes": 2984,
+      "sha256": "43ed213f85fd8193d31b91436827f2167b2f59879b94c84381c4232c5a943cb4",
+      "source": "Cache/build/axi/cache_axi_bridge_tb_wave.log"
+    },
+    {
+      "path": "Important/AXI_PASS/cpu/mycpu_top_axi_tb.vcd",
+      "bytes": 8352,
+      "sha256": "77765c9454e7001b222f9c93e1ae7c2180c5a1109d1d00fa967cc12615ba2c85",
+      "source": "Cache/build/axi/mycpu_top_axi_tb.vcd"
+    },
+    {
+      "path": "Important/AXI_PASS/cpu/mycpu_top_axi_tb.wcfg",
+      "bytes": 10468,
+      "sha256": "67e4a227cb04d2b13ffa021ea4bd7bb733ea9d0a4974606ede3f48a7e96e30d1",
+      "source": "Vivado-generated WCFG with viewing layout adjustments"
+    },
+    {
+      "path": "Important/AXI_PASS/cpu/mycpu_top_axi_tb.wdb",
+      "bytes": 294202,
+      "sha256": "7daa659e1f1a643e0c1540b2ebd78bde68b0032791c186f7b0579abb002aa4fd",
+      "source": "Cache/build/axi/mycpu_top_axi_tb.wdb"
+    },
+    {
+      "path": "Important/AXI_PASS/cpu/open_wave.tcl",
+      "bytes": 194,
+      "sha256": "475107e0752d9ae0134decc0b1d4acd4736fface719e50ed97ea3c8653404e7d",
+      "source": "archive-local Vivado opening helper"
+    },
+    {
+      "path": "Important/AXI_PASS/cpu/vcd_export.log",
+      "bytes": 1256,
+      "sha256": "f56c126e776b93731a3b436bd202c27ad9399df705f5f36ede7ad7aeeff5681a",
+      "source": "Cache/build/axi/mycpu_top_axi_tb_vcd.log"
+    },
+    {
+      "path": "Important/AXI_PASS/cpu/xsim.log",
+      "bytes": 2935,
+      "sha256": "d190c827103db010ad333ae3e0e9442187b85ff4252114967ea9aa1aee2a92ab",
+      "source": "Cache/build/axi/mycpu_top_axi_tb_wave.log"
+    },
+    {
+      "path": "Important/AXI_PASS/screenshots/axi_cpu_overview_vivado.png",
+      "bytes": 209725,
+      "sha256": "cb69883fb42807e4acb8b0822630b89525414307fc84836b87c769e72468178d",
+      "source": "Vivado GUI CPU overview screenshot"
+    },
+    {
+      "path": "Important/AXI_PASS/screenshots/axi_read_vivado.png",
+      "bytes": 51606,
+      "sha256": "fa32e2e4653cda4d074614962b058b6c032ccf8e06cfaf1ab5e1d0020acc4eef",
+      "source": "user Vivado GUI screenshot: 屏幕截图 2026-10-29 220357.png"
+    },
+    {
+      "path": "Important/AXI_PASS/screenshots/axi_write_vivado.png",
+      "bytes": 68867,
+      "sha256": "24e2adb505c61051e660ad7d0b9769454d549f5f4db9c76705c3d0a095b46b83",
+      "source": "user Vivado GUI screenshot: 屏幕截图 2026-10-29 220617.png"
+    },
+    {
+      "path": "Important/make_manifest.py",
+      "bytes": 3509,
+      "sha256": "57dc5fb721de96436f2942d5f9fda2c66abdfab19f1aed49f007ec729c3eda7b",
+      "source": "AXI evidence documentation"
+    },
+    {
+      "path": "Important/README.md",
+      "bytes": 1652,
+      "sha256": "bf7ed7853f9d42db1759b94aa7e6c5d6972257c8379e1b4bc3ff207a1aeea2a8",
+      "source": "AXI evidence documentation"
+    },
+    {
+      "path": "Important/Summary/verification-results.json",
+      "bytes": 1110,
+      "sha256": "d0c8fb9ae28f5b35232c833579fe131d8b22546dc6a89d625b15f58c81857d7e",
+      "source": "AXI evidence documentation"
+    },
+    {
+      "path": "Important/Summary/关键PASS输出汇总.md",
+      "bytes": 1655,
+      "sha256": "786a23178c5e84a191c3db595c60ea38176217b600be44dce25d2d5148077d47",
+      "source": "AXI evidence documentation"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2002,
+      "sha256": "b9412364964307078dff8bd4e9487d14072a66b493f56434eba600c59ea9fd01",
+      "source": "AXI evidence documentation"
+    },
+    {
+      "path": "Supplementary/axi_cpu_zoom.png",
+      "bytes": 120254,
+      "sha256": "6c40be5ae2cd3b3147e30f805a0558a38af3621c11c5d6ac5bc3a66bb3798297",
+      "source": "Cache/scripts/plot_axi_waveforms.py from XSim VCD"
+    },
+    {
+      "path": "Supplementary/axi_read_zoom.png",
+      "bytes": 100183,
+      "sha256": "4c443580c13625d19247634f1d9175cd964e39874ba29515f0c9ea850803bec5",
+      "source": "Cache/scripts/plot_axi_waveforms.py from XSim VCD"
+    },
+    {
+      "path": "Supplementary/axi_write_zoom.png",
+      "bytes": 128616,
+      "sha256": "e478e9c1e2a499cb42dfc065693712539677ca20a7c079e19542f617d3fbd1a8",
+      "source": "Cache/scripts/plot_axi_waveforms.py from XSim VCD"
+    }
+  ]
+}

@@ -24,3 +24,13 @@
 ```
 
 `cache_axi_bridge_tb` 检查 AR 反压、AW/W 不同顺序握手、B/R 才能完成事务、字节写使能和错误标记。`mycpu_top_axi_tb` 让真实五级 CPU 通过 I/D Cache 从带独立反压的 AXI 内存取指，执行 cached store/load、load-use 相关和 uncached 外设写，检查写回结果、外设值及五通道事务次数。仿真产物写入被忽略的 `Cache/build/axi/`。
+
+要生成 Vivado 2018.3 可直接打开的波形数据库与信号布局，在仓库根目录运行：
+
+```powershell
+& .\Cache\scripts\run_axi_wave.ps1 -VivadoBin 'D:\Xilinx\Vivado\2018.3\bin'
+```
+
+脚本使用 `xelab -debug typical` 编译，并在仿真开始前记录所有信号。完成后，`Cache/build/axi/` 中分别生成 `cache_axi_bridge_tb.wdb/.wcfg/.vcd`（AXI 桥接读写、反压与错误响应）和 `mycpu_top_axi_tb.wdb/.wcfg/.vcd`（CPU、Cache、MMIO 集成读写）。在 Vivado GUI 的 Tcl Console 中先执行 `open_wave_database {完整 WDB 路径}`，再执行 `open_wave_config {完整 WCFG 路径}`。使用波形窗口的 **Zoom Range X** 分别查看读、写及 CPU 集成局部时序；点击 Zoom Fit 只适合查看全程概览。
+
+报告用的归档证据位于 `Evidence/AXI/`，包括 Vivado 直接截图、原始 WDB/WCFG、VCD、XSim 日志、PASS 汇总与文件哈希清单；两个测试台及复现脚本保留在 `Cache/` 中。

@@ -1,0 +1,59 @@
+
+****** xsim v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/cache_axi_bridge_tb_wave_sim/xsim_script.tcl
+# xsim {cache_axi_bridge_tb_wave_sim} -wdb {cache_axi_bridge_tb.wdb} -autoloadwcfg -tclbatch {C:/Users/chnjn/Documents/Codex/2026-10-21/https-github-com-mercury114-jzks-https/work/JZKS/Cache/scripts/axi_bridge_wave.tcl}
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source C:/Users/chnjn/Documents/Codex/2026-10-21/https-github-com-mercury114-jzks-https/work/JZKS/Cache/scripts/axi_bridge_wave.tcl
+## log_wave -r /
+## create_wave_config
+## add_wave_divider {Clock and cache request}
+## add_wave /cache_axi_bridge_tb/clk
+## add_wave /cache_axi_bridge_tb/resetn
+## add_wave /cache_axi_bridge_tb/mem_valid
+## add_wave /cache_axi_bridge_tb/mem_write
+## add_wave /cache_axi_bridge_tb/mem_ready
+## add_wave -radix hex /cache_axi_bridge_tb/mem_addr
+## add_wave -radix hex /cache_axi_bridge_tb/mem_wdata
+## add_wave -radix hex /cache_axi_bridge_tb/mem_wstrb
+## add_wave /cache_axi_bridge_tb/mem_rvalid
+## add_wave -radix hex /cache_axi_bridge_tb/mem_rdata
+## add_wave /cache_axi_bridge_tb/axi_error
+## add_wave_divider {Read address AR}
+## add_wave /cache_axi_bridge_tb/arvalid
+## add_wave /cache_axi_bridge_tb/arready
+## add_wave -radix hex /cache_axi_bridge_tb/araddr
+## add_wave -radix unsigned /cache_axi_bridge_tb/arsize
+## add_wave_divider {Read data R}
+## add_wave /cache_axi_bridge_tb/rvalid
+## add_wave /cache_axi_bridge_tb/rready
+## add_wave -radix hex /cache_axi_bridge_tb/rdata
+## add_wave -radix hex /cache_axi_bridge_tb/rresp
+## add_wave /cache_axi_bridge_tb/rlast
+## add_wave_divider {Write address AW}
+## add_wave /cache_axi_bridge_tb/awvalid
+## add_wave /cache_axi_bridge_tb/awready
+## add_wave -radix hex /cache_axi_bridge_tb/awaddr
+## add_wave -radix unsigned /cache_axi_bridge_tb/awsize
+## add_wave_divider {Write data W}
+## add_wave /cache_axi_bridge_tb/wvalid
+## add_wave /cache_axi_bridge_tb/wready
+## add_wave -radix hex /cache_axi_bridge_tb/wdata
+## add_wave -radix hex /cache_axi_bridge_tb/wstrb
+## add_wave /cache_axi_bridge_tb/wlast
+## add_wave_divider {Write response B and bridge state}
+## add_wave /cache_axi_bridge_tb/bvalid
+## add_wave /cache_axi_bridge_tb/bready
+## add_wave -radix hex /cache_axi_bridge_tb/bresp
+## add_wave -radix unsigned /cache_axi_bridge_tb/dut/state
+## add_wave /cache_axi_bridge_tb/dut/aw_sent
+## add_wave /cache_axi_bridge_tb/dut/w_sent
+## save_wave_config cache_axi_bridge_tb.wcfg
+## run all
+PASS cache_axi_bridge: independent channels, backpressure, completion, error
+$finish called at time : 240 ns : File "C:/Users/chnjn/Documents/Codex/2026-10-21/https-github-com-mercury114-jzks-https/work/JZKS/Cache/tb/cache_axi_bridge_tb.v" Line 110
+INFO: [Common 17-206] Exiting xsim at Fri Oct 30 08:09:36 2026...
