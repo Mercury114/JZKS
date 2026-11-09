@@ -92,4 +92,4 @@ powershell -ExecutionPolicy Bypass -File .\vivado\run.ps1 -Mode bitstream -Firmw
 
 本仓库保留远端 `main` 的完整历史和所有证据。提交给老师的压缩包按 [交付说明](docs/交付说明.md) 清理可再生的仿真波形、Vivado 构建目录和课程实验备份，保留源码、脚本、初始化入口、关键日志、截图、摘要、清单和哈希，确保文件大小不超过 200 MB。
 
-最后一次远端基线为 `308b6aa85893cbda447d392f140bb3cf34639694`（2026-11-02）。本地整理不覆盖 `uart-irq-wip`，该分支不是 `main` 的合并祖先。
+远端 `main` 的最终整理提交为 `c80369e755bb9ec1e3e8f9638dce62acbb1eb91f`；其团队工程基线为 `308b6aa85893cbda447d392f140bb3cf34639694`（2026-11-02）。本地整理不覆盖 `uart-irq-wip`，该分支不是 `main` 的合并祖先。
