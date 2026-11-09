@@ -52,3 +52,15 @@ __pycache__/
 /vivado/console_build_uart/
 
 /vivado/console_build_uart_board/
+
+# Reproducible evidence workspaces are generated locally and are not source.
+/Evidence/**/build/
+/Evidence/**/waveforms/
+/Evidence/**/*.wdb
+/Evidence/**/*.wdb.part*
+/Evidence/**/*.vcd
+/Evidence/**/*.wcfg
+/Evidence/**/*.jou
+/Evidence/**/*.pb
+/Evidence/**/*.backup.log
+/Evidence/**/*.backup.jou

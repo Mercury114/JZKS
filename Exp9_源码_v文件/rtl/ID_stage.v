@@ -334,6 +334,10 @@ wire [31:0] effective_addr = rj_value + imm;
 wire addr_error = ((inst_ld_w | inst_st_w) && (effective_addr[1:0] != 2'b00)) |
                   ((inst_ld_h | inst_ld_hu | inst_st_h) && effective_addr[0]);
 wire local_exception = inst_syscall | inst_break | !inst_known | addr_error;
+// Keep handshake-derived nets declared before their first use for strict
+// Verilog simulators that do not accept late net declarations.
+wire serializing = inst_csr | inst_ertn | inst_cacop | local_exception;
+wire ds_fire = ds_valid && ds_ready_go && es_allowin;
 // redirect_flush is derived from id_exception/ertn in mycpu_top.  Feeding it
 // back into these decode outputs creates a zero-delay control loop exactly
 // when an exception is decoded.  The stage-valid register is flushed on the
@@ -394,8 +398,6 @@ assign ds_to_es_bus = {
 // CSR side effects, ERTN and synchronous exceptions commit only after older
 // EX/MEM instructions (including register restores and stores) have completed.
 // A pending asynchronous interrupt holds the next ID instruction unexecuted.
-wire serializing = inst_csr | inst_ertn | inst_cacop | local_exception;
-wire ds_fire = ds_valid && ds_ready_go && es_allowin;
 assign ds_ready_go = ~ds_raw_hazard && !interrupt_pending &&
                      !(serializing && pipeline_busy);
 assign ds_allowin     = !ds_valid || ds_ready_go && es_allowin;
