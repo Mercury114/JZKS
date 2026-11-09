@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-11-09T18:02:23+08:00",
+  "verified_at": "2026-11-09T18:33:39+08:00",
   "tier": "local RTL compilation and Icarus simulation; not Vivado/FPGA acceptance",
   "full_run": false,
   "tools": {
@@ -11,7 +11,7 @@
     {
       "name": "partner-dcache-original-compile",
       "status": "PASS",
-      "seconds": 0.027,
+      "seconds": 0.075,
       "command": [
         "iverilog",
         "-g2012",
@@ -39,7 +39,7 @@
     {
       "name": "icache-ways1-compile",
       "status": "PASS",
-      "seconds": 0.013,
+      "seconds": 0.014,
       "command": [
         "iverilog",
         "-g2012",
@@ -69,7 +69,7 @@
     {
       "name": "icache-ways2-compile",
       "status": "PASS",
-      "seconds": 0.013,
+      "seconds": 0.012,
       "command": [
         "iverilog",
         "-g2012",
@@ -119,7 +119,7 @@
     {
       "name": "icache-ways4",
       "status": "PASS",
-      "seconds": 0.013,
+      "seconds": 0.014,
       "command": [
         "vvp",
         "Cache/build/regression/icache-ways4"
@@ -147,7 +147,7 @@
     {
       "name": "dcache-extended",
       "status": "PASS",
-      "seconds": 0.114,
+      "seconds": 0.115,
       "command": [
         "vvp",
         "Cache/build/regression/dcache-extended"
@@ -157,7 +157,7 @@
     {
       "name": "arbiter-compile",
       "status": "PASS",
-      "seconds": 0.015,
+      "seconds": 0.013,
       "command": [
         "iverilog",
         "-g2012",
@@ -175,7 +175,7 @@
     {
       "name": "arbiter",
       "status": "PASS",
-      "seconds": 0.026,
+      "seconds": 0.027,
       "command": [
         "vvp",
         "Cache/build/regression/arbiter"
@@ -209,7 +209,7 @@
     {
       "name": "subsystem-ways1",
       "status": "PASS",
-      "seconds": 0.086,
+      "seconds": 0.087,
       "command": [
         "vvp",
         "Cache/build/regression/subsystem-ways1"
@@ -243,7 +243,7 @@
     {
       "name": "subsystem-ways2",
       "status": "PASS",
-      "seconds": 0.086,
+      "seconds": 0.089,
       "command": [
         "vvp",
         "Cache/build/regression/subsystem-ways2"
@@ -253,7 +253,7 @@
     {
       "name": "subsystem-ways4-compile",
       "status": "PASS",
-      "seconds": 0.016,
+      "seconds": 0.018,
       "command": [
         "iverilog",
         "-g2012",
@@ -277,7 +277,7 @@
     {
       "name": "subsystem-ways4",
       "status": "PASS",
-      "seconds": 0.089,
+      "seconds": 0.088,
       "command": [
         "vvp",
         "Cache/build/regression/subsystem-ways4"
@@ -323,7 +323,7 @@
     {
       "name": "cpu-architectural",
       "status": "PASS",
-      "seconds": 9.725,
+      "seconds": 9.964,
       "command": [
         "/opt/homebrew/opt/python@3.14/bin/python3.14",
         "Cache/tests/run_cpu.py"
@@ -333,7 +333,7 @@
     {
       "name": "system-architectural-and-performance",
       "status": "PASS",
-      "seconds": 3.099,
+      "seconds": 3.159,
       "command": [
         "/opt/homebrew/opt/python@3.14/bin/python3.14",
         "Cache/tests/run_system.py"
@@ -343,7 +343,7 @@
     {
       "name": "default-cache_system-compile",
       "status": "PASS",
-      "seconds": 0.031,
+      "seconds": 0.033,
       "command": [
         "iverilog",
         "-g2012",
@@ -429,7 +429,7 @@
     {
       "name": "default-cache_remote_top-compile",
       "status": "PASS",
-      "seconds": 0.03,
+      "seconds": 0.031,
       "command": [
         "iverilog",
         "-g2012",
@@ -472,7 +472,7 @@
     {
       "name": "vivado-input-preparation",
       "status": "PASS",
-      "seconds": 0.079,
+      "seconds": 0.088,
       "command": [
         "/opt/homebrew/opt/python@3.14/bin/python3.14",
         "Cache/scripts/prepare_vivado.py",
@@ -1077,7 +1077,7 @@
     "Cache/tb/system_tb.v": "5afec9ede28f5fe8590361870544a8ad820cb1374a7dc89f158c964490fa257d",
     "Cache/tb/teacher_cache_tb.v": "ab81194ab8f279befd8ed91e89d2fad9d4c924b5003cd2b343a61af4d0e50835",
     "Cache/tests/cpu_program.py": "a38305150a3038330e8c13e47657017b1cad3efd99535efee006ddf60563beb3",
-    "Cache/tests/run_all.py": "6b2d8a2a4f4744e5002327af45a09d27140313ee71215afc1eb1a5d7c75f4430",
+    "Cache/tests/run_all.py": "ef3d6d806f065f435af611ff7014255b30109dafc89a6bf78b9d0b79b8bcc0bc",
     "Cache/tests/run_cpu.py": "c9b500679c0bfe6cbe10cc2cfd6c44850d71556408cd45cef85d99912714cccc",
     "Cache/tests/run_system.py": "7cb3d39025259f1d01c43c936e721cb1de3550fbdf7af9eff1ee89572811f393",
     "Cache/tests/run_teacher.py": "2f2671ac33e4ff1c4edb2d7604713aa2a8f006e28a4382474f879c482c7ae02e",
