@@ -82,14 +82,20 @@ def main():
     for top in ("cache_system", "cache_soc_lite_top", "cache_remote_top"):
         command(f"default-{top}-compile", ["iverilog", "-g2012", "-tnull", "-s", top, "-I", RTL / "cpu", *all_sources])
     command("vivado-input-preparation", [sys.executable, CACHE / "scripts/prepare_vivado.py", "--exp", "9"], "Prepared ex9")
-    if not Path(GIT).is_file() and not shutil.which("git"):
-        raise RuntimeError("Git executable is required for the baseline-preservation check")
     # The integration branch deliberately differs from the older D-cache
-    # branch. Verify that this regression itself has not modified either
-    # course or partner source tree instead of comparing unrelated histories.
-    dirty = subprocess.run([GIT, "diff", "--quiet", "--", "D-cache/rtl", "D-cache/tb", "Exp9_源码_v文件"], cwd=ROOT)
-    if dirty.returncode:
-        raise RuntimeError("Regression modified D-Cache RTL/testbench or Exp9 sources")
+    # branch. When Git metadata is available, verify that this regression
+    # itself has not modified either course or partner source tree. A teacher
+    # submission ZIP intentionally omits .git, so the source-only copy skips
+    # this repository-state check while retaining the functional checks.
+    in_git_worktree = False
+    if Path(GIT).is_file() or shutil.which("git"):
+        probe = subprocess.run([GIT, "rev-parse", "--is-inside-work-tree"], cwd=ROOT,
+                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        in_git_worktree = probe.returncode == 0
+    if in_git_worktree:
+        dirty = subprocess.run([GIT, "diff", "--quiet", "--", "D-cache/rtl", "D-cache/tb", "Exp9_源码_v文件"], cwd=ROOT)
+        if dirty.returncode:
+            raise RuntimeError("Regression modified D-Cache RTL/testbench or Exp9 sources")
     source_files = sorted(RTL.rglob("*.v")) + sorted((CACHE / "tb").glob("*.v"))
     source_files += sorted((CACHE / "tests").glob("*.py")) + sorted((CACHE / "scripts").glob("*"))
     source_files += sorted((CACHE / "constraints").glob("*.xdc"))
